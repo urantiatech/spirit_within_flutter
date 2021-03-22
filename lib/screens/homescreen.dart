@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/models/blog.dart';
+import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
 import 'package:spirit_within_flutter/widgets/quote_box.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 
@@ -10,18 +13,55 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SearchBar(hintText: "Search blogs"),
-        SizedBox(
-          height: 24,
-        ),
-        QuoteBox(
-          quoteText: 'Design is not just what it looks like and feels like.'
-              ' Design is how it works.',
-          quoteAuthor: 'Steve Jobs',
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SearchBar(hintText: "Search blogs"),
+          SizedBox(
+            height: 24,
+          ),
+          QuoteBox(
+            quoteText: 'Design is not just what it looks like and feels like.'
+                ' Design is how it works.',
+            quoteAuthor: 'Steve Jobs',
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          BlogListItem(
+            title: demoBlog1.title,
+            description:
+                'long text long text long text long text long text long text',
+            time: '2 hours ago',
+            author: 'Peter Parker',
+            imgPath: 'assets/images/mona.jpg',
+          ),
+          BlogListItem(
+            title: demoBlog1.title,
+            description:
+                'long text long text long text long text long text long text',
+            time: '2 hours ago',
+            author: 'Peter Parker',
+            imgPath: 'assets/images/mona.jpg',
+          ),
+          BlogListItem(
+            title: demoBlog1.title,
+            description:
+                'long text long text long text long text long text long text',
+            time: '2 hours ago',
+            author: 'Peter Parker',
+            imgPath: 'assets/images/mona.jpg',
+          ),
+          BlogListItem(
+            title: demoBlog1.title,
+            description:
+                'long text long text long text long text long text long text',
+            time: '2 hours ago',
+            author: 'Peter Parker',
+            imgPath: 'assets/images/mona.jpg',
+          ),
+        ],
+      ),
     );
   }
 }
