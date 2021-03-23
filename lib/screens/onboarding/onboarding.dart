@@ -34,7 +34,6 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
-    double totalWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SafeArea(

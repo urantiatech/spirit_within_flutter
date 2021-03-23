@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
 import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
 import 'package:spirit_within_flutter/widgets/quote_box.dart';

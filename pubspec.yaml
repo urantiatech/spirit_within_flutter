@@ -26,6 +26,19 @@ flutter:
     - assets/images/
 
   fonts:
+    - family: Rasa
+      fonts:
+        - asset: assets/fonts/Rasa-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Rasa-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Rasa-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Rasa-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Rasa-SemiBold.ttf
+          weight: 600
+
     - family: SourceSerifPro
       fonts:
         - asset: assets/fonts/SourceSerifPro-Regular.ttf
@@ -58,6 +71,7 @@ flutter:
         - asset: assets/fonts/SourceSerifPro-SemiBoldItalic.ttf
           weight: 600
           style: italic
+
     - family: SourceSansPro
       fonts:
         - asset: assets/fonts/SourceSansPro-Regular.ttf

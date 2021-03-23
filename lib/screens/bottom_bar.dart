@@ -38,14 +38,13 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(
-          child: Text(
-            'Spirit Within',
-            style: TextStyle(
-              color: normalTextColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-            ),
+        centerTitle: true,
+        title: Text(
+          'Spirit Within',
+          style: TextStyle(
+            color: normalTextColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
           ),
         ),
       ),
