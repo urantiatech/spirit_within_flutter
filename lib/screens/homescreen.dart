@@ -17,15 +17,20 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SearchBar(hintText: "Search blogs"),
           SizedBox(
-            height: 24,
+            height: 14,
           ),
           QuoteBox(
             quoteText: 'Design is not just what it looks like and feels like.'
                 ' Design is how it works.',
             quoteAuthor: 'Steve Jobs',
           ),
-          SizedBox(
-            height: 24,
+          BlogListItem(
+            title: 'Lorem ipsum dolor sit amet',
+            description:
+                'long text long text long text long text long text long text long text long text long text long text',
+            time: '2 hours ago',
+            author: 'Peter Parker',
+            imgPath: 'assets/images/mona.jpg',
           ),
           BlogListItem(
             title: demoBlog1.title,

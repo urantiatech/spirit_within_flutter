@@ -10,6 +10,7 @@ class BlogScreen extends StatefulWidget {
 class _BlogScreenState extends State<BlogScreen> {
   @override
   Widget build(BuildContext context) {
+    var fullHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -33,7 +34,7 @@ class _BlogScreenState extends State<BlogScreen> {
             child: Image.asset(
               'assets/images/blogbg.jpg',
               fit: BoxFit.fill,
-              height: 400,
+              height: fullHeight / 2,
             ),
           ),
           DraggableScrollableSheet(
