@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class BlogScreen extends StatefulWidget {
   @override
@@ -217,6 +218,78 @@ class _BlogScreenState extends State<BlogScreen> {
                       ),
                       SizedBox(
                         height: 30,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: 30,
+                          right: 30,
+                          bottom: 30,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    // color: Colors.red,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 8,
+                                        color: Color(0x5F061730),
+                                        spreadRadius: 0,
+                                      ),
+                                    ],
+                                  ),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 23,
+                                    child: CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: Colors.green[200],
+                                      backgroundImage: AssetImage(
+                                        'assets/images/author.png',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 14,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Supriatna Richard',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: normalTextColor,
+                                        fontFamily: 'SourceSansPro',
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      '34 followers',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: subtleTextColor,
+                                        fontFamily: 'SourceSansPro',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SecondaryButton(
+                              buttonTitle: 'Follow',
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
