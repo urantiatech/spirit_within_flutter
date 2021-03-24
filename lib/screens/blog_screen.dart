@@ -63,7 +63,7 @@ class _BlogScreenState extends State<BlogScreen> {
                           children: [
                             Icon(
                               Icons.access_time,
-                              size: 12,
+                              size: 16,
                               color: subtleTextColor,
                             ),
                             SizedBox(
@@ -217,7 +217,7 @@ class _BlogScreenState extends State<BlogScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 24,
                       ),
                       Container(
                         margin: EdgeInsets.only(

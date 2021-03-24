@@ -53,6 +53,8 @@ class QuoteBox extends StatelessWidget {
                 ),
               ),
               Container(
+                // color: Colors.red,
+                // padding: EdgeInsets.all(8),
                 margin: EdgeInsets.only(
                   right: 30,
                   top: 20,
