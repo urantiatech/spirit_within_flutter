@@ -26,12 +26,16 @@ class SearchBar extends StatelessWidget {
                 hintStyle: TextStyle(
                   color: moreSubtleTextColor,
                   fontSize: 16,
+                  fontFamily: 'SourceSansPro',
+                  fontWeight: FontWeight.w400,
                 ),
                 border: InputBorder.none,
               ),
               style: TextStyle(
                 color: normalTextColor,
                 fontSize: 16,
+                fontFamily: 'SourceSansPro',
+                fontWeight: FontWeight.w400,
               ),
               cursorColor: Theme.of(context).accentColor,
               onChanged: (String keyword) {},

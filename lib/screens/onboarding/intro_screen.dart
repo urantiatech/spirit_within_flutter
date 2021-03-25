@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spirit_within_flutter/constants/app_constants.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({
@@ -31,7 +30,12 @@ class IntroScreen extends StatelessWidget {
             child: Text(
               'App introduction & usage instructions',
               textAlign: TextAlign.center,
-              style: introDescStyle,
+              style: TextStyle(
+                color: Color(0xFF061730),
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+                fontFamily: 'SourceSerifPro',
+              ),
             ),
           )
         ],

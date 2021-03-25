@@ -45,6 +45,7 @@ class _BottomBarState extends State<BottomBar> {
             color: normalTextColor,
             fontWeight: FontWeight.w600,
             fontSize: 20,
+            fontFamily: 'SourceSerifPro',
           ),
         ),
       ),

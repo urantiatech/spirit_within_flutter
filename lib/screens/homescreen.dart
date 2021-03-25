@@ -16,9 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           SearchBar(hintText: "Search blogs"),
-          SizedBox(
-            height: 14,
-          ),
+          SizedBox(height: 14),
           QuoteBox(
             quoteText: 'Design is not just what it looks like and feels like.'
                 ' Design is how it works.',

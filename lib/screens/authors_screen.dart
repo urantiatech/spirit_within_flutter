@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/widgets/author_card.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
-import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class AuthorsScreen extends StatelessWidget {
   @override

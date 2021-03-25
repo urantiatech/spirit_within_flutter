@@ -16,15 +16,28 @@ class _BlogScreenState extends State<BlogScreen> {
         iconTheme: IconThemeData(
           color: normalTextColor,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_border_rounded),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Added to Favourites'),
+                ),
+              );
+            },
+          ),
+        ],
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
           'Spirit Within',
           style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-          ),
+              color: normalTextColor,
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              fontFamily: 'SourceSerifPro'),
         ),
       ),
       body: Stack(

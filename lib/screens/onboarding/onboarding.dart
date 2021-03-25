@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spirit_within_flutter/constants/app_constants.dart';
 
 import 'indicator.dart';
 import 'intro_screen.dart';
@@ -49,7 +48,12 @@ class _OnboardingState extends State<Onboarding> {
                   child: Text(
                     'Spirit Within',
                     textAlign: TextAlign.center,
-                    style: introTitleStyle,
+                    style: TextStyle(
+                      color: Color(0xFF061730),
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'SourceSerifPro',
+                    ),
                   ),
                 ),
               ],
