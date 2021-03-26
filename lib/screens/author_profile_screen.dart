@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/widgets/divider_line.dart';
+import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
+import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
+import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
+import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class AuthorProfileScreen extends StatefulWidget {
   @override
@@ -64,7 +69,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 8,
-                        color: Color(0x5F061730),
+                        color: Color(0x3F061730),
                         spreadRadius: 0,
                       ),
                     ],
@@ -83,7 +88,41 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                 ),
               ],
             ),
-          )
+          ),
+          SizedBox(height: 26),
+          Container(
+            // margin: EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ProfileStatsColumn(
+                  number: 89,
+                  statsTitle: 'Blogs',
+                ),
+                ProfileStatsColumn(
+                  number: 234,
+                  statsTitle: 'Followers',
+                ),
+                ProfileStatsColumn(
+                  number: 160,
+                  statsTitle: 'Following',
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 28),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              children: [
+                ExpandedPrimaryButton(buttonTitle: 'Follow'),
+                SizedBox(width: 12),
+                ExpandedSecondaryButton(buttonTitle: 'Message me'),
+              ],
+            ),
+          ),
+          SizedBox(height: 30),
+          DividerLine(),
         ],
       ),
     );
