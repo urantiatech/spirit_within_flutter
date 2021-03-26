@@ -102,7 +102,7 @@ class BlogListItem extends StatelessWidget {
                           ],
                         ),
                         author == null
-                            ? Container()
+                            ? SizedBox()
                             : Row(
                                 children: [
                                   Icon(

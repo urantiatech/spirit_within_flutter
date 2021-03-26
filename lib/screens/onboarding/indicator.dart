@@ -21,7 +21,7 @@ class Indicator extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
             )
-          : Container(),
+          : SizedBox(),
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).accentColor, width: 2),
         borderRadius: BorderRadius.circular(100),

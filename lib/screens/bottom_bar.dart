@@ -3,7 +3,7 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/authors_screen.dart';
 import 'package:spirit_within_flutter/screens/fav_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
-import 'package:spirit_within_flutter/screens/profile_screen.dart';
+import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 
 class BottomBar extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
     HomeScreen(),
     AuthorsScreen(),
     FavScreen(),
-    ProfileScreen(),
+    MyProfileScreen(),
   ];
 
   @override
@@ -39,6 +39,20 @@ class _BottomBarState extends State<BottomBar> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
+        iconTheme: IconThemeData(
+          color: normalTextColor,
+        ),
+        actions: [
+          this._pageIndex == 3
+              ? IconButton(
+                  icon: const Icon(Icons.mark_email_unread_outlined),
+                  tooltip: 'Conversations',
+                  onPressed: () {
+                    debugPrint('Does nothing yet');
+                  },
+                )
+              : SizedBox(),
+        ],
         title: Text(
           'Spirit Within',
           style: TextStyle(
@@ -93,6 +107,13 @@ class _BottomBarState extends State<BottomBar> {
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),
+      // floatingActionButton: this._pageIndex == 3
+      //     ? FloatingActionButton.extended(
+      //         onPressed: () {},
+      //         label: Text('New Blog'),
+      //         icon: Icon(Icons.edit_outlined),
+      //       )
+      //     : SizedBox(),
     );
   }
 

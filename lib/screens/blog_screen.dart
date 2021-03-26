@@ -20,7 +20,7 @@ class _BlogScreenState extends State<BlogScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark_border_rounded),
-            tooltip: 'Show Snackbar',
+            tooltip: 'Add to Favourites',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(

@@ -20,7 +20,7 @@ class _QuoteBoxState extends State<QuoteBox> {
   @override
   Widget build(BuildContext context) {
     return !showQuote
-        ? Container()
+        ? SizedBox()
         : Container(
             width: double.infinity,
             margin: EdgeInsets.only(left: 30, bottom: 24, top: 10),
