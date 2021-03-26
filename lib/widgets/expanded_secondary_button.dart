@@ -3,18 +3,28 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 
 class ExpandedSecondaryButton extends StatelessWidget {
   final String buttonTitle;
-  ExpandedSecondaryButton({@required this.buttonTitle});
+  final Function onPressedFunction;
+  final bool isAlertButton;
+  ExpandedSecondaryButton({
+    @required this.buttonTitle,
+    this.onPressedFunction,
+    this.isAlertButton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressedFunction,
         style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(
+            isAlertButton ? Color(0x11E05031) : Color(0x113177E0),
+          ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
-              side: BorderSide(color: activeBlue),
+              side: BorderSide(
+                  color: isAlertButton ? Color(0xFFE05031) : activeBlue),
             ),
           ),
         ),
@@ -28,7 +38,7 @@ class ExpandedSecondaryButton extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-                color: activeBlue,
+                color: isAlertButton ? Color(0xFFE05031) : activeBlue,
                 fontFamily: 'SourceSansPro',
               ),
             ),

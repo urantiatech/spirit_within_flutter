@@ -6,7 +6,6 @@ import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
-import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class AuthorProfileScreen extends StatefulWidget {
   @override
@@ -14,6 +13,7 @@ class AuthorProfileScreen extends StatefulWidget {
 }
 
 class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
+  bool following = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,9 +119,30 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
               margin: EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 children: [
-                  ExpandedPrimaryButton(buttonTitle: 'Follow'),
+                  following
+                      ? ExpandedSecondaryButton(
+                          buttonTitle: 'Unfollow',
+                          isAlertButton: true,
+                          onPressedFunction: () {
+                            showAlertDialog(context);
+                          },
+                        )
+                      : ExpandedPrimaryButton(
+                          buttonTitle: 'Follow',
+                          onPressedFunction: () {
+                            setState(() {
+                              following = true;
+                              print(following.toString());
+                            });
+                          },
+                        ),
                   SizedBox(width: 12),
-                  ExpandedSecondaryButton(buttonTitle: 'Message me'),
+                  ExpandedSecondaryButton(
+                    buttonTitle: 'Message me',
+                    onPressedFunction: () {
+                      print('Message Button Pressed');
+                    },
+                  ),
                 ],
               ),
             ),
@@ -189,6 +210,62 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
+      content: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 10),
+          Text(
+            'Are you sure you want to unfollow?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+              color: normalTextColor,
+              fontFamily: 'SourceSerifPro',
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              ExpandedPrimaryButton(
+                buttonTitle: 'Yes',
+                onPressedFunction: () {
+                  setState(() {
+                    following = false;
+                    Navigator.of(context).pop();
+                  });
+                },
+              ),
+              SizedBox(width: 12),
+              ExpandedSecondaryButton(
+                buttonTitle: 'No',
+                onPressedFunction: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
