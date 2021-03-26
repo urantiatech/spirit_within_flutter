@@ -101,27 +101,29 @@ class BlogListItem extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.person_outline_rounded,
-                              size: 12,
-                              color: moreSubtleTextColor,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              author,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: moreSubtleTextColor,
-                                fontFamily: 'SourceSansPro',
-                              ),
-                            ),
-                          ],
-                        )
+                        author == null
+                            ? Container()
+                            : Row(
+                                children: [
+                                  Icon(
+                                    Icons.person_outline_rounded,
+                                    size: 12,
+                                    color: moreSubtleTextColor,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    author,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: moreSubtleTextColor,
+                                      fontFamily: 'SourceSansPro',
+                                    ),
+                                  ),
+                                ],
+                              )
                       ],
                     ),
                   )
