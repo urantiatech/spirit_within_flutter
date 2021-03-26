@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class BlogScreen extends StatefulWidget {
@@ -224,12 +225,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       SizedBox(
                         height: 30,
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Divider(
-                          color: Color(0xFFAEBED4),
-                        ),
-                      ),
+                      DividerLine(),
                       SizedBox(
                         height: 24,
                       ),

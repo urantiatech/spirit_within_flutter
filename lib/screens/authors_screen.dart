@@ -57,7 +57,7 @@ class AuthorsScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 24,
+            height: 9,
           ),
           AuthorCard(
             imgPath: 'assets/images/author.png',
