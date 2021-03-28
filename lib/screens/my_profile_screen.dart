@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/text_editor_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
@@ -153,8 +154,23 @@ class MyProfileScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: Text('New Blog'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TextEditorScreen(),
+            ),
+          );
+        },
+        label: Text(
+          'New Blog',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: Colors.white,
+            fontFamily: 'SourceSansPro',
+          ),
+        ),
         icon: Icon(Icons.edit_outlined),
       ),
     );
