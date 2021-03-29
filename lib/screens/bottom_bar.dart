@@ -6,6 +6,8 @@ import 'package:spirit_within_flutter/screens/homescreen.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 
 class BottomBar extends StatefulWidget {
+  final int navigationIndex;
+  BottomBar({this.navigationIndex});
   @override
   _BottomBarState createState() => new _BottomBarState();
 }

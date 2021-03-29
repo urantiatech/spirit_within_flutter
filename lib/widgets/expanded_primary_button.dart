@@ -4,8 +4,9 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 class ExpandedPrimaryButton extends StatelessWidget {
   final String buttonTitle;
   final Function onPressedFunction;
+  final double fontSize;
   const ExpandedPrimaryButton(
-      {@required this.buttonTitle, this.onPressedFunction});
+      {@required this.buttonTitle, this.onPressedFunction, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class ExpandedPrimaryButton extends StatelessWidget {
             child: Text(
               buttonTitle,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: fontSize ?? 16,
                 fontWeight: FontWeight.w400,
                 color: Colors.white,
                 fontFamily: 'SourceSansPro',

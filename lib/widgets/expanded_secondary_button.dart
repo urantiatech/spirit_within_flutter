@@ -5,10 +5,14 @@ class ExpandedSecondaryButton extends StatelessWidget {
   final String buttonTitle;
   final Function onPressedFunction;
   final bool isAlertButton;
+  final bool isDisabled;
+  final double fontSize;
   ExpandedSecondaryButton({
     @required this.buttonTitle,
     this.onPressedFunction,
     this.isAlertButton = false,
+    this.fontSize,
+    this.isDisabled = false,
   });
 
   @override
@@ -24,7 +28,11 @@ class ExpandedSecondaryButton extends StatelessWidget {
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
               side: BorderSide(
-                  color: isAlertButton ? Color(0xFFE05031) : activeBlue),
+                  color: isAlertButton
+                      ? Color(0xFFE05031)
+                      : isDisabled
+                          ? Color(0xFF9DC2FA)
+                          : activeBlue),
             ),
           ),
         ),
@@ -36,9 +44,13 @@ class ExpandedSecondaryButton extends StatelessWidget {
             child: Text(
               buttonTitle,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: fontSize ?? 16,
                 fontWeight: FontWeight.w400,
-                color: isAlertButton ? Color(0xFFE05031) : activeBlue,
+                color: isAlertButton
+                    ? Color(0xFFE05031)
+                    : isDisabled
+                        ? Color(0xFF9DC2FA)
+                        : activeBlue,
                 fontFamily: 'SourceSansPro',
               ),
             ),

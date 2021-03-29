@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../bottom_bar.dart';
 import 'indicator.dart';
 import 'intro_screen.dart';
 
@@ -15,6 +16,15 @@ class _OnboardingState extends State<Onboarding> {
   int currentIndex = 0;
 
   nextFunction() {
+    debugPrint(currentIndex.toString());
+    if (currentIndex == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BottomBar(),
+        ),
+      );
+    }
     _pageController.nextPage(duration: _kDuration, curve: _kCurve);
   }
 
