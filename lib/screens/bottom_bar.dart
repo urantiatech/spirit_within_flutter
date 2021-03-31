@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/authors_screen.dart';
+import 'package:spirit_within_flutter/screens/chat/conversation_list_screen.dart';
 import 'package:spirit_within_flutter/screens/fav_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
@@ -50,7 +51,12 @@ class _BottomBarState extends State<BottomBar> {
                   icon: const Icon(Icons.mark_email_unread_outlined),
                   tooltip: 'Conversations',
                   onPressed: () {
-                    debugPrint('Does nothing yet');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatListScreen(),
+                      ),
+                    );
                   },
                 )
               : SizedBox(),

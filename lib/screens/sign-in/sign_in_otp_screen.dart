@@ -64,7 +64,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                   appContext: context,
                   length: 4,
                   obscureText: false,
-                  animationType: AnimationType.fade,
+                  // animationType: AnimationType.fade,
                   pinTheme: PinTheme(
                     activeColor: moreSubtleTextColor,
                     disabledColor: moreSubtleTextColor,

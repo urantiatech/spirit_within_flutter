@@ -19,7 +19,6 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isSignedIn = await prefs.getBool("isSignedIn");
     print('isSignedIn $isSignedIn');
-    debugPrint('signInCheck() run');
   }
 
   signOut() async {
@@ -35,7 +34,6 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('build() run');
     if (isSignedIn == null) {
       isSignedIn = false;
     }
