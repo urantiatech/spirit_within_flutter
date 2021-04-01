@@ -38,7 +38,7 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       focusNode: _focusNode,
       autofocus: false,
       decoration: InputDecoration(
-        hintText: 'Content',
+        // hintText: 'Content',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.0),
         ),

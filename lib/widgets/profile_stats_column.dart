@@ -11,27 +11,32 @@ class ProfileStatsColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          number.toString(),
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            color: normalTextColor,
-            fontFamily: 'SourceSansPro',
+    var fullWidth = MediaQuery.of(context).size.width;
+    return Container(
+      width: fullWidth * 0.3,
+      // color: Colors.red[100],
+      child: Column(
+        children: [
+          Text(
+            number.toString(),
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: normalTextColor,
+              fontFamily: 'SourceSansPro',
+            ),
           ),
-        ),
-        Text(
-          statsTitle,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: subtleTextColor,
-            fontFamily: 'SourceSansPro',
+          Text(
+            statsTitle,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: subtleTextColor,
+              fontFamily: 'SourceSansPro',
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -14,6 +14,9 @@ dependencies:
       url: https://github.com/memspace/zefyr.git
       path: packages/zefyr
 #  zefyr:
+#  store_redirect: ^1.0.2
+  launch_review: ^3.0.1
+  permission_handler: ^6.1.1
   contacts_service: ^0.4.6
   flutter_slidable: ^0.5.7
   pin_code_fields: ^7.0.0

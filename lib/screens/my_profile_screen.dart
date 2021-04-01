@@ -6,6 +6,7 @@ import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/screens/text_editor_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
+import 'package:launch_review/launch_review.dart';
 
 import 'guest_profile.dart';
 
@@ -152,15 +153,15 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ProfileStatsColumn(
-                          number: 89,
+                          number: 890,
                           statsTitle: 'Blogs',
                         ),
                         ProfileStatsColumn(
-                          number: 234,
+                          number: 23422,
                           statsTitle: 'Followers',
                         ),
                         ProfileStatsColumn(
-                          number: 160,
+                          number: 1601,
                           statsTitle: 'Following',
                         ),
                       ],
@@ -184,6 +185,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   IconDescriptionCard(
                     iconData: Icons.star_border_rounded,
                     descTitle: 'Rate us',
+                    onPressedFunction: () {
+                      LaunchReview.launch();
+                    },
                   ),
                   DividerLine(),
                   IconDescriptionCard(
