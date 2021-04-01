@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/blog_screen.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class BlogListItem extends StatelessWidget {
   final String title;
@@ -8,6 +9,8 @@ class BlogListItem extends StatelessWidget {
   final String time;
   final String author;
   final String imgPath;
+  final bool deletable;
+  final Function deleteBlogFunction;
 
   const BlogListItem({
     this.title,
@@ -15,6 +18,8 @@ class BlogListItem extends StatelessWidget {
     this.time,
     this.author,
     this.imgPath,
+    this.deletable = false,
+    this.deleteBlogFunction,
   });
 
   @override
@@ -123,24 +128,94 @@ class BlogListItem extends StatelessWidget {
                                     ),
                                   ),
                                 ],
-                              )
+                              ),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                  imgPath,
-                  height: 96,
-                  width: 96,
-                  fit: BoxFit.fill,
+            Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 16),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      imgPath,
+                      height: 96,
+                      width: 96,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
-              ),
+                deletable
+                    ? Positioned(
+                        right: 0,
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          child: IconButton(
+                            splashRadius: 32,
+                            splashColor: Colors.white38,
+                            onPressed: deleteBlogFunction,
+                            icon: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 20,
+                              child: CircleAvatar(
+                                backgroundColor: normalTextColor,
+                                radius: 16,
+                                child: CircleAvatar(
+                                  radius: 14,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.clear_rounded,
+                                    color: normalTextColor,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            padding:
+                                EdgeInsets.only(top: 0, left: 0, bottom: 0),
+                          ),
+                        ),
+                      )
+                    // Positioned(
+                    //         right: 0,
+                    //         child: Container(
+                    //           // color: Colors.red[100],
+                    //           height: 44,
+                    //           width: 44,
+                    //           child: MaterialButton(
+                    //             splashColor: Colors.white38,
+                    //             onPressed: () {
+                    //               debugPrint('test');
+                    //             },
+                    //             textColor: Colors.white,
+                    //             child: CircleAvatar(
+                    //               backgroundColor: Colors.white,
+                    //               radius: 20,
+                    //               child: CircleAvatar(
+                    //                 backgroundColor: normalTextColor,
+                    //                 radius: 16,
+                    //                 child: CircleAvatar(
+                    //                   radius: 14,
+                    //                   backgroundColor: Colors.white,
+                    //                   child: Icon(
+                    //                     Icons.clear_rounded,
+                    //                     color: normalTextColor,
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //             padding:
+                    //                 EdgeInsets.only(top: 0, left: 0, bottom: 0),
+                    //             shape: CircleBorder(),
+                    //           ),
+                    //         ),
+                    //       )
+                    : SizedBox()
+              ],
             ),
           ],
         ),

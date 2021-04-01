@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/invite_screen.dart';
+import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/screens/text_editor_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
@@ -18,6 +20,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   signInCheck() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isSignedIn = await prefs.getBool("isSignedIn");
+    if (isSignedIn == null) {
+      isSignedIn = false;
+    }
     print('isSignedIn $isSignedIn');
   }
 
@@ -131,15 +136,15 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ],
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    'Profession',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: subtleTextColor,
-                      fontFamily: 'SourceSansPro',
-                    ),
-                  ),
+                  // Text(
+                  //   'Profession',
+                  //   style: TextStyle(
+                  //     fontSize: 16,
+                  //     fontWeight: FontWeight.w400,
+                  //     color: subtleTextColor,
+                  //     fontFamily: 'SourceSansPro',
+                  //   ),
+                  // ),
                   SizedBox(height: 12),
                   Container(
                     // margin: EdgeInsets.symmetric(horizontal: 30),
@@ -166,6 +171,14 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   IconDescriptionCard(
                     iconData: Icons.description_outlined,
                     descTitle: 'Manage Blogs',
+                    onPressedFunction: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ManageBlogsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   DividerLine(),
                   IconDescriptionCard(
@@ -176,6 +189,14 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   IconDescriptionCard(
                     iconData: Icons.person_add_alt_1_outlined,
                     descTitle: 'Invite Friends',
+                    onPressedFunction: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => InviteScreen(),
+                        ),
+                      );
+                    },
                   ),
                   DividerLine(),
                   IconDescriptionCard(

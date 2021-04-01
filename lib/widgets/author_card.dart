@@ -91,6 +91,9 @@ class AuthorCard extends StatelessWidget {
                   )
                 : SecondaryButton(
                     buttonTitle: 'Follow',
+                    onPressedFunction: () {
+                      debugPrint('Follow Pressed');
+                    },
                   ),
           ],
         ),

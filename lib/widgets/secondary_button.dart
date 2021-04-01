@@ -3,15 +3,17 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String buttonTitle;
+  final Function onPressedFunction;
 
   const SecondaryButton({
     @required this.buttonTitle,
+    this.onPressedFunction,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressedFunction,
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(

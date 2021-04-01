@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
-import 'package:spirit_within_flutter/screens/authors_screen.dart';
+import 'package:spirit_within_flutter/screens/author_list_screen.dart';
 import 'package:spirit_within_flutter/screens/chat/conversation_list_screen.dart';
 import 'package:spirit_within_flutter/screens/fav_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
@@ -46,20 +46,22 @@ class _BottomBarState extends State<BottomBar> {
           color: normalTextColor,
         ),
         actions: [
-          this._pageIndex == 3
-              ? IconButton(
-                  icon: const Icon(Icons.mark_email_unread_outlined),
-                  tooltip: 'Conversations',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatListScreen(),
-                      ),
-                    );
-                  },
-                )
-              : SizedBox(),
+          isSignedIn
+              ? this._pageIndex == 3
+                  ? IconButton(
+                      icon: const Icon(Icons.mark_email_unread_outlined),
+                      tooltip: 'Conversations',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatListScreen(),
+                          ),
+                        );
+                      },
+                    )
+                  : SizedBox()
+              : SizedBox()
         ],
         title: Text(
           'Spirit Within',
