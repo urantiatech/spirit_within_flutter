@@ -17,8 +17,8 @@ class _InviteScreenState extends State<InviteScreen> {
   }
 
   Iterable<Contact> _contacts;
-  List<bool> isInvited = [true, false, true];
-  List<bool> isUsing = [true, false, false];
+  bool isInvited = true;
+  bool isUsing = true;
   getContacts() async {
     Iterable<Contact> contacts = await ContactsService.getContacts();
     setState(() {
@@ -62,12 +62,14 @@ class _InviteScreenState extends State<InviteScreen> {
                   child: ListView.builder(
                     itemCount: _contacts.length,
                     itemBuilder: (BuildContext context, int index) {
+                      isInvited = !isInvited;
+                      isUsing = !isUsing;
                       return ContactCard(
                         imgPath: 'assets/images/author.png',
                         contactName: _contacts.elementAt(index).displayName,
                         number: _contacts.elementAt(index).phones.first.value,
-                        isInvited: isInvited[index],
-                        isUsing: isUsing[index],
+                        isInvited: isInvited,
+                        isUsing: isUsing,
                       );
                     },
                   ),

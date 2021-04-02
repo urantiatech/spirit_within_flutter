@@ -130,7 +130,8 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BottomBar(),
+                                builder: (context) =>
+                                    BottomBar(navigationIndex: 3),
                               ),
                               (route) => false);
                         },

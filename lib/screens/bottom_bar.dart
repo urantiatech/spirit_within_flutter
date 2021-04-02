@@ -27,6 +27,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   void initState() {
     super.initState();
+    _pageIndex = widget.navigationIndex ?? 0;
     _pageController = PageController(initialPage: _pageIndex);
   }
 
@@ -38,6 +39,10 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    // setState(() {
+    //   _pageIndex = widget.navigationIndex ?? 0;
+    // });
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

@@ -225,16 +225,36 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 10),
-          Text(
-            'Are you sure you want to unfollow?',
+          RichText(
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-              color: normalTextColor,
-              fontFamily: 'SourceSerifPro',
+            text: TextSpan(
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                color: normalTextColor,
+                fontFamily: 'SourceSerifPro',
+              ),
+              children: [
+                TextSpan(text: 'Are you sure you want to unfollow '),
+                TextSpan(
+                  text: 'Kavin Ardana?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
           ),
+          // Text(
+          //   'Are you sure you want to unfollow?',
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(
+          //     fontSize: 20,
+          //     fontWeight: FontWeight.w400,
+          //     color: normalTextColor,
+          //     fontFamily: 'SourceSerifPro',
+          //   ),
+          // ),
           SizedBox(
             height: 20,
           ),
