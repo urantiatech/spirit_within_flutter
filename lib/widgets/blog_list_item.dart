@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/blog_screen.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class BlogListItem extends StatelessWidget {
   final String title;
@@ -149,38 +148,6 @@ class BlogListItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                // deletable
-                //     ? Positioned(
-                //         right: 0,
-                //         child: Container(
-                //           height: 40,
-                //           width: 40,
-                //           child: IconButton(
-                //             splashRadius: 32,
-                //             splashColor: Colors.white38,
-                //             onPressed: deleteBlogFunction,
-                //             icon: CircleAvatar(
-                //               backgroundColor: Colors.white,
-                //               radius: 20,
-                //               child: CircleAvatar(
-                //                 backgroundColor: normalTextColor,
-                //                 radius: 16,
-                //                 child: CircleAvatar(
-                //                   radius: 14,
-                //                   backgroundColor: Colors.white,
-                //                   child: Icon(
-                //                     Icons.clear_rounded,
-                //                     color: normalTextColor,
-                //                   ),
-                //                 ),
-                //               ),
-                //             ),
-                //             padding:
-                //                 EdgeInsets.only(top: 0, left: 0, bottom: 0),
-                //           ),
-                //         ),
-                //       )
-                // : SizedBox()
               ],
             ),
           ],

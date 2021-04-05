@@ -36,7 +36,6 @@ class _InviteScreenState extends State<InviteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // debugPrint('in build: ${contacts.length}');
     return Scaffold(
       appBar: buildCenteredAppBar(),
       body: Column(

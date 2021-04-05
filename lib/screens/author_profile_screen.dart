@@ -39,31 +39,6 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                       fontFamily: 'SourceSerifPro',
                     ),
                   ),
-                  // Column(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     // SizedBox(height: 14),
-                  //     // Text(
-                  //     //   'Kavin Ardana',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 28,
-                  //     //     fontWeight: FontWeight.w400,
-                  //     //     color: normalTextColor,
-                  //     //     fontFamily: 'SourceSerifPro',
-                  //     //   ),
-                  //     // ),
-                  //     // SizedBox(height: 8),
-                  //     // Text(
-                  //     //   'Profession',
-                  //     //   style: TextStyle(
-                  //     //     fontSize: 16,
-                  //     //     fontWeight: FontWeight.w400,
-                  //     //     color: subtleTextColor,
-                  //     //     fontFamily: 'SourceSansPro',
-                  //     //   ),
-                  //     // ),
-                  //   ],
-                  // ),
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -242,16 +217,6 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
               ],
             ),
           ),
-          // Text(
-          //   'Are you sure you want to unfollow?',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(
-          //     fontSize: 20,
-          //     fontWeight: FontWeight.w400,
-          //     color: normalTextColor,
-          //     fontFamily: 'SourceSerifPro',
-          //   ),
-          // ),
           SizedBox(
             height: 20,
           ),

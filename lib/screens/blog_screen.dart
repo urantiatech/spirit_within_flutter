@@ -29,34 +29,6 @@ class _BlogScreenState extends State<BlogScreen> {
           ),
         ],
       ),
-      // appBar: AppBar(
-      //   iconTheme: IconThemeData(
-      //     color: normalTextColor,
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.star_border_rounded),
-      //       tooltip: 'Add to Favourites',
-      //       onPressed: () {
-      //         ScaffoldMessenger.of(context).showSnackBar(
-      //           const SnackBar(
-      //             content: Text('Added to Favourites'),
-      //           ),
-      //         );
-      //       },
-      //     ),
-      //   ],
-      //   centerTitle: true,
-      //   backgroundColor: Colors.white,
-      //   title: Text(
-      //     'Spirit Within',
-      //     style: TextStyle(
-      //         color: normalTextColor,
-      //         fontWeight: FontWeight.w600,
-      //         fontSize: 20,
-      //         fontFamily: 'SourceSerifPro'),
-      //   ),
-      // ),
       body: Stack(
         children: [
           Container(

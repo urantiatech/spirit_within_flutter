@@ -3,9 +3,6 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
 
 class GuestProfile extends StatelessWidget {
-  // final Function onPressedFunction;
-  // GuestProfile({this.onPressedFunction});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

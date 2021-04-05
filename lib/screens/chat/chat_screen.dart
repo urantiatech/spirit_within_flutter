@@ -18,22 +18,6 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCenteredAppBar(title: widget.authorName),
-      // appBar: AppBar(
-      //   iconTheme: IconThemeData(
-      //     color: normalTextColor,
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.white,
-      //   title: Text(
-      //     widget.authorName,
-      //     style: TextStyle(
-      //       color: normalTextColor,
-      //       fontWeight: FontWeight.w600,
-      //       fontSize: 20,
-      //       fontFamily: 'SourceSerifPro',
-      //     ),
-      //   ),
-      // ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -54,9 +38,6 @@ class _ChatScreenState extends State<ChatScreen> {
                           isMe: messageList.reversed.toList()[index].isMe,
                           time: messageList.reversed.toList()[index].time,
                         ),
-                        // child: new Text(
-                        //   messageList.reversed.toList()[index],
-                        // ),
                       );
                     },
                   ),
@@ -64,7 +45,6 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ),
-          // Text(message ?? 'nothing'),
           Row(
             children: [
               Expanded(

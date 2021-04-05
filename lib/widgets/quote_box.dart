@@ -89,26 +89,6 @@ class _QuoteBoxState extends State<QuoteBox> {
                         shape: CircleBorder(),
                       ),
                     ),
-                    // Container(
-                    //   color: Colors.red,
-                    //   // padding: EdgeInsets.all(8),
-                    //   margin: EdgeInsets.only(
-                    //     right: 30,
-                    //     top: 20,
-                    //   ),
-                    //   child: CircleAvatar(
-                    //     backgroundColor: Colors.white,
-                    //     radius: 16,
-                    //     child: CircleAvatar(
-                    //       radius: 14,
-                    //       backgroundColor: Color(0xFF225FBA),
-                    //       child: Icon(
-                    //         Icons.clear_rounded,
-                    //         color: Colors.white,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
                 Container(
@@ -157,22 +137,6 @@ class _QuoteBoxState extends State<QuoteBox> {
                         ),
                         onPressed: () {},
                       ),
-                      // child: FlatButton(
-                      //   shape: RoundedRectangleBorder(
-                      //     borderRadius: BorderRadius.circular(8),
-                      //   ),
-                      //   color: Color(0xFFF1B94B),
-                      //   child: Text(
-                      //     'Share Quote',
-                      //     style: TextStyle(
-                      //       fontSize: 14,
-                      //       fontWeight: FontWeight.w600,
-                      //       color: normalTextColor,
-                      //       fontFamily: 'SourceSansPro',
-                      //     ),
-                      //   ),
-                      //   onPressed: () {},
-                      // ),
                     ),
                     Container(
                       margin: EdgeInsets.only(

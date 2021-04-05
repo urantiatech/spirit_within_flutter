@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
-import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/chat/chat_screen.dart';
-import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class ChatListItem extends StatelessWidget {
   final String imgPath;

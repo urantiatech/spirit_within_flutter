@@ -143,13 +143,6 @@ class _BottomBarState extends State<BottomBar> {
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),
-      // floatingActionButton: this._pageIndex == 3
-      //     ? FloatingActionButton.extended(
-      //         onPressed: () {},
-      //         label: Text('New Blog'),
-      //         icon: Icon(Icons.edit_outlined),
-      //       )
-      //     : SizedBox(),
     );
   }
 
