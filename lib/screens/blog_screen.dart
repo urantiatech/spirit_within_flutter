@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
@@ -13,13 +14,10 @@ class _BlogScreenState extends State<BlogScreen> {
   Widget build(BuildContext context) {
     var fullHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
+      appBar: buildCenteredAppBar(
         actions: [
           IconButton(
-            icon: const Icon(Icons.bookmark_border_rounded),
+            icon: const Icon(Icons.star_border_rounded),
             tooltip: 'Add to Favourites',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -30,17 +28,35 @@ class _BlogScreenState extends State<BlogScreen> {
             },
           ),
         ],
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-              color: normalTextColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-              fontFamily: 'SourceSerifPro'),
-        ),
       ),
+      // appBar: AppBar(
+      //   iconTheme: IconThemeData(
+      //     color: normalTextColor,
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.star_border_rounded),
+      //       tooltip: 'Add to Favourites',
+      //       onPressed: () {
+      //         ScaffoldMessenger.of(context).showSnackBar(
+      //           const SnackBar(
+      //             content: Text('Added to Favourites'),
+      //           ),
+      //         );
+      //       },
+      //     ),
+      //   ],
+      //   centerTitle: true,
+      //   backgroundColor: Colors.white,
+      //   title: Text(
+      //     'Spirit Within',
+      //     style: TextStyle(
+      //         color: normalTextColor,
+      //         fontWeight: FontWeight.w600,
+      //         fontSize: 20,
+      //         fontFamily: 'SourceSerifPro'),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Container(
@@ -58,10 +74,10 @@ class _BlogScreenState extends State<BlogScreen> {
               return Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
+                  // borderRadius: BorderRadius.only(
+                  //   topLeft: Radius.circular(40),
+                  //   topRight: Radius.circular(40),
+                  // ),
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,

@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SearchBar(hintText: "Search blogs"),
+          SearchBar(hintText: "Search Blogs"),
           SizedBox(height: 14),
           QuoteBox(
             quoteText: 'Design is not just what it looks like and feels like.'

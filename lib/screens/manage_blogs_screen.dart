@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
 import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
@@ -16,25 +17,10 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar: buildCenteredAppBar(),
       body: Column(
         children: [
-          SearchBar(hintText: 'Search your blogs'),
+          SearchBar(hintText: 'Search Your Blogs'),
           SizedBox(height: 14),
           Expanded(
             child: ListView.builder(
@@ -47,6 +33,9 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                     IconSlideAction(
                       caption: 'Delete',
                       color: Colors.red,
+                      // iconWidget: Column(
+                      //   children: [Icon(Icons.delete), Text('data')],
+                      // ),
                       icon: Icons.delete,
                       onTap: () {
                         showDeleteDialog(context, index);

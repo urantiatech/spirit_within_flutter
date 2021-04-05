@@ -4,8 +4,11 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
+
+import '../../main.dart';
 
 class SignInOTPScreen extends StatefulWidget {
   @override
@@ -26,22 +29,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar: buildCenteredAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Center(
@@ -131,7 +119,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    BottomBar(navigationIndex: 3),
+                                    BottomBar(navigationIndex: 2),
                               ),
                               (route) => false);
                         },

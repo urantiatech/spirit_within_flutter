@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
 import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
@@ -17,21 +18,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-              color: normalTextColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-              fontFamily: 'SourceSerifPro'),
-        ),
-      ),
+      appBar: buildCenteredAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,32 +28,42 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
               padding: EdgeInsets.only(top: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 14),
-                      Text(
-                        'Kavin Ardana',
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w400,
-                          color: normalTextColor,
-                          fontFamily: 'SourceSerifPro',
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Profession',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: subtleTextColor,
-                          fontFamily: 'SourceSansPro',
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'Kavin Ardana',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400,
+                      color: normalTextColor,
+                      fontFamily: 'SourceSerifPro',
+                    ),
                   ),
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     // SizedBox(height: 14),
+                  //     // Text(
+                  //     //   'Kavin Ardana',
+                  //     //   style: TextStyle(
+                  //     //     fontSize: 28,
+                  //     //     fontWeight: FontWeight.w400,
+                  //     //     color: normalTextColor,
+                  //     //     fontFamily: 'SourceSerifPro',
+                  //     //   ),
+                  //     // ),
+                  //     // SizedBox(height: 8),
+                  //     // Text(
+                  //     //   'Profession',
+                  //     //   style: TextStyle(
+                  //     //     fontSize: 16,
+                  //     //     fontWeight: FontWeight.w400,
+                  //     //     color: subtleTextColor,
+                  //     //     fontFamily: 'SourceSansPro',
+                  //     //   ),
+                  //     // ),
+                  //   ],
+                  // ),
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,

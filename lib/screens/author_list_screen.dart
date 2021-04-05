@@ -9,7 +9,7 @@ class AuthorsScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SearchBar(hintText: 'Search authors'),
+          SearchBar(hintText: 'Search Authors'),
           Padding(
             padding: EdgeInsets.only(left: 30, top: 24),
             child: Row(

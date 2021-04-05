@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/models/chatMessage.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/chat_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -17,22 +17,23 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          widget.authorName,
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar: buildCenteredAppBar(title: widget.authorName),
+      // appBar: AppBar(
+      //   iconTheme: IconThemeData(
+      //     color: normalTextColor,
+      //   ),
+      //   centerTitle: true,
+      //   backgroundColor: Colors.white,
+      //   title: Text(
+      //     widget.authorName,
+      //     style: TextStyle(
+      //       color: normalTextColor,
+      //       fontWeight: FontWeight.w600,
+      //       fontSize: 20,
+      //       fontFamily: 'SourceSerifPro',
+      //     ),
+      //   ),
+      // ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

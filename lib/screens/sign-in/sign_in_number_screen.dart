@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_otp_screen.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 
 class SignInNumberScreen extends StatefulWidget {
@@ -14,22 +15,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar: buildCenteredAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Center(

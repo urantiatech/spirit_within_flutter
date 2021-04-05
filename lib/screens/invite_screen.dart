@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/contact_card.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 import 'package:contacts_service/contacts_service.dart';
@@ -37,22 +38,7 @@ class _InviteScreenState extends State<InviteScreen> {
   Widget build(BuildContext context) {
     // debugPrint('in build: ${contacts.length}');
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar: buildCenteredAppBar(),
       body: Column(
         children: [
           SearchBar(hintText: 'Search Contacts'),

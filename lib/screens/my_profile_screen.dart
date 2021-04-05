@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
-import 'package:spirit_within_flutter/screens/text_editor_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 import 'package:launch_review/launch_review.dart';
 
+import '../main.dart';
 import 'guest_profile.dart';
-
-bool isSignedIn;
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -18,18 +17,10 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
-  signInCheck() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    isSignedIn = await prefs.getBool("isSignedIn");
-    if (isSignedIn == null) {
-      isSignedIn = false;
-    }
-    print('isSignedIn $isSignedIn');
-  }
-
   signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("isSignedIn", false);
+    isSignedIn = false;
   }
 
   @override
@@ -137,18 +128,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ],
                   ),
                   SizedBox(height: 8),
-                  // Text(
-                  //   'Profession',
-                  //   style: TextStyle(
-                  //     fontSize: 16,
-                  //     fontWeight: FontWeight.w400,
-                  //     color: subtleTextColor,
-                  //     fontFamily: 'SourceSansPro',
-                  //   ),
-                  // ),
                   SizedBox(height: 12),
                   Container(
-                    // margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -207,34 +188,17 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     iconData: Icons.exit_to_app_rounded,
                     descTitle: 'Sign Out',
                     onPressedFunction: () {
-                      setState(() {
-                        signOut();
-                        isSignedIn = false;
-                      });
+                      signOut();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomBar(navigationIndex: 2),
+                        ),
+                      );
                     },
                   ),
                 ],
               ),
-            ),
-            floatingActionButton: FloatingActionButton.extended(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TextEditorScreen(),
-                  ),
-                );
-              },
-              label: Text(
-                'New Blog',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                  fontFamily: 'SourceSansPro',
-                ),
-              ),
-              icon: Icon(Icons.edit_outlined),
             ),
           );
   }
@@ -257,7 +221,7 @@ class IconDescriptionCard extends StatelessWidget {
       onPressed: onPressedFunction,
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
-          EdgeInsets.symmetric(horizontal: 0),
+          EdgeInsets.symmetric(horizontal: 0, vertical: 8),
         ),
       ),
       child: Container(

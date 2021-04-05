@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:quill_delta/quill_delta.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:zefyr/zefyr.dart';
 
-class TextEditorScreen extends StatefulWidget {
+class AddBlogScreen extends StatefulWidget {
   @override
-  _TextEditorScreenState createState() => _TextEditorScreenState();
+  _AddBlogScreenState createState() => _AddBlogScreenState();
 }
 
-class _TextEditorScreenState extends State<TextEditorScreen> {
+class _AddBlogScreenState extends State<AddBlogScreen> {
   ZefyrController _controller;
   FocusNode _focusNode;
 
@@ -46,31 +47,29 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
       physics: ClampingScrollPhysics(),
     );
     final form = Padding(
-        padding: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Title',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+      padding: EdgeInsets.all(10),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Title',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              editor
-            ],
-          ),
-        ));
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            editor
+          ],
+        ),
+      ),
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
+      appBar: buildCenteredAppBar(
         actions: [
           IconButton(
             icon: const Icon(Icons.send_rounded),
@@ -80,17 +79,31 @@ class _TextEditorScreenState extends State<TextEditorScreen> {
             },
           ),
         ],
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          'Spirit Within',
-          style: TextStyle(
-              color: normalTextColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-              fontFamily: 'SourceSerifPro'),
-        ),
       ),
+      // appBar: AppBar(
+      //   iconTheme: IconThemeData(
+      //     color: normalTextColor,
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.send_rounded),
+      //       tooltip: 'Upload',
+      //       onPressed: () {
+      //         debugPrint(_controller.document.toString());
+      //       },
+      //     ),
+      //   ],
+      //   centerTitle: true,
+      //   backgroundColor: Colors.white,
+      //   title: Text(
+      //     'Spirit Within',
+      //     style: TextStyle(
+      //         color: normalTextColor,
+      //         fontWeight: FontWeight.w600,
+      //         fontSize: 20,
+      //         fontFamily: 'SourceSerifPro'),
+      //   ),
+      // ),
       body: ZefyrScaffold(
         child: form,
         // child: ZefyrEditor(

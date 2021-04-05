@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/author_list_screen.dart';
-import 'package:spirit_within_flutter/screens/chat/conversation_list_screen.dart';
-import 'package:spirit_within_flutter/screens/fav_screen.dart';
+import 'package:spirit_within_flutter/screens/chat/chat_list_screen.dart';
+import 'package:spirit_within_flutter/screens/favourites_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
+import 'package:spirit_within_flutter/screens/add_blog_screen.dart';
+
+import '../main.dart';
 
 class BottomBar extends StatefulWidget {
   final int navigationIndex;
@@ -20,7 +23,7 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> tabPages = [
     HomeScreen(),
     AuthorsScreen(),
-    FavScreen(),
+    // FavScreen(),
     MyProfileScreen(),
   ];
 
@@ -39,37 +42,55 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    // setState(() {
-    //   _pageIndex = widget.navigationIndex ?? 0;
-    // });
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        centerTitle: true,
+        centerTitle: isSignedIn ? false : true,
         iconTheme: IconThemeData(
           color: normalTextColor,
         ),
-        actions: [
-          isSignedIn
-              ? this._pageIndex == 3
-                  ? IconButton(
-                      icon: const Icon(Icons.mark_email_unread_outlined),
-                      tooltip: 'Conversations',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ChatListScreen(),
-                          ),
-                        );
-                      },
-                    )
-                  : SizedBox()
-              : SizedBox()
-        ],
+        actions: isSignedIn
+            ? [
+                IconButton(
+                  icon: const Icon(Icons.mark_email_unread_outlined),
+                  tooltip: 'Conversations',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatListScreen(),
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.star_border_rounded),
+                  tooltip: 'Favourites',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FavouritesScreen(),
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  tooltip: 'Add Blog',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddBlogScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ]
+            : [],
         title: Text(
-          'Spirit Within',
+          'The Spirit Within',
           style: TextStyle(
             color: normalTextColor,
             fontWeight: FontWeight.w600,
@@ -94,13 +115,13 @@ class _BottomBarState extends State<BottomBar> {
             ),
             label: 'Authors',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark_rounded,
-              size: 24,
-            ),
-            label: 'Favourites',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.bookmark_rounded,
+          //     size: 24,
+          //   ),
+          //   label: 'Favourites',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
