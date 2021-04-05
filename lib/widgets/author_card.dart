@@ -9,10 +9,10 @@ class AuthorCard extends StatelessWidget {
   final int followersCount;
   final bool following;
   const AuthorCard({
-    this.imgPath,
+    @required this.imgPath,
     @required this.authorName,
     @required this.followersCount,
-    this.following,
+    @required this.following,
   });
 
   @override
