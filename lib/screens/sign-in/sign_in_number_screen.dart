@@ -35,9 +35,10 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 ),
                 SizedBox(height: 30),
                 IntlPhoneField(
-                  // inputFormatters: [
-                  //   LengthLimitingTextInputFormatter(10),
-                  // ],
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(10),
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w400,
@@ -57,6 +58,8 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                     ),
                     counterText: '',
                   ),
+                  enabled: true,
+                  keyboardType: TextInputType.number,
                   maxLength: 10,
                   countryCodeTextColor: normalTextColor,
                   initialCountryCode: 'IN',

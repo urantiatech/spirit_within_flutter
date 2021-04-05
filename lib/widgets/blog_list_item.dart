@@ -23,7 +23,6 @@ class BlogListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var fullWidth = MediaQuery.of(context).size.width;
     return TextButton(
       onPressed: () {
         Navigator.push(
