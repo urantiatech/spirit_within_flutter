@@ -5,7 +5,6 @@ import 'package:spirit_within_flutter/widgets/contact_card.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class InviteScreen extends StatefulWidget {
   @override
@@ -13,24 +12,27 @@ class InviteScreen extends StatefulWidget {
 }
 
 class _InviteScreenState extends State<InviteScreen> {
-  requestContactsPermission() async {
-    await Permission.contacts.request();
-  }
+  // requestContactsPermission() async {
+  //   await Permission.contacts.request();
+  // }
 
   Iterable<Contact> _contacts;
   bool isInvited = true;
   bool isUsing = true;
+
   getContacts() async {
-    Iterable<Contact> contacts = await ContactsService.getContacts();
-    setState(() {
-      _contacts = contacts;
-    });
+    if (await Permission.contacts.request().isGranted) {
+      Iterable<Contact> contacts = await ContactsService.getContacts();
+      setState(() {
+        _contacts = contacts;
+      });
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    requestContactsPermission();
+    // requestContactsPermission();
     getContacts();
   }
 
