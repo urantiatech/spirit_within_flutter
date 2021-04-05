@@ -87,6 +87,10 @@ class _BottomBarState extends State<BottomBar> {
                     );
                   },
                 ),
+                // IconButton(
+                //   icon: Image.asset('assets/images/mona.jpg'),
+                //   onPressed: () {},
+                // ),
               ]
             : [],
         title: Text(
@@ -100,7 +104,7 @@ class _BottomBarState extends State<BottomBar> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_rounded,
@@ -123,12 +127,31 @@ class _BottomBarState extends State<BottomBar> {
           //   label: 'Favourites',
           // ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 24,
-            ),
             label: 'Profile',
+            icon: isSignedIn
+                ? Container(
+                    height: 24,
+                    width: 24,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/images/mona.jpg'),
+                      ),
+                    ),
+                  )
+                : Icon(
+                    Icons.person,
+                    size: 24,
+                  ),
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.person,
+          //     size: 24,
+          //   ),
+          //   label: 'Profile',
+          // ),
         ],
         currentIndex: _pageIndex,
         type: BottomNavigationBarType.fixed,

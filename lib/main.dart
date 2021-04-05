@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/config/theme.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spirit_within_flutter/screens/demo_bottom_bar.dart';
 import 'screens/onboarding/onboarding.dart';
 
 bool onboardingScreenShown;
