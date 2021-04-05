@@ -10,6 +10,15 @@ class BlogScreen extends StatefulWidget {
 }
 
 class _BlogScreenState extends State<BlogScreen> {
+  bool isFavourite = false;
+  Icon starIconOutlined = Icon(
+    Icons.star_border_rounded,
+    color: Color(0xFFF1B94B),
+  );
+  Icon starIconFilled = Icon(
+    Icons.star_rounded,
+    color: Color(0xFFF1B94B),
+  );
   @override
   Widget build(BuildContext context) {
     var fullHeight = MediaQuery.of(context).size.height;
@@ -17,9 +26,12 @@ class _BlogScreenState extends State<BlogScreen> {
       appBar: buildCenteredAppBar(
         actions: [
           IconButton(
-            icon: const Icon(Icons.star_border_rounded),
+            icon: isFavourite ? starIconFilled : starIconOutlined,
             tooltip: 'Add to Favourites',
             onPressed: () {
+              setState(() {
+                isFavourite = !isFavourite;
+              });
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Added to Favourites'),
