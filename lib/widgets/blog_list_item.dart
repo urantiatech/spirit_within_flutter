@@ -8,8 +8,8 @@ class BlogListItem extends StatelessWidget {
   final String time;
   final String author;
   final String imgPath;
-  final bool deletable;
-  final Function deleteBlogFunction;
+  final bool disabled;
+  // final Function deleteBlogFunction;
 
   const BlogListItem({
     this.title,
@@ -17,8 +17,8 @@ class BlogListItem extends StatelessWidget {
     this.time,
     this.author,
     this.imgPath,
-    this.deletable = false,
-    this.deleteBlogFunction,
+    this.disabled = false,
+    // this.deleteBlogFunction,
   });
 
   @override
@@ -38,7 +38,9 @@ class BlogListItem extends StatelessWidget {
         ),
       ),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
+        color: disabled ? Colors.red[50] : Colors.transparent,
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
+        // margin: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -54,7 +56,7 @@ class BlogListItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: normalTextColor,
+                        color: disabled ? subtleTextColor : normalTextColor,
                         fontFamily: 'SourceSerifPro',
                       ),
                     ),

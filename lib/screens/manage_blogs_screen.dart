@@ -31,6 +31,23 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                   actionExtentRatio: 0.25,
                   secondaryActions: [
                     IconSlideAction(
+                      caption:
+                          blogList[index].isPublished ? 'Unpublish' : 'Publish',
+                      color: activeBlue,
+                      // iconWidget: Column(
+                      //   children: [Icon(Icons.delete), Text('data')],
+                      // ),
+                      icon: blogList[index].isPublished
+                          ? Icons.public_off_rounded
+                          : Icons.public_rounded,
+                      onTap: () {
+                        setState(() {
+                          blogList[index].isPublished =
+                              !blogList[index].isPublished;
+                        });
+                      },
+                    ),
+                    IconSlideAction(
                       caption: 'Delete',
                       color: Colors.red,
                       // iconWidget: Column(
@@ -48,10 +65,10 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                     time: blogList[index].dateTime,
                     author: blogList[index].author,
                     imgPath: 'assets/images/mona.jpg',
-                    deletable: true,
-                    deleteBlogFunction: () {
-                      showDeleteDialog(context, index);
-                    },
+                    disabled: !blogList[index].isPublished,
+                    // deleteBlogFunction: () {
+                    //   showDeleteDialog(context, index);
+                    // },
                   ),
                 );
               },

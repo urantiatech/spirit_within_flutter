@@ -5,6 +5,7 @@ class Blog {
   String dateTime;
   String author;
   bool isFav;
+  bool isPublished;
 
   Blog(
       {this.title,
@@ -12,7 +13,8 @@ class Blog {
       this.body,
       this.dateTime,
       this.author,
-      this.isFav});
+      this.isFav,
+      this.isPublished});
 }
 
 Blog demoBlog1 = Blog(
@@ -23,6 +25,7 @@ Blog demoBlog1 = Blog(
   dateTime: '2 hours ago',
   author: 'Teacher Ophelius',
   isFav: false,
+  isPublished: true,
 );
 Blog demoBlog2 = Blog(
   title: 'Lorem ipsum dolor sit amet',
@@ -32,6 +35,7 @@ Blog demoBlog2 = Blog(
   dateTime: '3 hours ago',
   author: 'Peter Parker',
   isFav: false,
+  isPublished: false,
 );
 
 List<Blog> blogList = [demoBlog1, demoBlog2];
