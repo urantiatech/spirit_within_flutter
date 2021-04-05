@@ -79,76 +79,69 @@ class BlogListItem extends StatelessWidget {
                   SizedBox(
                     height: 8,
                   ),
-                  Container(
-                    // width: fullWidth * 0.58,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.access_time,
-                              size: 12,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.access_time,
+                            size: 12,
+                            color: moreSubtleTextColor,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            time,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
                               color: moreSubtleTextColor,
+                              fontFamily: 'SourceSansPro',
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              time,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: moreSubtleTextColor,
-                                fontFamily: 'SourceSansPro',
-                              ),
-                            ),
-                          ],
-                        ),
-                        author == null
-                            ? SizedBox()
-                            : Row(
-                                children: [
-                                  Icon(
-                                    Icons.person_outline_rounded,
-                                    size: 12,
+                          ),
+                        ],
+                      ),
+                      author == null
+                          ? SizedBox()
+                          : Row(
+                              children: [
+                                Icon(
+                                  Icons.person_outline_rounded,
+                                  size: 12,
+                                  color: moreSubtleTextColor,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  author,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
                                     color: moreSubtleTextColor,
+                                    fontFamily: 'SourceSansPro',
                                   ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    author,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: moreSubtleTextColor,
-                                      fontFamily: 'SourceSansPro',
-                                    ),
-                                  ),
-                                ],
-                              ),
-                      ],
-                    ),
+                                ),
+                              ],
+                            ),
+                    ],
                   )
                 ],
               ),
             ),
-            Stack(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 16),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.asset(
-                      imgPath,
-                      height: 96,
-                      width: 96,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+            Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.asset(
+                  imgPath,
+                  height: 96,
+                  width: 96,
+                  fit: BoxFit.fill,
                 ),
-              ],
+              ),
             ),
           ],
         ),
