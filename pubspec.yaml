@@ -11,10 +11,9 @@ environment:
 dependencies:
   zefyr:
     git:
-      url: https://github.com/memspace/zefyr.git
+      url: https://github.com/SahilLimbe/zefyr.git
       path: packages/zefyr
 #  zefyr:
-#  store_redirect: ^1.0.2
   launch_review: ^3.0.1
   permission_handler: ^6.1.1
   contacts_service: ^0.4.6
