@@ -195,6 +195,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           builder: (context) => BottomBar(navigationIndex: 2),
                         ),
                       );
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Signed out successfully!')));
                     },
                   ),
                 ],

@@ -4,7 +4,6 @@ import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:zefyr/zefyr.dart';
 
 import '../constants/app_constants.dart';
-import '../constants/app_constants.dart';
 import '../widgets/divider_line.dart';
 
 class AddBlogScreen extends StatefulWidget {
@@ -58,6 +57,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: TextField(
+                  textCapitalization: TextCapitalization.sentences,
                   autofocus: true,
                   style: TextStyle(
                     fontSize: 24,
