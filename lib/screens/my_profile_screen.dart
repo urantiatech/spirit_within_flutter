@@ -230,10 +230,9 @@ class IconDescriptionCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 30),
         child: Row(
           children: [
-            IconButton(
-              splashColor: Color(0x113177E0),
-              onPressed: () {},
-              icon: Icon(
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(
                 iconData,
                 color: normalTextColor,
                 size: 24,
