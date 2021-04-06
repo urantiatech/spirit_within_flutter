@@ -264,7 +264,7 @@ class _BlogScreenState extends State<BlogScreen> {
                   ),
                   DividerLine(),
                   SizedBox(
-                    height: 24,
+                    height: 20,
                   ),
                   Container(
                     margin: EdgeInsets.only(
@@ -274,7 +274,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       authorName: 'Robert Downey Jr.',
                       imgPath: 'assets/images/author.png',
                       followersCount: 33,
-                      following: true,
+                      following: false,
                     ),
                     // child: Row(
                     //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
