@@ -31,15 +31,35 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                   actionExtentRatio: 0.25,
                   secondaryActions: [
                     IconSlideAction(
-                      caption:
-                          blogList[index].isPublished ? 'Unpublish' : 'Publish',
+                      // caption:
+                      //     blogList[index].isPublished ? 'Unpublish' : 'Publish',
                       color: activeBlue,
-                      // iconWidget: Column(
-                      //   children: [Icon(Icons.delete), Text('data')],
-                      // ),
-                      icon: blogList[index].isPublished
-                          ? Icons.public_off_rounded
-                          : Icons.public_rounded,
+                      iconWidget: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            blogList[index].isPublished
+                                ? Icons.public_off_rounded
+                                : Icons.public_rounded,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            blogList[index].isPublished
+                                ? 'Unpublish'
+                                : 'Publish',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontFamily: 'SourceSansPro',
+                            ),
+                          )
+                        ],
+                      ),
+                      // icon: blogList[index].isPublished
+                      //     ? Icons.public_off_rounded
+                      //     : Icons.public_rounded,
                       onTap: () {
                         setState(() {
                           blogList[index].isPublished =
@@ -48,12 +68,28 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                       },
                     ),
                     IconSlideAction(
-                      caption: 'Delete',
+                      // caption: 'Delete',
                       color: Colors.red,
-                      // iconWidget: Column(
-                      //   children: [Icon(Icons.delete), Text('data')],
-                      // ),
-                      icon: Icons.delete,
+                      iconWidget: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Delete',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontFamily: 'SourceSansPro',
+                            ),
+                          )
+                        ],
+                      ),
+                      // icon: Icons.delete,
                       onTap: () {
                         showDeleteDialog(context, index);
                       },
