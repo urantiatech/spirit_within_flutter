@@ -2,7 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
 
-class GuestProfile extends StatelessWidget {
+import '../main.dart';
+
+class GuestProfile extends StatefulWidget {
+  @override
+  _GuestProfileState createState() => _GuestProfileState();
+}
+
+class _GuestProfileState extends State<GuestProfile> {
+  @override
+  void initState() {
+    super.initState();
+    getCountryCode();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +26,8 @@ class GuestProfile extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 60),
               child: Text(
-                'You’re not signed in.\nPlease sign in to start writing blogs',
+                'You’re not signed in.\nPlease sign in to continue',
+                // 'You’re not signed in.\nPlease sign in to start writing blogs',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
@@ -29,7 +43,9 @@ class GuestProfile extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SignInNumberScreen(),
+                    builder: (context) => SignInNumberScreen(
+                      countryCode: currentCountryCode,
+                    ),
                   ),
                 );
               },

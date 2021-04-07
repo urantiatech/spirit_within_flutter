@@ -1,39 +1,26 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_otp_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
-// import 'package:intl_phone_field/intl_phone_field.dart';
-// import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_list_pick/country_list_pick.dart';
-// import 'package:http/http.dart' as http;
 
 class SignInNumberScreen extends StatefulWidget {
+  final String countryCode;
+  SignInNumberScreen({@required this.countryCode});
   @override
   _SignInNumberScreenState createState() => _SignInNumberScreenState();
 }
 
 class _SignInNumberScreenState extends State<SignInNumberScreen> {
   TextEditingController _numberController = new TextEditingController();
-  // CountryCode selectedCountry;
-
-  Future<Response> getLocationDetails() async {
-    Response res = await get(Uri.parse("http://ip-api.com/json"));
-    Map data = jsonDecode(res.body);
-    String country = data['countryCode'];
-    debugPrint(country);
-    return res;
-  }
+  String number;
 
   @override
   void initState() {
     super.initState();
     _numberController.text = '';
-    getLocationDetails();
   }
 
   @override
@@ -76,7 +63,6 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                   child: CountryListPick(
                       appBar: buildCenteredAppBar(title: 'Select Country'),
                       pickerBuilder: (context, CountryCode countryCode) {
-                        // _numberController.text = countryCode.dialCode;
                         return Row(
                           children: [
                             Image.asset(
@@ -129,7 +115,10 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                 controller: _numberController,
                                 cursorColor: Theme.of(context).accentColor,
                                 autofocus: true,
-                                onChanged: (String keyword) {},
+                                onChanged: (String keyword) {
+                                  number = countryCode.dialCode + keyword;
+                                  debugPrint(number);
+                                },
                               ),
                             ),
                             // Text(
@@ -147,25 +136,20 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                       },
 
                       // To disable option set to false
-                      theme: CountryTheme(
-                        isShowFlag: true,
-                        isShowTitle: true,
-                        isShowCode: true,
-                        isDownIcon: true,
-                        showEnglishName: true,
-                      ),
+                      // theme: CountryTheme(
+                      //   isShowFlag: true,
+                      //   isShowTitle: true,
+                      //   isShowCode: true,
+                      //   isDownIcon: true,
+                      //   showEnglishName: true,
+                      // ),
                       // Set default value
-                      initialSelection: '+91',
+                      // initialSelection: '+91',
                       // or
-                      // initialSelection: 'US'
+                      initialSelection: widget.countryCode ?? 'US',
                       onChanged: (CountryCode code) {
-                        // setState(() {
-                        //   selectedCountry = code;
-                        // });
                         print(code.name);
-                        // print(code.code);
                         print(code.dialCode);
-                        // print(code.flagUri);
                       },
                       // Whether to allow the widget to set a custom UI overlay
                       useUiOverlay: true,
@@ -237,6 +221,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                         fontSize: 22,
                         buttonTitle: 'Send OTP',
                         onPressedFunction: () {
+                          debugPrint("Number Entered: $number");
                           Navigator.push(
                             context,
                             MaterialPageRoute(
