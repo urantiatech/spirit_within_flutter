@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:spirit_within_flutter/config/theme.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'constants/api_paths.dart';
 import 'screens/onboarding/onboarding.dart';
 
@@ -16,6 +17,7 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   onboardingScreenShown = prefs.getBool("initScreen");
   signInCheck();
+  getFontSizeSelection();
   await prefs.setBool("initScreen", true);
   runApp(MyApp());
 }
@@ -44,4 +46,15 @@ Future<void> getCountryCode() async {
   Response res = await get(Uri.parse(locationAPI));
   Map data = jsonDecode(res.body);
   currentCountryCode = data['countryCode'];
+}
+
+enum FontSizeOption { Small, Normal, Large, Largest }
+Future<void> getFontSizeSelection() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  fontSizeSliderValue = prefs.getDouble("fontSizeOption");
+  if (fontSizeSliderValue == null) {
+    fontSizeSliderValue = 1;
+  }
+  changeFontSize(newValue: fontSizeSliderValue);
+  debugPrint("fontSizeOption: $fontSizeSliderValue");
 }

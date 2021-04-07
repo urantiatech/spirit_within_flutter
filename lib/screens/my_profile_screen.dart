@@ -177,13 +177,6 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       ).then((value) => {setState(() {})});
                     },
                   ),
-                  // IconDescriptionCard(
-                  //   iconData: Icons.star_border_rounded,
-                  //   descTitle: 'Rate us',
-                  //   onPressedFunction: () {
-                  //     LaunchReview.launch();
-                  //   },
-                  // ),
                   DividerLine(),
                   IconDescriptionCard(
                     iconData: Icons.person_add_alt_1_outlined,

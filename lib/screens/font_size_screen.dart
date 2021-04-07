@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/constants/sample_long_text.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
+
+import '../main.dart';
 
 class FontSizeScreen extends StatefulWidget {
   @override
   _FontSizeScreenState createState() => _FontSizeScreenState();
 }
 
-enum FontSizeOption { Small, Normal, Large, Largest }
+// enum FontSizeOption { Small, Normal, Large, Largest }
 
 const double defaultFontSize28 = 28;
 const double defaultFontSize26 = 26;
@@ -33,10 +36,61 @@ double fontSize12 = 12;
 double fontSizeSliderValue = 1;
 FontSizeOption selectedFontSizeOption = FontSizeOption.Normal;
 
+changeFontSize({newValue}) {
+  fontSize12 = defaultFontSize12;
+  fontSize14 = defaultFontSize14;
+  fontSize16 = defaultFontSize16;
+  fontSize18 = defaultFontSize18;
+  fontSize20 = defaultFontSize20;
+  fontSize22 = defaultFontSize22;
+  fontSize24 = defaultFontSize24;
+  fontSize26 = defaultFontSize26;
+  fontSize28 = defaultFontSize28;
+  if (newValue == 0) {
+    fontSize12 -= 2;
+    fontSize14 -= 2;
+    fontSize16 -= 2;
+    fontSize18 -= 2;
+    fontSize20 -= 2;
+    fontSize22 -= 2;
+    fontSize24 -= 2;
+    fontSize26 -= 2;
+    fontSize28 -= 2;
+  }
+  if (newValue == 2) {
+    fontSize12 += 2;
+    fontSize14 += 2;
+    fontSize16 += 2;
+    fontSize18 += 2;
+    fontSize20 += 2;
+    fontSize22 += 2;
+    fontSize24 += 2;
+    fontSize26 += 2;
+    fontSize28 += 2;
+  }
+  if (newValue == 3) {
+    fontSize12 += 4;
+    fontSize14 += 4;
+    fontSize16 += 4;
+    fontSize18 += 4;
+    fontSize20 += 4;
+    fontSize22 += 4;
+    fontSize24 += 4;
+    fontSize26 += 4;
+    fontSize28 += 4;
+  }
+}
+
 class _FontSizeScreenState extends State<FontSizeScreen> {
   static const double fixedFontSize20 = 20;
   static const double fixedFontSize18 = 18;
   static const double fixedFontSize26 = 26;
+
+  setFontSizeSelection({value}) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble("fontSizeOption", value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,49 +205,9 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                             selectedFontSizeOption = FontSizeOption.values
                                 .elementAt(newSize.toInt());
                             fontSizeSliderValue = newSize;
-                            fontSize12 = defaultFontSize12;
-                            fontSize14 = defaultFontSize14;
-                            fontSize16 = defaultFontSize16;
-                            fontSize18 = defaultFontSize18;
-                            fontSize20 = defaultFontSize20;
-                            fontSize22 = defaultFontSize22;
-                            fontSize24 = defaultFontSize24;
-                            fontSize26 = defaultFontSize26;
-                            fontSize28 = defaultFontSize28;
-                            if (newSize == 0) {
-                              fontSize12 -= 2;
-                              fontSize14 -= 2;
-                              fontSize16 -= 2;
-                              fontSize18 -= 2;
-                              fontSize20 -= 2;
-                              fontSize22 -= 2;
-                              fontSize24 -= 2;
-                              fontSize26 -= 2;
-                              fontSize28 -= 2;
-                            }
-                            if (newSize == 2) {
-                              fontSize12 += 2;
-                              fontSize14 += 2;
-                              fontSize16 += 2;
-                              fontSize18 += 2;
-                              fontSize20 += 2;
-                              fontSize22 += 2;
-                              fontSize24 += 2;
-                              fontSize26 += 2;
-                              fontSize28 += 2;
-                            }
-                            if (newSize == 3) {
-                              fontSize12 += 4;
-                              fontSize14 += 4;
-                              fontSize16 += 4;
-                              fontSize18 += 4;
-                              fontSize20 += 4;
-                              fontSize22 += 4;
-                              fontSize24 += 4;
-                              fontSize26 += 4;
-                              fontSize28 += 4;
-                            }
+                            changeFontSize(newValue: newSize);
                           });
+                          setFontSizeSelection(value: newSize);
                         },
                         divisions: 3,
                         activeColor: activeBlue,
