@@ -59,7 +59,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     inactiveColor: moreSubtleTextColor,
                     selectedColor: moreSubtleTextColor,
                     shape: PinCodeFieldShape.box,
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(5),
                     fieldHeight: 60,
                     fieldWidth: 60,
                     // activeFillColor: Colors.white,
