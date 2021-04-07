@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class IconDescriptionCard extends StatelessWidget {
   final IconData iconData;
@@ -37,7 +38,7 @@ class IconDescriptionCard extends StatelessWidget {
             Text(
               descTitle,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: fontSize16,
                 fontWeight: FontWeight.w400,
                 color: normalTextColor,
                 fontFamily: 'SourceSansPro',

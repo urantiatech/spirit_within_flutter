@@ -10,6 +10,7 @@ import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
 import '../main.dart';
+import 'font_size_screen.dart';
 import 'guest_profile.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -98,7 +99,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       Text(
                         'Adi Saputra',
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: fontSize28,
                           fontWeight: FontWeight.w400,
                           color: normalTextColor,
                           fontFamily: 'SourceSerifPro',
@@ -173,7 +174,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                         MaterialPageRoute(
                           builder: (context) => AppSettingsScreen(),
                         ),
-                      );
+                      ).then((value) => {setState(() {})});
                     },
                   ),
                   // IconDescriptionCard(

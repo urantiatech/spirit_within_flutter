@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class SearchBar extends StatelessWidget {
   final String hintText;
@@ -25,7 +26,7 @@ class SearchBar extends StatelessWidget {
                 hintText: hintText,
                 hintStyle: TextStyle(
                   color: moreSubtleTextColor,
-                  fontSize: 16,
+                  fontSize: fontSize16,
                   fontFamily: 'SourceSansPro',
                   fontWeight: FontWeight.w400,
                 ),
@@ -33,7 +34,7 @@ class SearchBar extends StatelessWidget {
               ),
               style: TextStyle(
                 color: normalTextColor,
-                fontSize: 16,
+                fontSize: fontSize16,
                 fontFamily: 'SourceSansPro',
                 fontWeight: FontWeight.w400,
               ),

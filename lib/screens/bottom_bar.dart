@@ -19,6 +19,7 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _pageIndex = 0;
   PageController _pageController;
+  double appBarFontSize = 20;
 
   List<Widget> tabPages = [
     HomeScreen(),
@@ -98,7 +99,7 @@ class _BottomBarState extends State<BottomBar> {
           style: TextStyle(
             color: normalTextColor,
             fontWeight: FontWeight.w600,
-            fontSize: 20,
+            fontSize: appBarFontSize,
             fontFamily: 'SourceSerifPro',
           ),
         ),

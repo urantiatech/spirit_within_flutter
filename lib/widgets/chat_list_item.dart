@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/chat/chat_screen.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class ChatListItem extends StatelessWidget {
   final String imgPath;
@@ -54,7 +55,7 @@ class ChatListItem extends StatelessWidget {
                   Text(
                     authorName,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: fontSize16,
                       fontWeight: FontWeight.w600,
                       color: normalTextColor,
                       fontFamily: 'SourceSansPro',
@@ -69,7 +70,7 @@ class ChatListItem extends StatelessWidget {
                       lastMessage,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: fontSize14,
                         fontWeight: numberOfUnread > 0
                             ? FontWeight.w600
                             : FontWeight.w400,
@@ -87,7 +88,7 @@ class ChatListItem extends StatelessWidget {
                 Text(
                   time,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: fontSize14,
                     fontWeight: FontWeight.w400,
                     color: numberOfUnread > 0 ? activeBlue : subtleTextColor,
                     fontFamily: 'SourceSansPro',
@@ -106,7 +107,7 @@ class ChatListItem extends StatelessWidget {
                           child: Text(
                             numberOfUnread.toString(),
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: fontSize14,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                               fontFamily: 'SourceSansPro',

@@ -36,7 +36,7 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                   MaterialPageRoute(
                     builder: (context) => FontSizeScreen(),
                   ),
-                );
+                ).then((value) => {setState(() {})});
               },
             ),
           ],

@@ -5,6 +5,7 @@ import 'package:spirit_within_flutter/widgets/divider_line.dart';
 
 import '../constants/app_constants.dart';
 import '../widgets/author_card.dart';
+import 'font_size_screen.dart';
 
 class BlogScreen extends StatefulWidget {
   @override
@@ -124,7 +125,7 @@ class _BlogScreenState extends State<BlogScreen> {
                         Text(
                           '13:42, December 13, 2020',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: fontSize16,
                             fontWeight: FontWeight.w400,
                             color: subtleTextColor,
                             fontFamily: 'SourceSansPro',
@@ -141,7 +142,7 @@ class _BlogScreenState extends State<BlogScreen> {
                     child: Text(
                       'How to Build a Succesful Design System',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: fontSize24,
                         fontWeight: FontWeight.w600,
                         color: normalTextColor,
                         fontFamily: 'SourceSerifPro',
@@ -157,7 +158,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       'The designers did their work primarily in Sketch. They translated their vision of the product into static designs. The developers then wrote HTML, CSS, Javascript and PHP to convert these static designs into a working product.\n\n'
                       'One of the biggest ambitions inside the company was to find a way to make this process less time consuming as the work was basically done twice.',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: fontSize18,
                         fontWeight: FontWeight.w400,
                         color: blogTextColor,
                         fontFamily: 'Rasa',
@@ -172,7 +173,7 @@ class _BlogScreenState extends State<BlogScreen> {
                     child: Text(
                       'System-ception: a system within a system',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: fontSize20,
                         fontWeight: FontWeight.w600,
                         color: normalTextColor,
                         fontFamily: 'SourceSerifPro',
@@ -187,7 +188,7 @@ class _BlogScreenState extends State<BlogScreen> {
                     child: Text(
                       'When we started to tackle creating our system in Figma, we took a step back to re-evaluate what we’d done in Sketch, questioning the decisions we’d made about layout, visual hierarchy, and naming convention, to name a few. We realized that in order to create a strong foundation in these new libraries.',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: fontSize18,
                         fontWeight: FontWeight.w400,
                         color: blogTextColor,
                         fontFamily: 'Rasa',
@@ -203,7 +204,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       'The next big thing is the one that makes the last big thing usable.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: fontSize20,
                         fontWeight: FontWeight.w700,
                         color: subtleTextColor,
                         fontFamily: 'SourceSerifPro',
@@ -221,7 +222,7 @@ class _BlogScreenState extends State<BlogScreen> {
                         'Blake Ross, Co-creator of Mozilla Firefox',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: fontSize14,
                           fontWeight: FontWeight.w600,
                           color: subtleTextColor,
                           fontFamily: 'SourceSansPro',
@@ -237,7 +238,7 @@ class _BlogScreenState extends State<BlogScreen> {
                     child: Text(
                       'Conclusion',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: fontSize20,
                         fontWeight: FontWeight.w700,
                         color: normalTextColor,
                         fontFamily: 'SourceSerifPro',
@@ -252,7 +253,7 @@ class _BlogScreenState extends State<BlogScreen> {
                     child: Text(
                       'A product is only ever as good as its UX. You can have the most innovative technology, but if it isn’t user-friendly, it wileam adoption. Products like the iPod and the iPhone would never have become so popular based on the technology alone; what really sealed the deal is the fact that they have great UX. ',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: fontSize18,
                         fontWeight: FontWeight.w400,
                         color: blogTextColor,
                         fontFamily: 'Rasa',
@@ -263,84 +264,14 @@ class _BlogScreenState extends State<BlogScreen> {
                     height: 30,
                   ),
                   DividerLine(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      bottom: 30,
-                    ),
-                    child: AuthorCard(
-                      authorName: 'Robert Downey Jr.',
-                      imgPath: 'assets/images/author.png',
-                      followersCount: 33,
-                      following: false,
-                    ),
-                    // child: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Row(
-                    //       children: [
-                    //         Container(
-                    //           decoration: BoxDecoration(
-                    //             // color: Colors.red,
-                    //             shape: BoxShape.circle,
-                    //             boxShadow: [
-                    //               BoxShadow(
-                    //                 blurRadius: 8,
-                    //                 color: Color(0x5F061730),
-                    //                 spreadRadius: 0,
-                    //               ),
-                    //             ],
-                    //           ),
-                    //           child: CircleAvatar(
-                    //             backgroundColor: Colors.white,
-                    //             radius: 23,
-                    //             child: CircleAvatar(
-                    //               radius: 20,
-                    //               backgroundColor: Colors.green[200],
-                    //               backgroundImage: AssetImage(
-                    //                 'assets/images/author.png',
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         SizedBox(
-                    //           width: 14,
-                    //         ),
-                    //         Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: [
-                    //             Text(
-                    //               'Supriatna Richard',
-                    //               style: TextStyle(
-                    //                 fontSize: 16,
-                    //                 fontWeight: FontWeight.w600,
-                    //                 color: normalTextColor,
-                    //                 fontFamily: 'SourceSansPro',
-                    //               ),
-                    //             ),
-                    //             SizedBox(
-                    //               height: 6,
-                    //             ),
-                    //             Text(
-                    //               '34 followers',
-                    //               style: TextStyle(
-                    //                 fontSize: 14,
-                    //                 fontWeight: FontWeight.w400,
-                    //                 color: subtleTextColor,
-                    //                 fontFamily: 'SourceSansPro',
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     SecondaryButton(
-                    //       buttonTitle: 'Follow',
-                    //     ),
-                    //   ],
-                    // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  AuthorCard(
+                    authorName: 'Robert Downey Jr.',
+                    imgPath: 'assets/images/author.png',
+                    followersCount: 33,
+                    following: false,
                   ),
                 ],
               ),

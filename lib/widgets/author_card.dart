@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class AuthorCard extends StatelessWidget {
@@ -54,7 +55,7 @@ class AuthorCard extends StatelessWidget {
                     Text(
                       authorName,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: fontSize16,
                         fontWeight: FontWeight.w600,
                         color: normalTextColor,
                         fontFamily: 'SourceSansPro',
@@ -66,7 +67,7 @@ class AuthorCard extends StatelessWidget {
                     Text(
                       '$followersCount followers',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: fontSize14,
                         fontWeight: FontWeight.w400,
                         color: subtleTextColor,
                         fontFamily: 'SourceSansPro',
@@ -82,7 +83,7 @@ class AuthorCard extends StatelessWidget {
                     child: Text(
                       'Following',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: fontSize16,
                         fontWeight: FontWeight.w400,
                         color: subtleTextColor,
                         fontFamily: 'SourceSansPro',

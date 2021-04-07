@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
+import 'package:spirit_within_flutter/screens/chat/chat_screen.dart';
 import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
+
+import 'font_size_screen.dart';
 
 class AuthorProfileScreen extends StatefulWidget {
   @override
@@ -33,7 +36,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                   Text(
                     'Kavin Ardana',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: fontSize28,
                       fontWeight: FontWeight.w400,
                       color: normalTextColor,
                       fontFamily: 'SourceSerifPro',
@@ -112,7 +115,13 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                   ExpandedSecondaryButton(
                     buttonTitle: 'Message me',
                     onPressedFunction: () {
-                      print('Message Button Pressed');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ChatScreen(authorName: 'Default Author'),
+                        ),
+                      );
                     },
                   ),
                 ],
@@ -129,7 +138,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                   child: Text(
                     'Blogs by Kavin',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: fontSize24,
                       fontWeight: FontWeight.w600,
                       color: normalTextColor,
                       fontFamily: 'SourceSerifPro',
@@ -201,7 +210,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
             textAlign: TextAlign.center,
             text: TextSpan(
               style: TextStyle(
-                fontSize: 20,
+                fontSize: fontSize20,
                 fontWeight: FontWeight.w400,
                 color: normalTextColor,
                 fontFamily: 'SourceSerifPro',

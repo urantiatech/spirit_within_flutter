@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class ContactCard extends StatelessWidget {
@@ -41,7 +42,7 @@ class ContactCard extends StatelessWidget {
                   Text(
                     contactName,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: fontSize16,
                       fontWeight: FontWeight.w600,
                       color: normalTextColor,
                       fontFamily: 'SourceSansPro',
@@ -53,7 +54,7 @@ class ContactCard extends StatelessWidget {
                   Text(
                     number,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: fontSize14,
                       fontWeight: FontWeight.w400,
                       color: subtleTextColor,
                       fontFamily: 'SourceSansPro',
@@ -80,7 +81,7 @@ class ContactCard extends StatelessWidget {
                       Text(
                         'Online',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: fontSize16,
                           fontWeight: FontWeight.w400,
                           color: subtleTextColor,
                           fontFamily: 'SourceSansPro',
@@ -95,7 +96,7 @@ class ContactCard extends StatelessWidget {
                       child: Text(
                         'Invited',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: fontSize16,
                           fontWeight: FontWeight.w400,
                           color: subtleTextColor,
                           fontFamily: 'SourceSansPro',

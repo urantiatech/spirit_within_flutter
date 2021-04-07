@@ -3,6 +3,7 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
 
 import '../main.dart';
+import 'font_size_screen.dart';
 
 class GuestProfile extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _GuestProfileState extends State<GuestProfile> {
                 // 'You’re not signed in.\nPlease sign in to start writing blogs',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: fontSize24,
                   fontWeight: FontWeight.w300,
                   color: normalTextColor,
                   fontFamily: 'SourceSansPro',
@@ -67,7 +68,7 @@ class _GuestProfileState extends State<GuestProfile> {
                 child: Text(
                   'Sign In',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: fontSize22,
                     fontWeight: FontWeight.w400,
                     color: Colors.white,
                     fontFamily: 'SourceSansPro',

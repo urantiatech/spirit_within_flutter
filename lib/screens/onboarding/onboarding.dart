@@ -14,6 +14,7 @@ class _OnboardingState extends State<Onboarding> {
   static const _kDuration = const Duration(milliseconds: 300);
   static const _kCurve = Curves.ease;
   int currentIndex = 0;
+  double titleFontSize = 26;
 
   nextFunction() {
     debugPrint(currentIndex.toString());
@@ -60,7 +61,7 @@ class _OnboardingState extends State<Onboarding> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF061730),
-                      fontSize: 26,
+                      fontSize: titleFontSize,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'SourceSerifPro',
                     ),

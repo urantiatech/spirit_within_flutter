@@ -8,6 +8,8 @@ import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 
+import 'font_size_screen.dart';
+
 class ManageBlogsScreen extends StatefulWidget {
   @override
   _ManageBlogsScreenState createState() => _ManageBlogsScreenState();
@@ -49,7 +51,7 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                                 ? 'Unpublish'
                                 : 'Publish',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: fontSize16,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                               fontFamily: 'SourceSansPro',
@@ -81,7 +83,7 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                           Text(
                             'Delete',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: fontSize16,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                               fontFamily: 'SourceSansPro',
@@ -131,7 +133,7 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
             'Are you sure you want to delete this blog?',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 20,
+              fontSize: fontSize20,
               fontWeight: FontWeight.w400,
               color: normalTextColor,
               fontFamily: 'SourceSerifPro',

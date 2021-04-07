@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/blog_screen.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class BlogListItem extends StatelessWidget {
   final String title;
@@ -54,7 +55,7 @@ class BlogListItem extends StatelessWidget {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: fontSize20,
                         fontWeight: FontWeight.w600,
                         color: disabled ? subtleTextColor : normalTextColor,
                         fontFamily: 'SourceSerifPro',
@@ -70,7 +71,7 @@ class BlogListItem extends StatelessWidget {
                       description,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: fontSize14,
                         fontWeight: FontWeight.w400,
                         color: subtleTextColor,
                         fontFamily: 'SourceSansPro',
@@ -96,7 +97,7 @@ class BlogListItem extends StatelessWidget {
                           Text(
                             time,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: fontSize12,
                               fontWeight: FontWeight.w400,
                               color: moreSubtleTextColor,
                               fontFamily: 'SourceSansPro',
@@ -119,7 +120,7 @@ class BlogListItem extends StatelessWidget {
                                 Text(
                                   author,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: fontSize12,
                                     fontWeight: FontWeight.w400,
                                     color: moreSubtleTextColor,
                                     fontFamily: 'SourceSansPro',

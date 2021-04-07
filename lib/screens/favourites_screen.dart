@@ -6,6 +6,8 @@ import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 
+import 'font_size_screen.dart';
+
 class FavouritesScreen extends StatefulWidget {
   @override
   _FavouritesScreenState createState() => _FavouritesScreenState();
@@ -44,7 +46,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                             Text(
                               'Remove',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: fontSize16,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white,
                                 fontFamily: 'SourceSansPro',

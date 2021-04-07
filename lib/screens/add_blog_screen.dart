@@ -5,6 +5,7 @@ import 'package:zefyr/zefyr.dart';
 
 import '../constants/app_constants.dart';
 import '../widgets/divider_line.dart';
+import 'font_size_screen.dart';
 
 class AddBlogScreen extends StatefulWidget {
   @override
@@ -61,7 +62,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                   textCapitalization: TextCapitalization.sentences,
                   autofocus: true,
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: fontSize24,
                     fontWeight: FontWeight.w400,
                     color: normalTextColor,
                     fontFamily: 'SourceSansPro',
@@ -70,7 +71,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                     // contentPadding: EdgeInsets.only(bottom: 0),
                     hintText: 'Title',
                     hintStyle: TextStyle(
-                      fontSize: 24,
+                      fontSize: fontSize24,
                       fontWeight: FontWeight.w400,
                       color: subtleTextColor,
                       fontFamily: 'SourceSansPro',
@@ -96,7 +97,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                           // hintText: 'Content',
                           border: InputBorder.none,
                           hintStyle: TextStyle(
-                            fontSize: 18,
+                            fontSize: fontSize18,
                             fontWeight: FontWeight.w400,
                             color: subtleTextColor,
                             fontFamily: 'SourceSansPro',
@@ -112,7 +113,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                             child: Text(
                               'Content',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: fontSize18,
                                 fontWeight: FontWeight.w400,
                                 color: subtleTextColor,
                                 fontFamily: 'SourceSansPro',

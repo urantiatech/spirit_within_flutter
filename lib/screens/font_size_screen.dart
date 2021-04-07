@@ -30,9 +30,13 @@ double fontSize16 = 16;
 double fontSize14 = 14;
 double fontSize12 = 12;
 
+double fontSizeSliderValue = 1;
+FontSizeOption selectedFontSizeOption = FontSizeOption.Normal;
+
 class _FontSizeScreenState extends State<FontSizeScreen> {
-  FontSizeOption selectedFontSizeOption = FontSizeOption.Normal;
-  double fontSizeSliderValue = 1;
+  static const double fixedFontSize20 = 20;
+  static const double fixedFontSize18 = 18;
+  static const double fixedFontSize26 = 26;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +112,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                 Text(
                   'Preview',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: fixedFontSize20,
                     fontWeight: FontWeight.w600,
                     color: normalTextColor,
                     fontFamily: 'SourceSerifPro',
@@ -119,7 +123,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                   child: Text(
                     selectedFontSizeOption.toString().split('.')[1],
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: fixedFontSize18,
                       fontWeight: FontWeight.w400,
                       color: normalTextColor,
                       fontFamily: 'SourceSansPro',
@@ -131,7 +135,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                     Text(
                       'A',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: fixedFontSize18,
                         fontWeight: FontWeight.w600,
                         color: normalTextColor,
                         fontFamily: 'SourceSansPro',
@@ -198,7 +202,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                     Text(
                       'A',
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: fixedFontSize26,
                         fontWeight: FontWeight.w600,
                         color: normalTextColor,
                         fontFamily: 'SourceSansPro',
@@ -210,7 +214,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                 Text(
                   'Make the text on the screen smaller or larger',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: fixedFontSize18,
                     fontWeight: FontWeight.w400,
                     color: normalTextColor,
                     fontFamily: 'SourceSansPro',

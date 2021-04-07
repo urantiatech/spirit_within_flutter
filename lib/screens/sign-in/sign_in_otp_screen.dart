@@ -9,6 +9,7 @@ import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 
 import '../../main.dart';
+import '../font_size_screen.dart';
 
 class SignInOTPScreen extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                 Text(
                   'Sign in using OTP',
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: fontSize28,
                     fontWeight: FontWeight.w400,
                     color: normalTextColor,
                     fontFamily: 'SourceSerifPro',
@@ -65,7 +66,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     // activeFillColor: Colors.white,
                   ),
                   textStyle: TextStyle(
-                    fontSize: 24,
+                    fontSize: fontSize24,
                     fontWeight: FontWeight.w400,
                     color: normalTextColor,
                     fontFamily: 'SourceSansPro',
@@ -98,7 +99,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                 Text(
                   'Re-send the OTP in 00:30',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: fontSize18,
                     fontWeight: FontWeight.w400,
                     color: activeBlue,
                     fontFamily: 'SourceSansPro',
@@ -110,7 +111,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                   child: Row(
                     children: [
                       ExpandedPrimaryButton(
-                        fontSize: 22,
+                        fontSize: fontSize22,
                         buttonTitle: 'Verify and Proceed',
                         onPressedFunction: () {
                           signIn();
@@ -138,7 +139,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                   child: Row(
                     children: [
                       ExpandedSecondaryButton(
-                        fontSize: 22,
+                        fontSize: fontSize22,
                         buttonTitle: 'Resend the OTP',
                         onPressedFunction: null,
                         isDisabled: true,

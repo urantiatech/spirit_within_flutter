@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class ChatBubble extends StatelessWidget {
   final String messageText;
@@ -33,7 +34,7 @@ class ChatBubble extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
+                    fontSize: fontSize16,
                     fontFamily: 'SourceSerifPro',
                   ),
                 ),
@@ -45,7 +46,7 @@ class ChatBubble extends StatelessWidget {
                   style: TextStyle(
                     color: subtleTextColor,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
+                    fontSize: fontSize12,
                     fontFamily: 'SourceSansPro',
                   ),
                 ),
@@ -71,7 +72,7 @@ class ChatBubble extends StatelessWidget {
                   style: TextStyle(
                     color: normalTextColor,
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
+                    fontSize: fontSize16,
                     fontFamily: 'SourceSerifPro',
                   ),
                 ),
@@ -83,7 +84,7 @@ class ChatBubble extends StatelessWidget {
                   style: TextStyle(
                     color: subtleTextColor,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
+                    fontSize: fontSize12,
                     fontFamily: 'SourceSansPro',
                   ),
                 ),

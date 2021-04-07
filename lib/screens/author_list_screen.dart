@@ -3,6 +3,8 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/widgets/author_card.dart';
 import 'package:spirit_within_flutter/widgets/search_bar.dart';
 
+import 'font_size_screen.dart';
+
 class AuthorsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class AuthorsScreen extends StatelessWidget {
                   child: Text(
                     'Popular Authors',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: fontSize16,
                       fontWeight: FontWeight.w600,
                       color: normalTextColor,
                       fontFamily: 'SourceSansPro',
@@ -46,7 +48,7 @@ class AuthorsScreen extends StatelessWidget {
                   child: Text(
                     'New Authors',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: fontSize16,
                       fontWeight: FontWeight.w600,
                       color: subtleTextColor,
                       fontFamily: 'SourceSansPro',

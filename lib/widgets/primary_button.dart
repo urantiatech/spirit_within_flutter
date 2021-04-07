@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String buttonTitle;
@@ -30,7 +31,7 @@ class PrimaryButton extends StatelessWidget {
         child: Text(
           buttonTitle,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: fontSize16,
             fontWeight: FontWeight.w400,
             color: Colors.white,
             fontFamily: 'SourceSansPro',

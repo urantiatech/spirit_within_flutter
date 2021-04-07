@@ -4,6 +4,8 @@ import 'package:spirit_within_flutter/models/chatMessage.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/chat_bubble.dart';
 
+import '../font_size_screen.dart';
+
 class ChatScreen extends StatefulWidget {
   final String authorName;
   ChatScreen({@required this.authorName});
@@ -69,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       hintText: 'Type a message',
                       hintStyle: TextStyle(
                         color: moreSubtleTextColor,
-                        fontSize: 16,
+                        fontSize: fontSize16,
                         fontFamily: 'SourceSansPro',
                         fontWeight: FontWeight.w400,
                       ),
@@ -77,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     style: TextStyle(
                       color: normalTextColor,
-                      fontSize: 16,
+                      fontSize: fontSize16,
                       fontFamily: 'SourceSansPro',
                       fontWeight: FontWeight.w400,
                     ),

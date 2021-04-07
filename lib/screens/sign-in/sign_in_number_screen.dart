@@ -6,6 +6,8 @@ import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 
+import '../font_size_screen.dart';
+
 class SignInNumberScreen extends StatefulWidget {
   final String countryCode;
   SignInNumberScreen({@required this.countryCode});
@@ -38,7 +40,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 Text(
                   'Sign in using OTP',
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: fontSize28,
                     fontWeight: FontWeight.w400,
                     color: normalTextColor,
                     fontFamily: 'SourceSerifPro',
@@ -48,7 +50,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 Text(
                   'Phone Number',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: fontSize22,
                     fontWeight: FontWeight.w400,
                     color: subtleTextColor,
                     fontFamily: 'SourceSansPro',
@@ -89,13 +91,13 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                   prefixText: countryCode.dialCode + " ",
                                   prefixStyle: TextStyle(
                                     color: normalTextColor,
-                                    fontSize: 22,
+                                    fontSize: fontSize22,
                                     fontFamily: 'SourceSansPro',
                                     fontWeight: FontWeight.w400,
                                   ),
                                   hintStyle: TextStyle(
                                     color: moreSubtleTextColor,
-                                    fontSize: 22,
+                                    fontSize: fontSize22,
                                     fontFamily: 'SourceSansPro',
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -103,7 +105,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                 ),
                                 style: TextStyle(
                                   color: normalTextColor,
-                                  fontSize: 22,
+                                  fontSize: fontSize22,
                                   fontFamily: 'SourceSansPro',
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -124,7 +126,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                             // Text(
                             //   countryCode.name,
                             //   style: TextStyle(
-                            //     fontSize: 20,
+                            //     fontSize: fontSize20,
                             //     fontWeight: FontWeight.w400,
                             //     color: normalTextColor,
                             //     fontFamily: 'SourceSansPro',
@@ -185,7 +187,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 //     FilteringTextInputFormatter.digitsOnly,
                 //   ],
                 //   style: TextStyle(
-                //     fontSize: 24,
+                //     fontSize: fontSize24,
                 //     fontWeight: FontWeight.w400,
                 //     color: normalTextColor,
                 //     fontFamily: 'SourceSansPro',
@@ -193,7 +195,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 //   decoration: InputDecoration(
                 //     hintText: 'Phone Number',
                 //     hintStyle: TextStyle(
-                //       fontSize: 24,
+                //       fontSize: fontSize24,
                 //       fontWeight: FontWeight.w400,
                 //       color: subtleTextColor,
                 //       fontFamily: 'SourceSansPro',
@@ -218,7 +220,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                   child: Row(
                     children: [
                       ExpandedPrimaryButton(
-                        fontSize: 22,
+                        fontSize: fontSize22,
                         buttonTitle: 'Send OTP',
                         onPressedFunction: () {
                           debugPrint("Number Entered: $number");

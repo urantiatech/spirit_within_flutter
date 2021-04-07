@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 bool showQuote = true;
 
@@ -17,6 +18,7 @@ class QuoteBox extends StatefulWidget {
 }
 
 class _QuoteBoxState extends State<QuoteBox> {
+  double openingQuoteSize = 36;
   @override
   Widget build(BuildContext context) {
     return !showQuote
@@ -53,7 +55,7 @@ class _QuoteBoxState extends State<QuoteBox> {
                           '“',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 36,
+                            fontSize: openingQuoteSize,
                             fontWeight: FontWeight.w700,
                             color: Theme.of(context).accentColor,
                             fontFamily: 'SourceSerifPro',
@@ -96,7 +98,7 @@ class _QuoteBoxState extends State<QuoteBox> {
                   child: Text(
                     widget.quoteText,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: fontSize24,
                       height: 1.5,
                       letterSpacing: 0.3,
                       fontWeight: FontWeight.w600,
@@ -129,7 +131,7 @@ class _QuoteBoxState extends State<QuoteBox> {
                         child: Text(
                           'Share Quote',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: fontSize14,
                             fontWeight: FontWeight.w600,
                             color: normalTextColor,
                             fontFamily: 'SourceSansPro',
@@ -147,7 +149,7 @@ class _QuoteBoxState extends State<QuoteBox> {
                       child: Text(
                         '~ ${widget.quoteAuthor}',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: fontSize14,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                           fontFamily: 'SourceSansPro',

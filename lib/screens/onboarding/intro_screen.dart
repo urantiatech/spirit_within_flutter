@@ -6,7 +6,7 @@ class IntroScreen extends StatelessWidget {
   });
 
   final double totalHeight;
-
+  final double instructionsFontSize = 24;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +32,7 @@ class IntroScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF061730),
-                fontSize: 24,
+                fontSize: instructionsFontSize,
                 fontWeight: FontWeight.w300,
                 fontFamily: 'SourceSerifPro',
               ),
