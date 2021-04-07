@@ -57,6 +57,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: TextField(
+                  // maxLength: 80,
                   textCapitalization: TextCapitalization.sentences,
                   autofocus: true,
                   style: TextStyle(
@@ -66,6 +67,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                     fontFamily: 'SourceSansPro',
                   ),
                   decoration: InputDecoration(
+                    // contentPadding: EdgeInsets.only(bottom: 0),
                     hintText: 'Title',
                     hintStyle: TextStyle(
                       fontSize: 24,

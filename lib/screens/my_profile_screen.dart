@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/app_settings_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
+import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
-import 'package:launch_review/launch_review.dart';
 
 import '../main.dart';
 import 'guest_profile.dart';
@@ -164,12 +165,24 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   ),
                   DividerLine(),
                   IconDescriptionCard(
-                    iconData: Icons.star_border_rounded,
-                    descTitle: 'Rate us',
+                    iconData: Icons.settings,
+                    descTitle: 'App Settings',
                     onPressedFunction: () {
-                      LaunchReview.launch();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AppSettingsScreen(),
+                        ),
+                      );
                     },
                   ),
+                  // IconDescriptionCard(
+                  //   iconData: Icons.star_border_rounded,
+                  //   descTitle: 'Rate us',
+                  //   onPressedFunction: () {
+                  //     LaunchReview.launch();
+                  //   },
+                  // ),
                   DividerLine(),
                   IconDescriptionCard(
                     iconData: Icons.person_add_alt_1_outlined,
@@ -195,62 +208,16 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           builder: (context) => BottomBar(navigationIndex: 2),
                         ),
                       );
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text('Signed out successfully!')));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Signed out successfully!'),
+                        ),
+                      );
                     },
                   ),
                 ],
               ),
             ),
           );
-  }
-}
-
-class IconDescriptionCard extends StatelessWidget {
-  final IconData iconData;
-  final String descTitle;
-  final Function onPressedFunction;
-
-  const IconDescriptionCard({
-    this.iconData,
-    this.descTitle,
-    this.onPressedFunction,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressedFunction,
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(
-          EdgeInsets.symmetric(horizontal: 0, vertical: 8),
-        ),
-      ),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Icon(
-                iconData,
-                color: normalTextColor,
-                size: 24,
-              ),
-            ),
-            SizedBox(width: 8),
-            Text(
-              descTitle,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: normalTextColor,
-                fontFamily: 'SourceSansPro',
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
