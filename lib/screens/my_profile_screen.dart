@@ -165,7 +165,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   ),
                   DividerLine(),
                   IconDescriptionCard(
-                    iconData: Icons.settings,
+                    iconData: Icons.settings_outlined,
                     descTitle: 'App Settings',
                     onPressedFunction: () {
                       Navigator.push(
