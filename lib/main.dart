@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SpiritWithin',
-      theme: themeData,
+      theme: themeDataLight,
+      darkTheme: themeDataDark,
+      themeMode: ThemeMode.light,
       home: onboardingScreenShown != true ? Onboarding() : BottomBar(),
     );
   }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/author_list_screen.dart';
-import 'package:spirit_within_flutter/screens/chat/chat_list_screen.dart';
-import 'package:spirit_within_flutter/screens/favourites_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
-import 'package:spirit_within_flutter/screens/add_blog_screen.dart';
+import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
+import 'package:spirit_within_flutter/widgets/left_aligned_app_bar.dart';
 
 import '../main.dart';
 
@@ -24,7 +23,6 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> tabPages = [
     HomeScreen(),
     AuthorsScreen(),
-    // FavScreen(),
     MyProfileScreen(),
   ];
 
@@ -44,66 +42,8 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: isSignedIn ? false : true,
-        iconTheme: IconThemeData(
-          color: normalTextColor,
-        ),
-        actions: isSignedIn
-            ? [
-                IconButton(
-                  icon: const Icon(Icons.mark_email_unread_outlined),
-                  tooltip: 'Conversations',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ChatListScreen(),
-                      ),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.star_border_rounded),
-                  tooltip: 'Favourites',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FavouritesScreen(),
-                      ),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.add),
-                  tooltip: 'Add Blog',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AddBlogScreen(),
-                      ),
-                    );
-                  },
-                ),
-                // IconButton(
-                //   icon: Image.asset('assets/images/mona.jpg'),
-                //   onPressed: () {},
-                // ),
-              ]
-            : [],
-        title: Text(
-          'The Spirit Within',
-          style: TextStyle(
-            color: normalTextColor,
-            fontWeight: FontWeight.w600,
-            fontSize: appBarFontSize,
-            fontFamily: 'SourceSerifPro',
-          ),
-        ),
-      ),
+      appBar:
+          isSignedIn ? buildLeftAlignedAppBar(context) : buildCenteredAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -120,24 +60,23 @@ class _BottomBarState extends State<BottomBar> {
             ),
             label: 'Authors',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(
-          //     Icons.bookmark_rounded,
-          //     size: 24,
-          //   ),
-          //   label: 'Favourites',
-          // ),
           BottomNavigationBarItem(
             label: 'Profile',
             icon: isSignedIn
                 ? Container(
                     height: 24,
                     width: 24,
+                    foregroundDecoration: _pageIndex == 2
+                        ? BoxDecoration()
+                        : BoxDecoration(
+                            color: Colors.white24,
+                            shape: BoxShape.circle,
+                          ),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/images/mona.jpg'),
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/dp.jpg'),
                       ),
                     ),
                   )
@@ -146,13 +85,6 @@ class _BottomBarState extends State<BottomBar> {
                     size: 24,
                   ),
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(
-          //     Icons.person,
-          //     size: 24,
-          //   ),
-          //   label: 'Profile',
-          // ),
         ],
         currentIndex: _pageIndex,
         type: BottomNavigationBarType.fixed,
