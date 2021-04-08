@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
+import 'package:spirit_within_flutter/screens/homescreen.dart';
 
 bool showQuote = true;
 
@@ -69,9 +70,7 @@ class _QuoteBoxState extends State<QuoteBox> {
                         splashColor: activeBlue,
                         onPressed: () {
                           setState(() {
-                            debugPrint(showQuote.toString());
                             showQuote = !showQuote;
-                            debugPrint(showQuote.toString());
                           });
                         },
                         textColor: Colors.white,

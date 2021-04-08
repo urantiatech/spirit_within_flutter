@@ -12,7 +12,6 @@ import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
 import '../main.dart';
 import 'font_size_screen.dart';
-import 'sign-in/sign_in_to_continue_screen.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override

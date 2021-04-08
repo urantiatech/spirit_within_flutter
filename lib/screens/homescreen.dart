@@ -17,10 +17,19 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SearchBar(hintText: "Search Blogs"),
           SizedBox(height: 14),
-          QuoteBox(
-            quoteText: 'Design is not just what it looks like and feels like.'
-                ' Design is how it works.',
-            quoteAuthor: 'Steve Jobs',
+          Dismissible(
+            key: UniqueKey(),
+            direction: DismissDirection.startToEnd,
+            onDismissed: (direction) {
+              setState(() {
+                showQuote = false;
+              });
+            },
+            child: QuoteBox(
+              quoteText: 'Design is not just what it looks like and feels like.'
+                  ' Design is how it works.',
+              quoteAuthor: 'Steve Jobs',
+            ),
           ),
           BlogListItem(
             title: 'Lorem ipsum dolor sit amet',
