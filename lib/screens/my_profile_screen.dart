@@ -11,7 +11,7 @@ import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
 import '../main.dart';
 import 'font_size_screen.dart';
-import 'guest_profile.dart';
+import 'sign-in/sign_in_to_continue_screen.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -37,7 +37,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
       isSignedIn = false;
     }
     return !isSignedIn
-        ? GuestProfile()
+        ? SignInToContinueScreen()
         : Scaffold(
             body: SingleChildScrollView(
               child: Column(

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
 
-import '../main.dart';
-import 'font_size_screen.dart';
+import '../../main.dart';
+import '../font_size_screen.dart';
 
-class GuestProfile extends StatefulWidget {
+class SignInToContinueScreen extends StatefulWidget {
   @override
-  _GuestProfileState createState() => _GuestProfileState();
+  _SignInToContinueScreenState createState() => _SignInToContinueScreenState();
 }
 
-class _GuestProfileState extends State<GuestProfile> {
+class _SignInToContinueScreenState extends State<SignInToContinueScreen> {
   @override
   void initState() {
     super.initState();

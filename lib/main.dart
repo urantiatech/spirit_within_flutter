@@ -27,9 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SpiritWithin',
-      theme: themeDataLight,
-      darkTheme: themeDataDark,
-      themeMode: ThemeMode.light,
+      theme: themeData,
       home: onboardingScreenShown != true ? Onboarding() : BottomBar(),
     );
   }
@@ -58,5 +56,4 @@ Future<void> getFontSizeSelection() async {
     fontSizeSliderValue = 1;
   }
   changeFontSize(newValue: fontSizeSliderValue);
-  debugPrint("fontSizeOption: $fontSizeSliderValue");
 }
