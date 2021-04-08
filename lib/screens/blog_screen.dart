@@ -40,11 +40,13 @@ class _BlogScreenState extends State<BlogScreen> {
               isFavourite
                   ? ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
+                        duration: Duration(seconds: 2),
                         content: Text('Added to Favourites'),
                       ),
                     )
                   : ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
+                        duration: Duration(seconds: 2),
                         content: Text('Removed from Favourites'),
                       ),
                     );

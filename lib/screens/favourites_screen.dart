@@ -63,6 +63,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
+                              duration: Duration(seconds: 2),
                               content: Text('Removed from Favourites'),
                             ),
                           );

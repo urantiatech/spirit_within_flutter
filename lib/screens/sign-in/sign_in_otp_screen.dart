@@ -125,6 +125,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                               (route) => false);
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
+                              duration: Duration(seconds: 2),
                               content: Text('Signed in successfully!'),
                             ),
                           );

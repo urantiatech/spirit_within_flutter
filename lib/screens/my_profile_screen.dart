@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/app_settings_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
+import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
@@ -37,7 +38,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
       isSignedIn = false;
     }
     return !isSignedIn
-        ? SignInToContinueScreen()
+        ? GuestUserProfileScreen()
+        // ? SignInToContinueScreen()
         : Scaffold(
             body: SingleChildScrollView(
               child: Column(
@@ -204,6 +206,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       );
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
+                          duration: Duration(seconds: 2),
                           content: Text('Signed out successfully!'),
                         ),
                       );
