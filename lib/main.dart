@@ -11,6 +11,8 @@ import 'screens/onboarding/onboarding.dart';
 
 bool onboardingScreenShown;
 bool isSignedIn;
+String currentCountryCode;
+enum FontSizeOption { Small, Normal, Large, Largest }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,14 +43,12 @@ signInCheck() async {
   }
 }
 
-String currentCountryCode;
 Future<void> getCountryCode() async {
   Response res = await get(Uri.parse(locationAPI));
   Map data = jsonDecode(res.body);
   currentCountryCode = data['countryCode'];
 }
 
-enum FontSizeOption { Small, Normal, Large, Largest }
 Future<void> getFontSizeSelection() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   fontSizeSliderValue = prefs.getDouble("fontSizeOption");

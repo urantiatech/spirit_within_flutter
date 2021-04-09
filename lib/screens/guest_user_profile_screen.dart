@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
-import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
@@ -18,6 +16,12 @@ class GuestUserProfileScreen extends StatefulWidget {
 }
 
 class _GuestUserProfileScreenState extends State<GuestUserProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCountryCode();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,15 +50,24 @@ class _GuestUserProfileScreenState extends State<GuestUserProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'You’re not signed in. Please sign in to continue',
+                      'Please sign in to continue',
                       style: TextStyle(
-                        fontSize: fontSize24,
-                        fontWeight: FontWeight.w300,
-                        color: normalTextColor,
+                        fontSize: fontSize18,
+                        fontWeight: FontWeight.w400,
+                        color: subtleTextColor,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
-                    SizedBox(height: 24),
+                    // Text(
+                    //   'Please sign in to continue',
+                    //   style: TextStyle(
+                    //     fontSize: fontSize24,
+                    //     fontWeight: FontWeight.w300,
+                    //     color: normalTextColor,
+                    //     fontFamily: 'SourceSansPro',
+                    //   ),
+                    // ),
+                    SizedBox(height: 16),
                     Row(
                       children: [
                         ExpandedPrimaryButton(

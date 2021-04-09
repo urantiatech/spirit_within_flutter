@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/main.dart';
 import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
@@ -77,25 +78,27 @@ class AuthorCard extends StatelessWidget {
                 ),
               ],
             ),
-            following
-                ? Padding(
-                    padding: EdgeInsets.only(right: 12),
-                    child: Text(
-                      'Following',
-                      style: TextStyle(
-                        fontSize: fontSize16,
-                        fontWeight: FontWeight.w400,
-                        color: subtleTextColor,
-                        fontFamily: 'SourceSansPro',
-                      ),
-                    ),
-                  )
-                : SecondaryButton(
-                    buttonTitle: 'Follow',
-                    onPressedFunction: () {
-                      debugPrint('Follow Pressed');
-                    },
-                  ),
+            isSignedIn
+                ? following
+                    ? Padding(
+                        padding: EdgeInsets.only(right: 12),
+                        child: Text(
+                          'Following',
+                          style: TextStyle(
+                            fontSize: fontSize16,
+                            fontWeight: FontWeight.w400,
+                            color: subtleTextColor,
+                            fontFamily: 'SourceSansPro',
+                          ),
+                        ),
+                      )
+                    : SecondaryButton(
+                        buttonTitle: 'Follow',
+                        onPressedFunction: () {
+                          debugPrint('Follow Pressed');
+                        },
+                      )
+                : SizedBox(),
           ],
         ),
       ),

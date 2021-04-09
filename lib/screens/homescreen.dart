@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'long text long text long text long text long text long text long text long text long text long text',
             time: '2 hours ago',
             author: 'Peter Parker',
-            imgPath: 'assets/images/mona.jpg',
+            // imgPath: 'assets/images/mona.jpg',
           ),
           BlogListItem(
             title: demoBlog1.title,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'long text long text long text long text long text long text',
             time: '2 hours ago',
             author: 'Peter Parker',
-            imgPath: 'assets/images/mona.jpg',
+            // imgPath: 'assets/images/mona.jpg',
           ),
           BlogListItem(
             title: demoBlog1.title,
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'long text long text long text long text long text long text',
             time: '2 hours ago',
             author: 'Peter Parker',
-            imgPath: 'assets/images/mona.jpg',
+            // imgPath: 'assets/images/mona.jpg',
           ),
           BlogListItem(
             title: demoBlog1.title,

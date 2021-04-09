@@ -39,7 +39,7 @@ class BlogListItem extends StatelessWidget {
         ),
       ),
       child: Container(
-        color: disabled ? Colors.red[50] : Colors.transparent,
+        // color: disabled ? Colors.red[50] : Colors.transparent,
         padding: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
         // margin: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
         child: Row(
@@ -133,18 +133,20 @@ class BlogListItem extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                  imgPath,
-                  height: 96,
-                  width: 96,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
+            imgPath == null
+                ? SizedBox()
+                : Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        imgPath,
+                        height: 96,
+                        width: 96,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),

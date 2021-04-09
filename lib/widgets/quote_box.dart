@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
-import 'package:spirit_within_flutter/screens/homescreen.dart';
 
 bool showQuote = true;
 
@@ -64,32 +63,32 @@ class _QuoteBoxState extends State<QuoteBox> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: MaterialButton(
-                        splashColor: activeBlue,
-                        onPressed: () {
-                          setState(() {
-                            showQuote = !showQuote;
-                          });
-                        },
-                        textColor: Colors.white,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 16,
-                          child: CircleAvatar(
-                            radius: 14,
-                            backgroundColor: Color(0xFF225FBA),
-                            child: Icon(
-                              Icons.clear_rounded,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        padding: EdgeInsets.only(top: 10, right: 0, bottom: 10),
-                        shape: CircleBorder(),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 10),
+                    //   child: MaterialButton(
+                    //     splashColor: activeBlue,
+                    //     onPressed: () {
+                    //       setState(() {
+                    //         showQuote = !showQuote;
+                    //       });
+                    //     },
+                    //     textColor: Colors.white,
+                    //     child: CircleAvatar(
+                    //       backgroundColor: Colors.white,
+                    //       radius: 16,
+                    //       child: CircleAvatar(
+                    //         radius: 14,
+                    //         backgroundColor: Color(0xFF225FBA),
+                    //         child: Icon(
+                    //           Icons.clear_rounded,
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     padding: EdgeInsets.only(top: 10, right: 0, bottom: 10),
+                    //     shape: CircleBorder(),
+                    //   ),
+                    // ),
                   ],
                 ),
                 Container(

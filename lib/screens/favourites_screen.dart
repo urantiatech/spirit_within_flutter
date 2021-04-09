@@ -19,9 +19,6 @@ List<Blog> favouritesList = blogList.toList();
 class _FavouritesScreenState extends State<FavouritesScreen> {
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-        'favouritesList.length in favourites_screen: ${favouritesList.length}');
-    debugPrint('blogList.length in favourites_screen: ${blogList.length}');
     return Scaffold(
       appBar: buildCenteredAppBar(),
       body: Column(
