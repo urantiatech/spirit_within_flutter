@@ -4,6 +4,7 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
+import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
@@ -115,14 +116,20 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                         buttonTitle: 'Verify and Proceed',
                         onPressedFunction: () {
                           signIn();
-                          // Navigator.popUntil(context, (route) => false);
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    BottomBar(navigationIndex: 2),
-                              ),
-                              (route) => false);
+                          if (returnRoute != null) {
+                            Navigator.popUntil(
+                                context, ModalRoute.withName(returnRoute));
+                            returnRoute = null;
+                          } else {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      BottomBar(navigationIndex: 2),
+                                ),
+                                (route) => false);
+                          }
+
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               duration: Duration(seconds: 2),

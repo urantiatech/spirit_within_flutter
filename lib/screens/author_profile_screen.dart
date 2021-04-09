@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/main.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
 import 'package:spirit_within_flutter/screens/chat/chat_screen.dart';
+import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/blog_list_item.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
@@ -17,6 +19,21 @@ class AuthorProfileScreen extends StatefulWidget {
 }
 
 class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
+  bottomSheetCircularCorners() {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(40.0),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        returnRoute = '/author_profile_screen';
+        return SignInToContinueModal();
+      },
+    );
+  }
+
   bool following = false;
   @override
   Widget build(BuildContext context) {
@@ -105,23 +122,26 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
                       : ExpandedPrimaryButton(
                           buttonTitle: 'Follow',
                           onPressedFunction: () {
-                            setState(() {
-                              following = true;
-                              print(following.toString());
-                            });
+                            isSignedIn
+                                ? setState(() {
+                                    following = true;
+                                  })
+                                : bottomSheetCircularCorners();
                           },
                         ),
                   SizedBox(width: 12),
                   ExpandedSecondaryButton(
                     buttonTitle: 'Message me',
                     onPressedFunction: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ChatScreen(authorName: 'Default Author'),
-                        ),
-                      );
+                      isSignedIn
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ChatScreen(authorName: 'Default Author'),
+                              ),
+                            )
+                          : bottomSheetCircularCorners();
                     },
                   ),
                 ],

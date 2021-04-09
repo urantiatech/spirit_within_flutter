@@ -21,10 +21,12 @@ class AuthorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.push(
-          context,
+        // Navigator.of(context).pushNamed('/author_profile_screen');
+        Navigator.of(context).push(
+          // context,
           MaterialPageRoute(
             builder: (context) => AuthorProfileScreen(),
+            settings: RouteSettings(name: '/author_profile_screen'),
           ),
         );
       },

@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:spirit_within_flutter/config/theme.dart';
+import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
+import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 import 'constants/api_paths.dart';
 import 'screens/onboarding/onboarding.dart';
 
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
       title: 'SpiritWithin',
       theme: themeData,
       home: onboardingScreenShown != true ? Onboarding() : BottomBar(),
+      // routes: {
+      //   '/author_profile_screen': (context) => AuthorProfileScreen(),
+      // },
     );
   }
 }

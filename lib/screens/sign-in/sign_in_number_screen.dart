@@ -10,7 +10,9 @@ import '../font_size_screen.dart';
 
 class SignInNumberScreen extends StatefulWidget {
   final String countryCode;
-  SignInNumberScreen({@required this.countryCode});
+  SignInNumberScreen({
+    @required this.countryCode,
+  });
   @override
   _SignInNumberScreenState createState() => _SignInNumberScreenState();
 }
