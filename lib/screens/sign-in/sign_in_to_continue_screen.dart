@@ -41,6 +41,12 @@ class SignInToContinueModal extends StatelessWidget {
             child: Text(
               'You’re not signed in.\nPlease sign in to continue',
               textAlign: TextAlign.center,
+              // style: TextStyle(
+              //   fontSize: fontSize18,
+              //   fontWeight: FontWeight.w400,
+              //   color: subtleTextColor,
+              //   fontFamily: 'SourceSansPro',
+              // ),
               style: TextStyle(
                 fontSize: fontSize24,
                 fontWeight: FontWeight.w300,

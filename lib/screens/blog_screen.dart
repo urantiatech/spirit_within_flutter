@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/main.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 
@@ -29,30 +30,32 @@ class _BlogScreenState extends State<BlogScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: buildCenteredAppBar(
-        actions: [
-          IconButton(
-            icon: isFavourite ? starIconFilled : starIconOutlined,
-            tooltip: 'Add to Favourites',
-            onPressed: () {
-              setState(() {
-                isFavourite = !isFavourite;
-              });
-              isFavourite
-                  ? ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 2),
-                        content: Text('Added to Favourites'),
-                      ),
-                    )
-                  : ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 2),
-                        content: Text('Removed from Favourites'),
-                      ),
-                    );
-            },
-          ),
-        ],
+        actions: isSignedIn
+            ? [
+                IconButton(
+                  icon: isFavourite ? starIconFilled : starIconOutlined,
+                  tooltip: 'Add to Favourites',
+                  onPressed: () {
+                    setState(() {
+                      isFavourite = !isFavourite;
+                    });
+                    isFavourite
+                        ? ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 2),
+                              content: Text('Added to Favourites'),
+                            ),
+                          )
+                        : ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 2),
+                              content: Text('Removed from Favourites'),
+                            ),
+                          );
+                  },
+                ),
+              ]
+            : [],
       ),
       body: SingleChildScrollView(
         child: Column(
