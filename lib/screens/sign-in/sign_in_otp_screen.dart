@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
-import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
-import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 
 import '../../main.dart';
 import '../font_size_screen.dart';
 
 class SignInOTPScreen extends StatefulWidget {
+  final String number;
+  SignInOTPScreen({@required this.number});
+
   @override
   _SignInOTPScreenState createState() => _SignInOTPScreenState();
 }
 
 class _SignInOTPScreenState extends State<SignInOTPScreen> {
-  // TextEditingController textEditingController = TextEditingController();
-  // StreamController<ErrorAnimationType> errorController;
-  String currentText = "";
+  TextEditingController _otpController = TextEditingController();
+  // StreamController<ErrorAnimationType> errorController =
+  //     StreamController<ErrorAnimationType>();
+
+  String enteredOTP = "";
 
   signIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("isSignedIn", true);
     isSignedIn = true;
+  }
+
+  @override
+  void dispose() {
+    // errorController.close();
+    super.dispose();
   }
 
   @override
@@ -49,12 +59,27 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     fontFamily: 'SourceSerifPro',
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 24),
+                Text(
+                  'Enter OTP sent to ${widget.number}',
+                  style: TextStyle(
+                    fontSize: fontSize20,
+                    fontWeight: FontWeight.w400,
+                    color: subtleTextColor,
+                    fontFamily: 'SourceSansPro',
+                  ),
+                ),
+                SizedBox(height: 16),
                 PinCodeTextField(
+                  controller: _otpController,
+                  // errorAnimationController: errorController,
                   appContext: context,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                   length: 4,
                   obscureText: false,
-                  // animationType: AnimationType.fade,
+                  animationType: AnimationType.none,
                   pinTheme: PinTheme(
                     activeColor: moreSubtleTextColor,
                     disabledColor: moreSubtleTextColor,
@@ -64,7 +89,6 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     borderRadius: BorderRadius.circular(5),
                     fieldHeight: 60,
                     fieldWidth: 60,
-                    // activeFillColor: Colors.white,
                   ),
                   textStyle: TextStyle(
                     fontSize: fontSize24,
@@ -72,21 +96,35 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     color: normalTextColor,
                     fontFamily: 'SourceSansPro',
                   ),
-                  animationDuration: Duration(milliseconds: 50),
+                  animationDuration: Duration(milliseconds: 1),
                   keyboardType: TextInputType.number,
                   autoFocus: true,
                   autoDisposeControllers: true,
-                  // backgroundColor: Colors.blue.shade50,
-                  // enableActiveFill: true,
-                  // errorAnimationController: errorController,
-                  // controller: textEditingController,
                   onCompleted: (v) {
-                    print("Completed");
+                    signIn();
+                    if (returnRoute != null) {
+                      Navigator.popUntil(
+                          context, ModalRoute.withName(returnRoute));
+                      returnRoute = null;
+                    } else {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BottomBar(navigationIndex: 2),
+                          ),
+                          (route) => false);
+                    }
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        duration: Duration(seconds: 2),
+                        content: Text('Signed in successfully!'),
+                      ),
+                    );
                   },
                   onChanged: (value) {
                     print(value);
                     setState(() {
-                      currentText = value;
+                      enteredOTP = value;
                     });
                   },
                   beforeTextPaste: (text) {
@@ -96,7 +134,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     return false;
                   },
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 12),
                 Text(
                   'Re-send the OTP in 00:30',
                   style: TextStyle(
@@ -104,41 +142,6 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     fontWeight: FontWeight.w400,
                     color: activeBlue,
                     fontFamily: 'SourceSansPro',
-                  ),
-                ),
-                SizedBox(height: 22),
-                Container(
-                  height: 52,
-                  child: Row(
-                    children: [
-                      ExpandedPrimaryButton(
-                        fontSize: fontSize22,
-                        buttonTitle: 'Verify and Proceed',
-                        onPressedFunction: () {
-                          signIn();
-                          if (returnRoute != null) {
-                            Navigator.popUntil(
-                                context, ModalRoute.withName(returnRoute));
-                            returnRoute = null;
-                          } else {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      BottomBar(navigationIndex: 2),
-                                ),
-                                (route) => false);
-                          }
-
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              duration: Duration(seconds: 2),
-                              content: Text('Signed in successfully!'),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
                   ),
                 ),
                 SizedBox(height: 24),

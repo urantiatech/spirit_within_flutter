@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_otp_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
@@ -20,6 +23,7 @@ class SignInNumberScreen extends StatefulWidget {
 class _SignInNumberScreenState extends State<SignInNumberScreen> {
   TextEditingController _numberController = new TextEditingController();
   String number;
+  bool _validationEmptyError = false;
 
   @override
   void initState() {
@@ -52,7 +56,7 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 Text(
                   'Phone Number',
                   style: TextStyle(
-                    fontSize: fontSize22,
+                    fontSize: fontSize20,
                     fontWeight: FontWeight.w400,
                     color: subtleTextColor,
                     fontFamily: 'SourceSansPro',
@@ -61,7 +65,10 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                 SizedBox(height: 16),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: moreSubtleTextColor),
+                    border: Border.all(
+                        color: _validationEmptyError
+                            ? Color(0xFFE05031)
+                            : moreSubtleTextColor),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: CountryListPick(
@@ -120,36 +127,17 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                 cursorColor: Theme.of(context).accentColor,
                                 autofocus: true,
                                 onChanged: (String keyword) {
-                                  number = countryCode.dialCode + keyword;
+                                  setState(() {
+                                    _validationEmptyError = false;
+                                  });
+                                  number = countryCode.dialCode + " " + keyword;
                                   debugPrint(number);
                                 },
                               ),
                             ),
-                            // Text(
-                            //   countryCode.name,
-                            //   style: TextStyle(
-                            //     fontSize: fontSize20,
-                            //     fontWeight: FontWeight.w400,
-                            //     color: normalTextColor,
-                            //     fontFamily: 'SourceSansPro',
-                            //   ),
-                            // ),
-                            // Text(countryCode.dialCode),
                           ],
                         );
                       },
-
-                      // To disable option set to false
-                      // theme: CountryTheme(
-                      //   isShowFlag: true,
-                      //   isShowTitle: true,
-                      //   isShowCode: true,
-                      //   isDownIcon: true,
-                      //   showEnglishName: true,
-                      // ),
-                      // Set default value
-                      // initialSelection: '+91',
-                      // or
                       initialSelection: widget.countryCode ?? 'US',
                       onChanged: (CountryCode code) {
                         print(code.name);
@@ -160,63 +148,19 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                       // Whether the country list should be wrapped in a SafeArea
                       useSafeArea: false),
                 ),
-                // Container(
-                //   height: 50,
-                //   width: double.infinity,
-                //   color: Colors.red[100],
-                //   child: Row(
-                //     children: [
-                //       Text(selectedCountry == null ? '' : selectedCountry.name),
-                //     ],
-                //   ),
-                // ),
-                // CountryCodePicker(
-                //   // Issue: Can't search all country names in English as it displays in local language
-                //   onChanged: print,
-                //   // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                //   initialSelection: 'IT',
-                //   favorite: ['+39', 'FR'],
-                //   // optional. Shows only country name and flag
-                //   showCountryOnly: false,
-                //   // optional. Shows only country name and flag when popup is closed.
-                //   showOnlyCountryWhenClosed: false,
-                //   // optional. aligns the flag and the Text left
-                //   alignLeft: false,
-                // ),
-                // IntlPhoneField(
-                //   inputFormatters: [
-                //     LengthLimitingTextInputFormatter(10),
-                //     FilteringTextInputFormatter.digitsOnly,
-                //   ],
-                //   style: TextStyle(
-                //     fontSize: fontSize24,
-                //     fontWeight: FontWeight.w400,
-                //     color: normalTextColor,
-                //     fontFamily: 'SourceSansPro',
-                //   ),
-                //   decoration: InputDecoration(
-                //     hintText: 'Phone Number',
-                //     hintStyle: TextStyle(
-                //       fontSize: fontSize24,
-                //       fontWeight: FontWeight.w400,
-                //       color: subtleTextColor,
-                //       fontFamily: 'SourceSansPro',
-                //     ),
-                //     border: OutlineInputBorder(
-                //       borderSide: BorderSide(),
-                //     ),
-                //     counterText: '',
-                //   ),
-                //   enabled: true,
-                //   keyboardType: TextInputType.number,
-                //   maxLength: 10,
-                //   countryCodeTextColor: normalTextColor,
-                //   initialCountryCode: 'IN',
-                //   onChanged: (phone) {
-                //     print(phone.completeNumber);
-                //   },
-                // ),
-                SizedBox(height: 30),
+                SizedBox(height: 8),
+                _validationEmptyError
+                    ? Text(
+                        'Phone Number can\'t be empty',
+                        style: TextStyle(
+                          fontSize: fontSize18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFFE05031),
+                          fontFamily: 'SourceSansPro',
+                        ),
+                      )
+                    : SizedBox(),
+                SizedBox(height: 22),
                 Container(
                   height: 52,
                   child: Row(
@@ -225,13 +169,22 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                         fontSize: fontSize22,
                         buttonTitle: 'Send OTP',
                         onPressedFunction: () {
+                          setState(() {
+                            _numberController.text.isEmpty
+                                ? _validationEmptyError = true
+                                : _validationEmptyError = false;
+                          });
                           debugPrint("Number Entered: $number");
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignInOTPScreen(),
-                            ),
-                          );
+                          if (_numberController.text.isNotEmpty) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignInOTPScreen(
+                                  number: number,
+                                ),
+                              ),
+                            );
+                          }
                         },
                       ),
                     ],
