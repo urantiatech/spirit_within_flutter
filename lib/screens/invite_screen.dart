@@ -6,6 +6,8 @@ import 'package:spirit_within_flutter/widgets/search_bar.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import 'font_size_screen.dart';
+
 class InviteScreen extends StatefulWidget {
   @override
   _InviteScreenState createState() => _InviteScreenState();
@@ -19,12 +21,18 @@ class _InviteScreenState extends State<InviteScreen> {
   Iterable<Contact> _contacts;
   bool isInvited = true;
   bool isUsing = true;
+  bool showError = false;
 
   getContacts() async {
     if (await Permission.contacts.request().isGranted) {
       Iterable<Contact> contacts = await ContactsService.getContacts();
       setState(() {
         _contacts = contacts;
+      });
+    }
+    if (await Permission.contacts.isDenied) {
+      setState(() {
+        showError = true;
       });
     }
   }
@@ -40,32 +48,46 @@ class _InviteScreenState extends State<InviteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCenteredAppBar(),
-      body: Column(
-        children: [
-          SearchBar(hintText: 'Search Contacts'),
-          SizedBox(height: 15),
-          _contacts != null
-              ? Expanded(
-                  child: ListView.builder(
-                    itemCount: _contacts.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      isInvited = !isInvited;
-                      isUsing = !isUsing;
-                      return ContactCard(
-                        imgPath: 'assets/images/author.png',
-                        contactName: _contacts.elementAt(index).displayName,
-                        number: _contacts.elementAt(index).phones.first.value,
-                        isInvited: isInvited,
-                        isUsing: isUsing,
-                      );
-                    },
-                  ),
-                )
-              : Center(
-                  child: CircularProgressIndicator(),
-                )
-        ],
-      ),
+      body: showError
+          ? Center(
+              child: Text(
+                'Permission Denied',
+                style: TextStyle(
+                  fontSize: fontSize24,
+                  fontWeight: FontWeight.w300,
+                  color: normalTextColor,
+                  fontFamily: 'SourceSansPro',
+                ),
+              ),
+            )
+          : Column(
+              children: [
+                SearchBar(hintText: 'Search Contacts'),
+                SizedBox(height: 15),
+                _contacts != null
+                    ? Expanded(
+                        child: ListView.builder(
+                          itemCount: _contacts.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            isInvited = !isInvited;
+                            isUsing = !isUsing;
+                            return ContactCard(
+                              imgPath: 'assets/images/author.png',
+                              contactName:
+                                  _contacts.elementAt(index).displayName,
+                              number:
+                                  _contacts.elementAt(index).phones.first.value,
+                              isInvited: isInvited,
+                              isUsing: isUsing,
+                            );
+                          },
+                        ),
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(),
+                      )
+              ],
+            ),
     );
   }
 }
