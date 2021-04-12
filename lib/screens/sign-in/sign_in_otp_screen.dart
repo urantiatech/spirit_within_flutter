@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,13 +25,34 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
   TextEditingController _otpController = TextEditingController();
   // StreamController<ErrorAnimationType> errorController =
   //     StreamController<ErrorAnimationType>();
-
+  int _counter = 30;
+  Timer _timer;
   String enteredOTP = "";
+  bool isResendEnabled = false;
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_counter > 0) {
+          _counter--;
+        } else {
+          isResendEnabled = true;
+          _timer.cancel();
+        }
+      });
+    });
+  }
 
   signIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("isSignedIn", true);
     isSignedIn = true;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
   }
 
   @override
@@ -136,7 +159,7 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                 ),
                 SizedBox(height: 12),
                 Text(
-                  'Re-send the OTP in 00:30',
+                  'You may re-send the OTP in $_counter seconds',
                   style: TextStyle(
                     fontSize: fontSize18,
                     fontWeight: FontWeight.w400,
@@ -146,14 +169,13 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                 ),
                 SizedBox(height: 24),
                 Container(
-                  height: 52,
                   child: Row(
                     children: [
                       ExpandedSecondaryButton(
                         fontSize: fontSize22,
                         buttonTitle: 'Resend the OTP',
-                        onPressedFunction: null,
-                        isDisabled: true,
+                        onPressedFunction: isResendEnabled ? () {} : null,
+                        isDisabled: isResendEnabled ? false : true,
                       ),
                     ],
                   ),

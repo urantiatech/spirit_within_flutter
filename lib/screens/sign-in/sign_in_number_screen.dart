@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_otp_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
@@ -162,7 +159,6 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                     : SizedBox(),
                 SizedBox(height: 22),
                 Container(
-                  height: 52,
                   child: Row(
                     children: [
                       ExpandedPrimaryButton(

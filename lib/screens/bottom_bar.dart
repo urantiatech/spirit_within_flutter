@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/author_list_screen.dart';
+import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/screens/homescreen.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
@@ -90,8 +91,8 @@ class _BottomBarState extends State<BottomBar> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: normalTextColor,
         unselectedItemColor: inactiveBlue,
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
+        selectedFontSize: fontSize12,
+        unselectedFontSize: fontSize12,
         onTap: onTabTapped,
       ),
       body: PageView(
