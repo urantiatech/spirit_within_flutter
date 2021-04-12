@@ -29,7 +29,9 @@ class BlogListItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BlogScreen(),
+            builder: (context) => BlogScreen(
+              imgPath: imgPath,
+            ),
           ),
         );
       },

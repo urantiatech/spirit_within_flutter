@@ -9,6 +9,9 @@ import '../widgets/author_card.dart';
 import 'font_size_screen.dart';
 
 class BlogScreen extends StatefulWidget {
+  final String imgPath;
+  BlogScreen({@required this.imgPath});
+
   @override
   _BlogScreenState createState() => _BlogScreenState();
 }
@@ -26,7 +29,6 @@ class _BlogScreenState extends State<BlogScreen> {
   );
   @override
   Widget build(BuildContext context) {
-    var fullHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: buildCenteredAppBar(
@@ -60,52 +62,33 @@ class _BlogScreenState extends State<BlogScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              foregroundDecoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [0.01, 0.5],
-                  colors: [Colors.black, Colors.transparent],
-                ),
-              ),
-              child: Center(
-                child: Image.asset(
-                  'assets/images/blogbg.jpg',
-                  fit: BoxFit.fill,
-                  // height: fullHeight / 2,
-                ),
-              ),
-            ),
-            // ShaderMask(
-            //   shaderCallback: (rect) {
-            //     return LinearGradient(
-            //       begin: Alignment.topCenter,
-            //       end: Alignment.bottomCenter,
-            //       colors: [Colors.black, Colors.transparent],
-            //     ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-            //   },
-            //   blendMode: BlendMode.dstIn,
-            //   child: Image.asset(
-            //     'assets/images/blogbg.jpg',
-            //     fit: BoxFit.fill,
-            //     height: fullHeight / 2,
-            //   ),
-            // ),
-            // Container(
-            //   width: double.infinity,
-            //   child: Image.asset(
-            //     'assets/images/blogbg.jpg',
-            //     fit: BoxFit.fill,
-            //     height: fullHeight / 2,
-            //   ),
-            // ),
+            widget.imgPath == null
+                ? SizedBox()
+                : Container(
+                    foregroundDecoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        stops: [0.01, 0.5],
+                        colors: [Colors.black, Colors.transparent],
+                      ),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        widget.imgPath,
+                        fit: BoxFit.fill,
+                        // height: fullHeight / 2,
+                      ),
+                    ),
+                  ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
+                borderRadius: widget.imgPath == null
+                    ? null
+                    : BorderRadius.vertical(
+                        top: Radius.circular(40),
+                      ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
