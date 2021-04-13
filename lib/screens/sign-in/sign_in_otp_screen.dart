@@ -23,8 +23,6 @@ class SignInOTPScreen extends StatefulWidget {
 
 class _SignInOTPScreenState extends State<SignInOTPScreen> {
   TextEditingController _otpController = TextEditingController();
-  // StreamController<ErrorAnimationType> errorController =
-  //     StreamController<ErrorAnimationType>();
   int _counter = 30;
   Timer _timer;
   String enteredOTP = "";
@@ -32,14 +30,18 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
 
   void _startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_counter > 0) {
-          _counter--;
-        } else {
-          isResendEnabled = true;
-          _timer.cancel();
-        }
-      });
+      // check if mounted before calling setState() otherwise there will be a
+      // memory leak caused by calling setState() after dispose()
+      if (this.mounted) {
+        setState(() {
+          if (_counter > 0) {
+            _counter--;
+          } else {
+            isResendEnabled = true;
+            _timer.cancel();
+          }
+        });
+      }
     });
   }
 
@@ -53,12 +55,6 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
   void initState() {
     super.initState();
     _startTimer();
-  }
-
-  @override
-  void dispose() {
-    // errorController.close();
-    super.dispose();
   }
 
   @override
