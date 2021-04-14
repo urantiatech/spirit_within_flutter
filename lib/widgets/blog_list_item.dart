@@ -137,7 +137,7 @@ class BlogListItem extends StatelessWidget {
                 ? SizedBox()
                 : Container(
                     foregroundDecoration: BoxDecoration(
-                      color: disabled ? Colors.white54 : Colors.transparent,
+                      color: disabled ? Colors.white60 : Colors.transparent,
                     ),
                     padding: EdgeInsets.only(left: 16),
                     child: ClipRRect(

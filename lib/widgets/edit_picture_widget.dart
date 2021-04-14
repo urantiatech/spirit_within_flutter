@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:image_picker/image_picker.dart';
 
-class EditPictureWidget extends StatelessWidget {
+class EditPictureWidget extends StatefulWidget {
   final String imgPath;
   final Function onPressedFunction;
 
@@ -9,6 +12,36 @@ class EditPictureWidget extends StatelessWidget {
     @required this.imgPath,
     @required this.onPressedFunction,
   });
+
+  @override
+  _EditPictureWidgetState createState() => _EditPictureWidgetState();
+}
+
+class _EditPictureWidgetState extends State<EditPictureWidget> {
+  File _image;
+  final picker = ImagePicker();
+
+  Future _imgFromCamera() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  _imgFromGallery() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +64,11 @@ class EditPictureWidget extends StatelessWidget {
             child: CircleAvatar(
               radius: 55,
               backgroundColor: Colors.white38,
-              backgroundImage: AssetImage(
-                imgPath,
-              ),
+              backgroundImage: _image == null
+                  ? AssetImage(
+                      widget.imgPath,
+                    )
+                  : FileImage(_image),
             ),
           ),
         ),
@@ -50,22 +85,16 @@ class EditPictureWidget extends StatelessWidget {
               ),
             ),
             child: FloatingActionButton(
+              tooltip: 'Pick Image',
               heroTag: "ChangePictureButton",
-              onPressed: onPressedFunction,
+              onPressed: _imgFromCamera,
+              // onPressed: widget.onPressedFunction,
               splashColor: Color(0xFF4188FF),
               child: Icon(
                 Icons.camera_alt,
                 color: Colors.white,
               ),
             ),
-            // child: IconButton(
-            //   splashColor: Color(0x113177E0),
-            //   onPressed: onPressedFunction,
-            //   icon: Icon(
-            //     Icons.camera_alt,
-            //     color: Colors.white,
-            //   ),
-            // ),
           ),
         ),
       ],
