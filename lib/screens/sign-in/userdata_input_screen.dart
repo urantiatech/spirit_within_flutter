@@ -4,11 +4,12 @@ import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/auth/sign_in.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
-import 'package:spirit_within_flutter/widgets/edit_picture_widget.dart';
+import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 
 import '../bottom_bar.dart';
 import '../font_size_screen.dart';
+import '../my_profile_screen.dart';
 
 class UserDataInputScreen extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: EditPictureWidget(
+                  child: ProfilePictureWidget(
                     imgPath: 'assets/images/user.png',
                     onPressedFunction: () {},
                   ),
@@ -86,6 +87,8 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                       setState(() {
                         _validationEmptyError = false;
                       });
+                      activeUserName = keyword;
+                      setActiveUserName(name: activeUserName);
                       debugPrint(keyword);
                     },
                   ),

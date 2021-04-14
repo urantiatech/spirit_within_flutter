@@ -1,10 +1,9 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../main.dart';
 
 bool isSignedIn;
 
 signInCheck() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  isSignedIn = prefs.getBool("isSignedIn");
+  isSignedIn = sharedPreferences.getBool("isSignedIn");
   if (isSignedIn == null) {
     isSignedIn = false;
   }

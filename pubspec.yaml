@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  path_provider: ^2.0.1
   image_picker: ^0.7.4
   http: ^0.13.1
   country_list_pick: ^1.0.1+4

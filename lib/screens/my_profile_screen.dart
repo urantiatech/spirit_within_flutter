@@ -8,11 +8,22 @@ import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
-import 'package:spirit_within_flutter/widgets/edit_picture_widget.dart';
+import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
+import '../main.dart';
 import 'font_size_screen.dart';
+
+String activeUserName;
+
+setActiveUserName({@required String name}) async {
+  sharedPreferences.setString("activeUserName", name);
+}
+
+getActiveUserName() async {
+  activeUserName = sharedPreferences.getString("activeUserName");
+}
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -39,8 +50,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 24),
-                  EditPictureWidget(
-                    imgPath: 'assets/images/author.png',
+                  ProfilePictureWidget(
+                    imgPath: 'assets/images/user.png',
                     onPressedFunction: () {},
                   ),
                   SizedBox(height: 8),
@@ -48,7 +59,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Adi Saputra',
+                        activeUserName,
                         style: TextStyle(
                           fontSize: fontSize28,
                           fontWeight: FontWeight.w400,
@@ -78,28 +89,6 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           ),
                         ),
                       ),
-                      // Container(
-                      //   height: 32,
-                      //   width: 32,
-                      //   decoration: BoxDecoration(
-                      //     color: activeBlue,
-                      //     borderRadius: BorderRadius.only(
-                      //       topRight: Radius.circular(10),
-                      //       topLeft: Radius.circular(10),
-                      //       bottomRight: Radius.circular(10),
-                      //     ),
-                      //   ),
-                      //
-                      //   child: IconButton(
-                      //     splashColor: Color(0x113177E0),
-                      //     onPressed: () {},
-                      //     icon: Icon(
-                      //       Icons.edit,
-                      //       color: Colors.white,
-                      //       size: 16,
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                   SizedBox(height: 8),

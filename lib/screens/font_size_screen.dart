@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/config/font_size_settings.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/constants/sample_long_text.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
+
+import '../main.dart';
 
 class FontSizeScreen extends StatefulWidget {
   @override
@@ -84,8 +85,7 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
   static const double fixedFontSize26 = 26;
 
   setFontSizeSelection({value}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble("fontSizeOption", value);
+    await sharedPreferences.setDouble("fontSizeOption", value);
   }
 
   @override

@@ -1,22 +1,23 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/config/theme.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'config/font_size_settings.dart';
 import 'core/auth/sign_in_check.dart';
+import 'screens/my_profile_screen.dart';
 import 'screens/onboarding/onboarding.dart';
 
-bool onboardingDone;
+bool isIntroShown;
+SharedPreferences sharedPreferences;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  onboardingDone = prefs.getBool("initScreen");
+  sharedPreferences = await SharedPreferences.getInstance();
+  isIntroShown = sharedPreferences.getBool("isIntroShown");
   signInCheck();
   getFontSizeSelection();
-  await prefs.setBool("initScreen", true);
+  getActiveUserName();
+  await sharedPreferences.setBool("isIntroShown", true);
   runApp(MyApp());
 }
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SpiritWithin',
       theme: themeData,
-      home: onboardingDone != true ? Onboarding() : BottomBar(),
+      home: isIntroShown == false ? Onboarding() : BottomBar(),
     );
   }
 }
