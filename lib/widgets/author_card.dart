@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
-import 'package:spirit_within_flutter/main.dart';
+import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';

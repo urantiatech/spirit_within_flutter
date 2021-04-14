@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
-import 'package:spirit_within_flutter/main.dart';
+import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/models/blog.dart';
 import 'package:spirit_within_flutter/screens/chat/chat_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';

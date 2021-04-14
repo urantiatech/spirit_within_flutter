@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spirit_within_flutter/config/font_size_settings.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/constants/sample_long_text.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
-
-import '../main.dart';
 
 class FontSizeScreen extends StatefulWidget {
   @override
   _FontSizeScreenState createState() => _FontSizeScreenState();
 }
-
-// enum FontSizeOption { Small, Normal, Large, Largest }
 
 const double defaultFontSize28 = 28;
 const double defaultFontSize26 = 26;

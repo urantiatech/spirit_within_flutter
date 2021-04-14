@@ -50,6 +50,7 @@ class EditPictureWidget extends StatelessWidget {
               ),
             ),
             child: FloatingActionButton(
+              heroTag: "ChangePictureButton",
               onPressed: onPressedFunction,
               splashColor: Color(0xFF4188FF),
               child: Icon(

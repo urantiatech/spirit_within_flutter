@@ -2,16 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:spirit_within_flutter/screens/bottom_bar.dart';
-import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/userdata_input_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 
-import '../../main.dart';
 import '../font_size_screen.dart';
 
 class SignInOTPScreen extends StatefulWidget {

@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/core/auth/sign_in.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/edit_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 
-import '../../main.dart';
 import '../bottom_bar.dart';
 import '../font_size_screen.dart';
-
-signIn() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setBool("isSignedIn", true);
-  isSignedIn = true;
-}
 
 class UserDataInputScreen extends StatefulWidget {
   @override

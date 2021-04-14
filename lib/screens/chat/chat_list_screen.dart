@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/chat_list_item.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';

@@ -1,28 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:spirit_within_flutter/config/theme.dart';
-import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spirit_within_flutter/screens/font_size_screen.dart';
-import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
-import 'constants/api_paths.dart';
+import 'config/font_size_settings.dart';
+import 'core/auth/sign_in_check.dart';
+import 'core/onboarding/onboarding_done_check.dart';
 import 'screens/onboarding/onboarding.dart';
 
-bool onboardingScreenShown;
-bool isSignedIn;
-String currentCountryCode;
-enum FontSizeOption { Small, Normal, Large, Largest }
-
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  onboardingScreenShown = prefs.getBool("initScreen");
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
+  // onboardingDone = prefs.getBool("initScreen");
+  onboardingDoneCheck();
   signInCheck();
   getFontSizeSelection();
-  await prefs.setBool("initScreen", true);
+  // await prefs.setBool("initScreen", true);
   runApp(MyApp());
 }
 
@@ -32,33 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SpiritWithin',
       theme: themeData,
-      home: onboardingScreenShown != true ? Onboarding() : BottomBar(),
-      // routes: {
-      //   '/author_profile_screen': (context) => AuthorProfileScreen(),
-      // },
+      home: onboardingDone != true ? Onboarding() : BottomBar(),
     );
   }
-}
-
-signInCheck() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  isSignedIn = prefs.getBool("isSignedIn");
-  if (isSignedIn == null) {
-    isSignedIn = false;
-  }
-}
-
-Future<void> getCountryCode() async {
-  Response res = await get(Uri.parse(locationAPI));
-  Map data = jsonDecode(res.body);
-  currentCountryCode = data['countryCode'];
-}
-
-Future<void> getFontSizeSelection() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  fontSizeSliderValue = prefs.getDouble("fontSizeOption");
-  if (fontSizeSliderValue == null) {
-    fontSizeSliderValue = 1;
-  }
-  changeFontSize(newValue: fontSizeSliderValue);
 }

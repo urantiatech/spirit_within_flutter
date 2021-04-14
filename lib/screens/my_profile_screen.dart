@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
+import 'package:spirit_within_flutter/core/auth/sign_out.dart';
 import 'package:spirit_within_flutter/screens/app_settings_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
@@ -11,7 +12,6 @@ import 'package:spirit_within_flutter/widgets/edit_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
-import '../main.dart';
 import 'font_size_screen.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -20,12 +20,6 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
-  signOut() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("isSignedIn", false);
-    isSignedIn = false;
-  }
-
   @override
   void initState() {
     super.initState();
@@ -67,6 +61,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                         height: 32,
                         width: 32,
                         child: FloatingActionButton(
+                          heroTag: "ChangeNameButton",
                           onPressed: () {},
                           splashColor: Color(0xFF4188FF),
                           shape: RoundedRectangleBorder(
