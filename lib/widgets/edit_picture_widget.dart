@@ -51,7 +51,7 @@ class EditPictureWidget extends StatelessWidget {
             ),
             child: FloatingActionButton(
               onPressed: onPressedFunction,
-              splashColor: Color(0x9A3080FF),
+              splashColor: Color(0xFF4188FF),
               child: Icon(
                 Icons.camera_alt,
                 color: Colors.white,

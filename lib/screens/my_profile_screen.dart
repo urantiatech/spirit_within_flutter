@@ -66,24 +66,45 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       Container(
                         height: 32,
                         width: 32,
-                        decoration: BoxDecoration(
-                          color: activeBlue,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            topLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                          ),
-                        ),
-                        child: IconButton(
-                          splashColor: Color(0x113177E0),
+                        child: FloatingActionButton(
                           onPressed: () {},
-                          icon: Icon(
+                          splashColor: Color(0xFF4188FF),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              topLeft: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                            ),
+                          ),
+                          child: Icon(
                             Icons.edit,
                             color: Colors.white,
                             size: 16,
                           ),
                         ),
                       ),
+                      // Container(
+                      //   height: 32,
+                      //   width: 32,
+                      //   decoration: BoxDecoration(
+                      //     color: activeBlue,
+                      //     borderRadius: BorderRadius.only(
+                      //       topRight: Radius.circular(10),
+                      //       topLeft: Radius.circular(10),
+                      //       bottomRight: Radius.circular(10),
+                      //     ),
+                      //   ),
+                      //
+                      //   child: IconButton(
+                      //     splashColor: Color(0x113177E0),
+                      //     onPressed: () {},
+                      //     icon: Icon(
+                      //       Icons.edit,
+                      //       color: Colors.white,
+                      //       size: 16,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                   SizedBox(height: 8),
