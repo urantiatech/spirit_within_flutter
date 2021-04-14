@@ -7,6 +7,7 @@ import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
+import 'package:spirit_within_flutter/widgets/edit_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
 
@@ -44,54 +45,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 24),
-                  Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 8,
-                              color: Color(0x3F061730),
-                              spreadRadius: 0,
-                            ),
-                          ],
-                        ),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 59,
-                          child: CircleAvatar(
-                            radius: 55,
-                            backgroundColor: Colors.green[200],
-                            backgroundImage: AssetImage(
-                              'assets/images/author.png',
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 0,
-                        child: Container(
-                          height: 44,
-                          width: 44,
-                          decoration: BoxDecoration(
-                            color: activeBlue,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(40),
-                            ),
-                          ),
-                          child: IconButton(
-                            splashColor: Color(0x113177E0),
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.camera_alt,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  EditPictureWidget(
+                    imgPath: 'assets/images/author.png',
+                    onPressedFunction: () {},
                   ),
                   SizedBox(height: 8),
                   Row(

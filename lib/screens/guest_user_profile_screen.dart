@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
-import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
@@ -32,12 +31,7 @@ class _GuestUserProfileScreenState extends State<GuestUserProfileScreen> {
             child: Placeholder(
               color: moreSubtleTextColor,
             ),
-            // child: Container(
-            //   decoration: BoxDecoration(
-            //     color: Colors.blue[100],
-            //     shape: BoxShape.circle,
-            //   ),
-            // ),
+            // child: SizedBox(),
           ),
           SizedBox(height: 30),
           Column(
