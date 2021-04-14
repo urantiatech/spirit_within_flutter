@@ -10,7 +10,6 @@ class BlogListItem extends StatelessWidget {
   final String author;
   final String imgPath;
   final bool disabled;
-  // final Function deleteBlogFunction;
 
   const BlogListItem({
     this.title,
@@ -19,7 +18,6 @@ class BlogListItem extends StatelessWidget {
     this.author,
     this.imgPath,
     this.disabled = false,
-    // this.deleteBlogFunction,
   });
 
   @override
@@ -59,7 +57,7 @@ class BlogListItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: fontSize20,
                         fontWeight: FontWeight.w600,
-                        color: disabled ? subtleTextColor : normalTextColor,
+                        color: disabled ? moreSubtleTextColor : normalTextColor,
                         fontFamily: 'SourceSerifPro',
                       ),
                     ),
@@ -75,7 +73,7 @@ class BlogListItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: fontSize14,
                         fontWeight: FontWeight.w400,
-                        color: subtleTextColor,
+                        color: disabled ? moreSubtleTextColor : subtleTextColor,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
@@ -137,7 +135,10 @@ class BlogListItem extends StatelessWidget {
             ),
             imgPath == null
                 ? SizedBox()
-                : Padding(
+                : Container(
+                    foregroundDecoration: BoxDecoration(
+                      color: disabled ? Colors.white54 : Colors.transparent,
+                    ),
                     padding: EdgeInsets.only(left: 16),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),

@@ -33,8 +33,6 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                   actionExtentRatio: 0.25,
                   secondaryActions: [
                     IconSlideAction(
-                      // caption:
-                      //     blogList[index].isPublished ? 'Unpublish' : 'Publish',
                       color: activeBlue,
                       iconWidget: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,9 +57,6 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                           )
                         ],
                       ),
-                      // icon: blogList[index].isPublished
-                      //     ? Icons.public_off_rounded
-                      //     : Icons.public_rounded,
                       onTap: () {
                         setState(() {
                           blogList[index].isPublished =
@@ -70,7 +65,6 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                       },
                     ),
                     IconSlideAction(
-                      // caption: 'Delete',
                       color: Colors.red,
                       iconWidget: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +85,6 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                           )
                         ],
                       ),
-                      // icon: Icons.delete,
                       onTap: () {
                         showDeleteDialog(context, index);
                       },
@@ -104,9 +97,6 @@ class _ManageBlogsScreenState extends State<ManageBlogsScreen> {
                     author: blogList[index].author,
                     imgPath: 'assets/images/mona.jpg',
                     disabled: !blogList[index].isPublished,
-                    // deleteBlogFunction: () {
-                    //   showDeleteDialog(context, index);
-                    // },
                   ),
                 );
               },
