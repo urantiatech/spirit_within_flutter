@@ -21,6 +21,12 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
   TextEditingController _nameController = new TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _nameController.text = activeUserName + " ";
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCenteredAppBar(),
@@ -33,8 +39,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
               children: [
                 Center(
                   child: ProfilePictureWidget(
-                    imgPath: 'assets/images/user.png',
-                    onPressedFunction: () {},
+                    imgPath: activeProfilePicturePath,
                   ),
                 ),
                 SizedBox(height: 30),
@@ -76,20 +81,17 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                     ),
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(30),
-                      // FilteringTextInputFormatter.digitsOnly,
                     ],
-                    // keyboardType: TextInputType.number,
                     controller: _nameController,
                     textCapitalization: TextCapitalization.words,
                     cursorColor: Theme.of(context).accentColor,
                     autofocus: true,
                     onChanged: (String keyword) {
+                      debugPrint(keyword);
                       setState(() {
                         _validationEmptyError = false;
                       });
                       activeUserName = keyword;
-                      setActiveUserName(name: activeUserName);
-                      debugPrint(keyword);
                     },
                   ),
                 ),
@@ -130,6 +132,11 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                               : _validationEmptyError = false;
                         });
                         if (_nameController.text.isNotEmpty) {
+                          setActiveUserDetails(
+                            activeUserName: activeUserName,
+                            activeProfilePicturePath:
+                                activeProfilePicturePath ?? "",
+                          );
                           signIn();
                           if (returnRoute != null) {
                             Navigator.popUntil(

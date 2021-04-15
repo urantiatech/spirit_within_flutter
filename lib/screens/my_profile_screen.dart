@@ -7,6 +7,7 @@ import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
+import 'package:spirit_within_flutter/screens/sign-in/userdata_input_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
@@ -16,13 +17,21 @@ import '../main.dart';
 import 'font_size_screen.dart';
 
 String activeUserName;
+String activeProfilePicturePath;
 
-setActiveUserName({@required String name}) async {
-  sharedPreferences.setString("activeUserName", name);
+setActiveUserDetails({
+  @required String activeUserName,
+  String activeProfilePicturePath,
+}) {
+  sharedPreferences.setString("activeUserName", activeUserName);
+  if (activeProfilePicturePath != "") {
+    sharedPreferences.setString("profilePicturePath", activeProfilePicturePath);
+  }
 }
 
-getActiveUserName() async {
+getActiveUserDetails() {
   activeUserName = sharedPreferences.getString("activeUserName");
+  activeProfilePicturePath = sharedPreferences.getString("profilePicturePath");
 }
 
 class MyProfileScreen extends StatefulWidget {
@@ -44,55 +53,79 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
     }
     return !isSignedIn
         ? GuestUserProfileScreen()
-        // ? SignInToContinueScreen()
         : Scaffold(
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(height: 24),
                   ProfilePictureWidget(
-                    imgPath: 'assets/images/user.png',
-                    onPressedFunction: () {},
+                    imgPath: activeProfilePicturePath,
                   ),
-                  SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        activeUserName,
-                        style: TextStyle(
-                          fontSize: fontSize28,
-                          fontWeight: FontWeight.w400,
-                          color: normalTextColor,
-                          fontFamily: 'SourceSerifPro',
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Container(
-                        height: 32,
-                        width: 32,
-                        child: FloatingActionButton(
-                          heroTag: "ChangeNameButton",
-                          onPressed: () {},
-                          splashColor: Color(0xFF4188FF),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // SizedBox(
+                        //   height: 32,
+                        //   width: 32,
+                        // ),
+                        // SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            activeUserName,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.clip,
+                            style: TextStyle(
+                              fontSize: fontSize28,
+                              fontWeight: FontWeight.w400,
+                              color: normalTextColor,
+                              fontFamily: 'SourceSerifPro',
                             ),
                           ),
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                            size: 16,
+                        ),
+                        SizedBox(width: 8),
+                        Container(
+                          height: 32,
+                          width: 32,
+                          child: FloatingActionButton(
+                            backgroundColor: activeBlue,
+                            // tooltip: "Edit Name",
+                            heroTag: "ChangeNameButton",
+                            onPressed: () {
+                              showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(40.0),
+                                  ),
+                                ),
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (context) {
+                                  return Text('abc');
+                                },
+                              );
+                            },
+                            splashColor: Color(0xFF4188FF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                topLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 16,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 8),
-                  SizedBox(height: 12),
+                  SizedBox(height: 20),
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

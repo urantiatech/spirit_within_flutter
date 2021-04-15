@@ -5,18 +5,17 @@ import 'package:path_provider/path_provider.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
+import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 
 import '../main.dart';
 
-String activeProfilePicturePath;
-
 class ProfilePictureWidget extends StatefulWidget {
   final String imgPath;
-  final Function onPressedFunction;
+  // final Function onPressedFunction;
 
   const ProfilePictureWidget({
-    @required this.imgPath,
-    @required this.onPressedFunction,
+    this.imgPath,
+    // @required this.onPressedFunction,
   });
 
   @override
@@ -50,54 +49,58 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
     await _image.copy(activeProfilePicturePath);
   }
 
+  // getProfilePicture() async {
+  //   debugPrint('getProfilePicture called');
+  //   activeProfilePicturePath =
+  //       sharedPreferences.getString("profilePicturePath");
+  //   if (activeProfilePicturePath != null) {
+  //     setState(() {
+  //       _image = File(activeProfilePicturePath);
+  //     });
+  //   }
+  // }
+
   void _showPicker(context) {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: new Wrap(
-              children: <Widget>[
-                new ListTile(
-                    leading: new Icon(Icons.photo_library),
-                    title: new Text('Gallery'),
-                    onTap: () {
-                      _getImage(imageSource: ImageSource.gallery);
-                      Navigator.of(context).pop();
-                    }),
-                new ListTile(
-                  leading: new Icon(Icons.photo_camera),
-                  title: new Text('Camera'),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          child: new Wrap(
+            children: <Widget>[
+              new ListTile(
+                  leading: new Icon(Icons.photo_library),
+                  title: new Text('Gallery'),
                   onTap: () {
-                    _getImage(imageSource: ImageSource.camera);
+                    _getImage(imageSource: ImageSource.gallery);
                     Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  getProfilePicture() async {
-    debugPrint('getProfilePicture called');
-    activeProfilePicturePath =
-        sharedPreferences.getString("profilePicturePath");
-    if (activeProfilePicturePath != null) {
-      setState(() {
-        _image = File(activeProfilePicturePath);
-      });
-    }
+                  }),
+              new ListTile(
+                leading: new Icon(Icons.photo_camera),
+                title: new Text('Camera'),
+                onTap: () {
+                  _getImage(imageSource: ImageSource.camera);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
   void initState() {
     super.initState();
-    getProfilePicture();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.imgPath != null) {
+      _image = File(widget.imgPath);
+    }
+
     return Stack(
       children: [
         Container(
@@ -118,9 +121,7 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
               radius: 55,
               backgroundColor: Colors.white38,
               backgroundImage: _image == null
-                  ? AssetImage(
-                      widget.imgPath,
-                    )
+                  ? AssetImage("assets/images/user.png")
                   : FileImage(_image),
             ),
           ),
@@ -138,7 +139,8 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
               ),
             ),
             child: FloatingActionButton(
-              tooltip: 'Pick Image',
+              backgroundColor: activeBlue,
+              // tooltip: 'Pick Image',
               heroTag: "ChangePictureButton",
               onPressed: () {
                 _showPicker(context);

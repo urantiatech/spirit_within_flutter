@@ -16,7 +16,7 @@ void main() async {
   isIntroShown = sharedPreferences.getBool("isIntroShown");
   signInCheck();
   getFontSizeSelection();
-  getActiveUserName();
+  getActiveUserDetails();
   await sharedPreferences.setBool("isIntroShown", true);
   runApp(MyApp());
 }
