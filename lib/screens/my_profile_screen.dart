@@ -8,7 +8,6 @@ import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
-import 'package:spirit_within_flutter/screens/sign-in/userdata_input_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
@@ -43,6 +42,9 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
+  // TextEditingController textEditingController =
+  //     TextEditingController(text: activeUserName);
+
   @override
   void initState() {
     super.initState();
@@ -60,6 +62,10 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
+                  // TextField(
+                  //   controller: textEditingController,
+                  //   autofocus: true,
+                  // ),
                   SizedBox(height: 24),
                   ProfilePictureWidget(
                     imgPath: activeProfilePicturePath,
@@ -225,12 +231,16 @@ class BottomEditNameSheet extends StatefulWidget {
 
 class _BottomEditNameSheetState extends State<BottomEditNameSheet> {
   bool _validationEmptyError = false;
-  TextEditingController _nameController = new TextEditingController();
+  TextEditingController _nameController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _nameController.text = activeUserName + " ";
+    _nameController.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: _nameController.text.length,
+    );
   }
 
   @override
@@ -279,13 +289,13 @@ class _BottomEditNameSheetState extends State<BottomEditNameSheet> {
               ),
               inputFormatters: [
                 LengthLimitingTextInputFormatter(30),
+                // FilteringTextInputFormatter.deny(RegExp('[ ]')),
               ],
               controller: _nameController,
               textCapitalization: TextCapitalization.words,
               cursorColor: Theme.of(context).accentColor,
               autofocus: true,
               onChanged: (String keyword) {
-                debugPrint(keyword);
                 setState(() {
                   _validationEmptyError = false;
                 });
@@ -315,21 +325,15 @@ class _BottomEditNameSheetState extends State<BottomEditNameSheet> {
                 fontSize: fontSize18,
                 onPressedFunction: () {
                   setState(() {
-                    _nameController.text.isEmpty
+                    _nameController.text.trim().isEmpty
                         ? _validationEmptyError = true
                         : _validationEmptyError = false;
                   });
-                  if (_nameController.text.isNotEmpty) {
-                    activeUserName = _nameController.text;
+                  if (_nameController.text.trim().isNotEmpty) {
+                    activeUserName = _nameController.text.trim();
                     setActiveUserDetails(
                       activeUserName: activeUserName,
                       activeProfilePicturePath: activeProfilePicturePath ?? "",
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        duration: Duration(seconds: 2),
-                        content: Text('Name Changed successfully!'),
-                      ),
                     );
                     Navigator.pop(context);
                   }

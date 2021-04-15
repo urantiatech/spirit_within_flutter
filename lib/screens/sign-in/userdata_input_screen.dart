@@ -24,6 +24,10 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
   void initState() {
     super.initState();
     _nameController.text = activeUserName + " ";
+    _nameController.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: _nameController.text.length,
+    );
   }
 
   @override
@@ -125,12 +129,12 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                       fontSize: fontSize22,
                       onPressedFunction: () {
                         setState(() {
-                          _nameController.text.isEmpty
+                          _nameController.text.trim().isEmpty
                               ? _validationEmptyError = true
                               : _validationEmptyError = false;
                         });
-                        if (_nameController.text.isNotEmpty) {
-                          activeUserName = _nameController.text;
+                        if (_nameController.text.trim().isNotEmpty) {
+                          activeUserName = _nameController.text.trim();
                           setActiveUserDetails(
                             activeUserName: activeUserName,
                             activeProfilePicturePath:
