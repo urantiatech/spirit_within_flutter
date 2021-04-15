@@ -87,11 +87,9 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                     cursorColor: Theme.of(context).accentColor,
                     autofocus: true,
                     onChanged: (String keyword) {
-                      debugPrint(keyword);
                       setState(() {
                         _validationEmptyError = false;
                       });
-                      activeUserName = keyword;
                     },
                   ),
                 ),
@@ -132,6 +130,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                               : _validationEmptyError = false;
                         });
                         if (_nameController.text.isNotEmpty) {
+                          activeUserName = _nameController.text;
                           setActiveUserDetails(
                             activeUserName: activeUserName,
                             activeProfilePicturePath:

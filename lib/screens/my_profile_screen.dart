@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/core/auth/sign_out.dart';
@@ -9,6 +10,8 @@ import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/userdata_input_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
+import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
+import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
@@ -93,8 +96,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                             backgroundColor: activeBlue,
                             // tooltip: "Edit Name",
                             heroTag: "ChangeNameButton",
-                            onPressed: () {
-                              showModalBottomSheet(
+                            onPressed: () async {
+                              await showModalBottomSheet(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.vertical(
                                     top: Radius.circular(40.0),
@@ -103,9 +106,12 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                                 isScrollControlled: true,
                                 context: context,
                                 builder: (context) {
-                                  return Text('abc');
+                                  return SingleChildScrollView(
+                                    child: BottomEditNameSheet(),
+                                  );
                                 },
                               );
+                              setState(() {});
                             },
                             splashColor: Color(0xFF4188FF),
                             shape: RoundedRectangleBorder(
@@ -209,5 +215,139 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               ),
             ),
           );
+  }
+}
+
+class BottomEditNameSheet extends StatefulWidget {
+  @override
+  _BottomEditNameSheetState createState() => _BottomEditNameSheetState();
+}
+
+class _BottomEditNameSheetState extends State<BottomEditNameSheet> {
+  bool _validationEmptyError = false;
+  TextEditingController _nameController = new TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController.text = activeUserName + " ";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 30),
+          Text(
+            'Name',
+            style: TextStyle(
+              fontSize: fontSize20,
+              fontWeight: FontWeight.w400,
+              color: subtleTextColor,
+              fontFamily: 'SourceSansPro',
+            ),
+          ),
+          SizedBox(height: 16),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: _validationEmptyError
+                      ? Color(0xFFE05031)
+                      : moreSubtleTextColor),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter Name',
+                hintStyle: TextStyle(
+                  color: moreSubtleTextColor,
+                  fontSize: fontSize22,
+                  fontFamily: 'SourceSansPro',
+                  fontWeight: FontWeight.w400,
+                ),
+                border: InputBorder.none,
+              ),
+              style: TextStyle(
+                color: normalTextColor,
+                fontSize: fontSize22,
+                fontFamily: 'SourceSansPro',
+                fontWeight: FontWeight.w400,
+              ),
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(30),
+              ],
+              controller: _nameController,
+              textCapitalization: TextCapitalization.words,
+              cursorColor: Theme.of(context).accentColor,
+              autofocus: true,
+              onChanged: (String keyword) {
+                debugPrint(keyword);
+                setState(() {
+                  _validationEmptyError = false;
+                });
+              },
+            ),
+          ),
+          SizedBox(height: 8),
+          _validationEmptyError
+              ? Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'Name can\'t be empty',
+                    style: TextStyle(
+                      fontSize: fontSize18,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFFE05031),
+                      fontFamily: 'SourceSansPro',
+                    ),
+                  ),
+                )
+              : SizedBox(),
+          SizedBox(height: 12),
+          Row(
+            children: [
+              ExpandedPrimaryButton(
+                buttonTitle: 'Save',
+                fontSize: fontSize18,
+                onPressedFunction: () {
+                  setState(() {
+                    _nameController.text.isEmpty
+                        ? _validationEmptyError = true
+                        : _validationEmptyError = false;
+                  });
+                  if (_nameController.text.isNotEmpty) {
+                    activeUserName = _nameController.text;
+                    setActiveUserDetails(
+                      activeUserName: activeUserName,
+                      activeProfilePicturePath: activeProfilePicturePath ?? "",
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        duration: Duration(seconds: 2),
+                        content: Text('Name Changed successfully!'),
+                      ),
+                    );
+                    Navigator.pop(context);
+                  }
+                },
+              ),
+              SizedBox(width: 12),
+              ExpandedSecondaryButton(
+                buttonTitle: 'Cancel',
+                fontSize: fontSize18,
+                onPressedFunction: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+          SizedBox(height: 30),
+        ],
+      ),
+    );
   }
 }
