@@ -14,6 +14,7 @@ import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 import 'package:spirit_within_flutter/widgets/profile_stats_column.dart';
+import 'package:share/share.dart';
 
 import '../main.dart';
 import 'font_size_screen.dart';
@@ -181,13 +182,19 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     iconData: Icons.person_add_alt_1_outlined,
                     descTitle: 'Invite Friends',
                     onPressedFunction: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => InviteScreen(),
-                        ),
+                      Share.share(
+                        'Hey,\nCheck out TheSpiritWithin app, a secure and reliable blogging app.\n\nGet it for free at https://play.google.com/store/apps/',
+                        subject: 'TheSpiritWithin App Invite',
                       );
                     },
+                    // onPressedFunction: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => InviteScreen(),
+                    //     ),
+                    //   );
+                    // },
                   ),
                   DividerLine(),
                   IconDescriptionCard(

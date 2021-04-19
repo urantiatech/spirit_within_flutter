@@ -80,7 +80,6 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
     if (activeProfilePicturePath != null) {
       _profilePictureImage = File(activeProfilePicturePath);
     }
-
     return Stack(
       children: [
         Container(
