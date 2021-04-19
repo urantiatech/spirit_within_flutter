@@ -5,12 +5,12 @@ import 'package:spirit_within_flutter/widgets/search_bar.dart';
 
 import 'font_size_screen.dart';
 
-class AuthorsScreen extends StatefulWidget {
+class AuthorListScreen extends StatefulWidget {
   @override
-  _AuthorsScreenState createState() => _AuthorsScreenState();
+  _AuthorListScreenState createState() => _AuthorListScreenState();
 }
 
-class _AuthorsScreenState extends State<AuthorsScreen> {
+class _AuthorListScreenState extends State<AuthorListScreen> {
   bool isPopularSelected = true;
   @override
   Widget build(BuildContext context) {

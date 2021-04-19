@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
+import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
@@ -27,13 +28,17 @@ class _AuthorCardState extends State<AuthorCard> {
     return TextButton(
       onPressed: () {
         // Navigator.of(context).pushNamed('/author_profile_screen');
-        Navigator.of(context).push(
+        Navigator.of(context)
+            .push(
           // context,
           MaterialPageRoute(
             builder: (context) => AuthorProfileScreen(),
             settings: RouteSettings(name: '/author_profile_screen'),
           ),
-        );
+        )
+            .then((value) {
+          setStateBottomBar();
+        });
       },
       style: ButtonStyle(
         padding: MaterialStateProperty.all(

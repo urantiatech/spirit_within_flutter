@@ -15,6 +15,8 @@ class BottomBar extends StatefulWidget {
   _BottomBarState createState() => new _BottomBarState();
 }
 
+Function setStateBottomBar;
+
 class _BottomBarState extends State<BottomBar> {
   int _pageIndex = 0;
   PageController _pageController;
@@ -22,13 +24,14 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> tabPages = [
     HomeScreen(),
-    AuthorsScreen(),
+    AuthorListScreen(),
     MyProfileScreen(),
   ];
 
   @override
   void initState() {
     super.initState();
+    setStateBottomBar = updateBottomBar;
     _pageIndex = widget.navigationIndex ?? 0;
     _pageController = PageController(initialPage: _pageIndex);
   }
@@ -37,6 +40,10 @@ class _BottomBarState extends State<BottomBar> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  void updateBottomBar() {
+    setState(() {});
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/auth/sign_in.dart';
+import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/profile_picture_widget.dart';
@@ -143,9 +144,12 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                                 activeProfilePicturePath ?? "",
                           );
                           signIn();
+
                           if (returnRoute != null) {
                             Navigator.popUntil(
-                                context, ModalRoute.withName(returnRoute));
+                              context,
+                              ModalRoute.withName(returnRoute),
+                            );
                             returnRoute = null;
                           } else {
                             Navigator.pushAndRemoveUntil(
