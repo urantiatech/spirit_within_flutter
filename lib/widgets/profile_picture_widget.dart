@@ -15,14 +15,14 @@ class ProfilePictureWidget extends StatefulWidget {
 }
 
 class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
-  File _image;
+  File _profilePictureImage;
   final picker = ImagePicker();
 
   Future _getImage({@required ImageSource imageSource}) async {
     final pickedFile = await picker.getImage(source: imageSource);
     setState(() {
       if (pickedFile != null) {
-        _image = File(pickedFile.path);
+        _profilePictureImage = File(pickedFile.path);
         _saveImage();
       } else {
         print('No image selected.');
@@ -34,10 +34,10 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
     Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
     // Directory appDocumentsDirectory = await getExternalStorageDirectory();
     String path = appDocumentsDirectory.path;
-    var fileName = basename(_image.path);
+    var fileName = basename(_profilePictureImage.path);
     activeProfilePicturePath = '$path/$fileName';
     sharedPreferences.setString("profilePicturePath", activeProfilePicturePath);
-    await _image.copy(activeProfilePicturePath);
+    await _profilePictureImage.copy(activeProfilePicturePath);
   }
 
   void _showPicker(context) {
@@ -78,7 +78,7 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
   @override
   Widget build(BuildContext context) {
     if (activeProfilePicturePath != null) {
-      _image = File(activeProfilePicturePath);
+      _profilePictureImage = File(activeProfilePicturePath);
     }
 
     return Stack(
@@ -100,9 +100,9 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
             child: CircleAvatar(
               radius: 55,
               backgroundColor: Colors.white38,
-              backgroundImage: _image == null
+              backgroundImage: _profilePictureImage == null
                   ? AssetImage("assets/images/user.png")
-                  : FileImage(_image),
+                  : FileImage(_profilePictureImage),
             ),
           ),
         ),

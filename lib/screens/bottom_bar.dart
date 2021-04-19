@@ -8,6 +8,8 @@ import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/left_aligned_app_bar.dart';
 
+import 'dart:io';
+
 class BottomBar extends StatefulWidget {
   final int navigationIndex;
   BottomBar({this.navigationIndex});
@@ -18,6 +20,7 @@ class BottomBar extends StatefulWidget {
 Function setStateBottomBar;
 
 class _BottomBarState extends State<BottomBar> {
+  File _profilePictureImage;
   int _pageIndex = 0;
   PageController _pageController;
   double appBarFontSize = 20;
@@ -48,6 +51,10 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    if (activeProfilePicturePath != null) {
+      _profilePictureImage = File(activeProfilePicturePath);
+    }
+
     return Scaffold(
       appBar:
           isSignedIn ? buildLeftAlignedAppBar(context) : buildCenteredAppBar(),
@@ -83,7 +90,7 @@ class _BottomBarState extends State<BottomBar> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/dp.jpg'),
+                        image: FileImage(_profilePictureImage),
                         // image: AssetImage('assets/images/dp.jpg'),
                       ),
                     ),
