@@ -27,7 +27,6 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
   final picker = ImagePicker();
 
   Future _getImage({@required ImageSource imageSource}) async {
-    debugPrint('_getImage called');
     final pickedFile = await picker.getImage(source: imageSource);
     setState(() {
       if (pickedFile != null) {
@@ -48,17 +47,6 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
     sharedPreferences.setString("profilePicturePath", activeProfilePicturePath);
     await _image.copy(activeProfilePicturePath);
   }
-
-  // getProfilePicture() async {
-  //   debugPrint('getProfilePicture called');
-  //   activeProfilePicturePath =
-  //       sharedPreferences.getString("profilePicturePath");
-  //   if (activeProfilePicturePath != null) {
-  //     setState(() {
-  //       _image = File(activeProfilePicturePath);
-  //     });
-  //   }
-  // }
 
   void _showPicker(context) {
     showModalBottomSheet(

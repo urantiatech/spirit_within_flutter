@@ -23,11 +23,13 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = activeUserName + " ";
-    _nameController.selection = TextSelection(
-      baseOffset: 0,
-      extentOffset: _nameController.text.length,
-    );
+    if (activeUserName != null) {
+      _nameController.text = activeUserName + " ";
+      _nameController.selection = TextSelection(
+        baseOffset: 0,
+        extentOffset: _nameController.text.length,
+      );
+    }
   }
 
   @override

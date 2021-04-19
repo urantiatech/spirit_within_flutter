@@ -84,8 +84,8 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
   static const double fixedFontSize18 = 18;
   static const double fixedFontSize26 = 26;
 
-  setFontSizeSelection({value}) async {
-    await sharedPreferences.setDouble("fontSizeOption", value);
+  setFontSizeSelection({value}) {
+    sharedPreferences.setDouble("fontSizeOption", value);
   }
 
   @override

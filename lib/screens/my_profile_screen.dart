@@ -98,6 +98,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                         Container(
                           height: 32,
                           width: 32,
+                          margin: EdgeInsets.only(bottom: 6),
                           child: FloatingActionButton(
                             backgroundColor: activeBlue,
                             // tooltip: "Edit Name",
@@ -236,11 +237,13 @@ class _BottomEditNameSheetState extends State<BottomEditNameSheet> {
   @override
   void initState() {
     super.initState();
-    _nameController.text = activeUserName + " ";
-    _nameController.selection = TextSelection(
-      baseOffset: 0,
-      extentOffset: _nameController.text.length,
-    );
+    if (activeUserName != null) {
+      _nameController.text = activeUserName + " ";
+      _nameController.selection = TextSelection(
+        baseOffset: 0,
+        extentOffset: _nameController.text.length,
+      );
+    }
   }
 
   @override

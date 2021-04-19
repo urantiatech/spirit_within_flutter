@@ -4,8 +4,12 @@ import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 
 class SearchBar extends StatelessWidget {
   final String hintText;
+  final onChangedFunction;
 
-  SearchBar({@required this.hintText});
+  SearchBar({
+    @required this.hintText,
+    this.onChangedFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class SearchBar extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
               cursorColor: Theme.of(context).accentColor,
-              onChanged: (String keyword) {},
+              onChanged: onChangedFunction,
             ),
           ),
           Icon(

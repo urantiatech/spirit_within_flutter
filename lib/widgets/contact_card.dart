@@ -13,8 +13,8 @@ class ContactCard extends StatelessWidget {
     @required this.imgPath,
     @required this.contactName,
     @required this.number,
-    @required this.isInvited,
-    @required this.isUsing,
+    this.isInvited = false,
+    this.isUsing = false,
   });
 
   @override
@@ -92,7 +92,7 @@ class ContactCard extends StatelessWidget {
                 )
               : isInvited
                   ? Padding(
-                      padding: EdgeInsets.only(right: 16),
+                      padding: EdgeInsets.only(right: 20),
                       child: Text(
                         'Invited',
                         style: TextStyle(

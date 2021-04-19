@@ -5,18 +5,23 @@ import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   final String imgPath;
   final String authorName;
   final int followersCount;
-  final bool following;
-  const AuthorCard({
+  bool following;
+  AuthorCard({
     @required this.imgPath,
     @required this.authorName,
     @required this.followersCount,
     @required this.following,
   });
 
+  @override
+  _AuthorCardState createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -46,7 +51,7 @@ class AuthorCard extends StatelessWidget {
                   radius: 28,
                   backgroundColor: Colors.green[200],
                   backgroundImage: AssetImage(
-                    imgPath,
+                    widget.imgPath,
                   ),
                 ),
                 SizedBox(
@@ -56,7 +61,7 @@ class AuthorCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      authorName,
+                      widget.authorName,
                       style: TextStyle(
                         fontSize: fontSize16,
                         fontWeight: FontWeight.w600,
@@ -68,7 +73,7 @@ class AuthorCard extends StatelessWidget {
                       height: 7,
                     ),
                     Text(
-                      '$followersCount followers',
+                      '${widget.followersCount} followers',
                       style: TextStyle(
                         fontSize: fontSize14,
                         fontWeight: FontWeight.w400,
@@ -81,7 +86,7 @@ class AuthorCard extends StatelessWidget {
               ],
             ),
             isSignedIn
-                ? following
+                ? widget.following
                     ? Padding(
                         padding: EdgeInsets.only(right: 12),
                         child: Text(
@@ -97,6 +102,9 @@ class AuthorCard extends StatelessWidget {
                     : SecondaryButton(
                         buttonTitle: 'Follow',
                         onPressedFunction: () {
+                          setState(() {
+                            widget.following = true;
+                          });
                           debugPrint('Follow Pressed');
                         },
                       )

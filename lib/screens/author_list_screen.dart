@@ -106,7 +106,12 @@ class TopTabButton extends StatelessWidget {
   }
 }
 
-class PopularAuthorsColumn extends StatelessWidget {
+class PopularAuthorsColumn extends StatefulWidget {
+  @override
+  _PopularAuthorsColumnState createState() => _PopularAuthorsColumnState();
+}
+
+class _PopularAuthorsColumnState extends State<PopularAuthorsColumn> {
   @override
   Widget build(BuildContext context) {
     return Column(

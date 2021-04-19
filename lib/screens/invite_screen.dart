@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
@@ -14,33 +16,41 @@ class InviteScreen extends StatefulWidget {
 }
 
 class _InviteScreenState extends State<InviteScreen> {
-  // requestContactsPermission() async {
-  //   await Permission.contacts.request();
-  // }
-
   Iterable<Contact> _contacts;
   bool isInvited = true;
   bool isUsing = true;
-  bool showError = false;
+  bool isContactsPermissionDenied = false;
+  List<Contact> _contactsList;
+  List<Contact> _contactsListCopy;
 
   getContacts() async {
     if (await Permission.contacts.request().isGranted) {
       Iterable<Contact> contacts = await ContactsService.getContacts();
       setState(() {
         _contacts = contacts;
+        _contactsList = _contacts.toList();
+        _contactsListCopy = List.from(_contactsList);
       });
     }
     if (await Permission.contacts.isDenied) {
       setState(() {
-        showError = true;
+        isContactsPermissionDenied = true;
       });
     }
+  }
+
+  onItemChanged(String value) {
+    setState(() {
+      _contactsListCopy = _contactsList
+          .where((contact) =>
+              contact.displayName.toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    // requestContactsPermission();
     getContacts();
   }
 
@@ -48,7 +58,7 @@ class _InviteScreenState extends State<InviteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCenteredAppBar(),
-      body: showError
+      body: isContactsPermissionDenied
           ? Center(
               child: Text(
                 'Permission Denied',
@@ -62,21 +72,30 @@ class _InviteScreenState extends State<InviteScreen> {
             )
           : Column(
               children: [
-                SearchBar(hintText: 'Search Contacts'),
+                SearchBar(
+                  hintText: 'Search Contacts',
+                  onChangedFunction: onItemChanged,
+                ),
                 SizedBox(height: 15),
-                _contacts != null
+                _contactsListCopy != null
                     ? Expanded(
                         child: ListView.builder(
-                          itemCount: _contacts.length,
+                          itemCount: _contactsListCopy.length,
                           itemBuilder: (BuildContext context, int index) {
-                            isInvited = !isInvited;
-                            isUsing = !isUsing;
+                            // isInvited = !isInvited;
+                            // isUsing = !isUsing;
+                            isInvited = Random().nextBool();
+                            isUsing = Random().nextBool();
                             return ContactCard(
                               imgPath: 'assets/images/author.png',
-                              contactName:
-                                  _contacts.elementAt(index).displayName,
-                              number:
-                                  _contacts.elementAt(index).phones.first.value,
+                              contactName: _contactsListCopy
+                                  .elementAt(index)
+                                  .displayName,
+                              number: _contactsListCopy
+                                  .elementAt(index)
+                                  .phones
+                                  .first
+                                  .value,
                               isInvited: isInvited,
                               isUsing: isUsing,
                             );

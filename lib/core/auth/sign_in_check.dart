@@ -2,7 +2,7 @@ import '../../main.dart';
 
 bool isSignedIn;
 
-signInCheck() async {
+signInCheck() {
   isSignedIn = sharedPreferences.getBool("isSignedIn");
   if (isSignedIn == null) {
     isSignedIn = false;

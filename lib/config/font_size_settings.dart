@@ -4,7 +4,7 @@ import '../main.dart';
 
 enum FontSizeOption { Small, Normal, Large, Largest }
 
-Future<void> getFontSizeSelection() async {
+getFontSizeSelection() {
   fontSizeSliderValue = sharedPreferences.getDouble("fontSizeOption");
   if (fontSizeSliderValue == null) {
     fontSizeSliderValue = 1;
