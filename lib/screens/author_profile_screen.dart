@@ -28,8 +28,7 @@ class _AuthorProfileScreenState extends State<AuthorProfileScreen> {
       ),
       context: context,
       builder: (BuildContext context) {
-        returnRoute = '/author_profile_screen';
-        return SignInToContinueModal();
+        return SignInToContinueModal(returnRoutePath: '/author_profile_screen');
       },
     );
   }

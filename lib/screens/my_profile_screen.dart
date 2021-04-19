@@ -42,9 +42,6 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
-  // TextEditingController textEditingController =
-  //     TextEditingController(text: activeUserName);
-
   @override
   void initState() {
     super.initState();
@@ -62,14 +59,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  // TextField(
-                  //   controller: textEditingController,
-                  //   autofocus: true,
-                  // ),
                   SizedBox(height: 24),
-                  ProfilePictureWidget(
-                    imgPath: activeProfilePicturePath,
-                  ),
+                  ProfilePictureWidget(),
                   SizedBox(height: 16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),

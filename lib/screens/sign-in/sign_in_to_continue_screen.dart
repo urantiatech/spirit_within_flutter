@@ -4,7 +4,6 @@ import 'package:spirit_within_flutter/core/location/get_country_code.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 
-import '../../main.dart';
 import '../font_size_screen.dart';
 
 String returnRoute;
@@ -31,6 +30,9 @@ class _SignInToContinueScreenState extends State<SignInToContinueScreen> {
 }
 
 class SignInToContinueModal extends StatelessWidget {
+  final String returnRoutePath;
+  SignInToContinueModal({this.returnRoutePath});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -59,6 +61,8 @@ class SignInToContinueModal extends StatelessWidget {
           SizedBox(height: 24),
           TextButton(
             onPressed: () {
+              returnRoute = returnRoutePath;
+              debugPrint('returnRoute set to /author_profile_screen');
               Navigator.push(
                 context,
                 MaterialPageRoute(

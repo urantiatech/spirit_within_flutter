@@ -84,6 +84,7 @@ class _BottomBarState extends State<BottomBar> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('assets/images/dp.jpg'),
+                        // image: AssetImage('assets/images/dp.jpg'),
                       ),
                     ),
                   )

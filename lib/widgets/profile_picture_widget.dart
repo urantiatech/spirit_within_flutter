@@ -10,14 +10,6 @@ import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 import '../main.dart';
 
 class ProfilePictureWidget extends StatefulWidget {
-  final String imgPath;
-  // final Function onPressedFunction;
-
-  const ProfilePictureWidget({
-    this.imgPath,
-    // @required this.onPressedFunction,
-  });
-
   @override
   _ProfilePictureWidgetState createState() => _ProfilePictureWidgetState();
 }
@@ -85,8 +77,8 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.imgPath != null) {
-      _image = File(widget.imgPath);
+    if (activeProfilePicturePath != null) {
+      _image = File(activeProfilePicturePath);
     }
 
     return Stack(
