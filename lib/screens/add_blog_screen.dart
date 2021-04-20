@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quill_delta/quill_delta.dart';
+import 'package:spirit_within_flutter/utils/zefyr_plugin/myapp_zefyr_image_delegate.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:zefyr/zefyr.dart';
 
@@ -16,6 +17,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
   ZefyrController _controller;
   FocusNode _focusNode;
   bool showZefyrHint = true;
+
   @override
   void initState() {
     super.initState();
@@ -93,6 +95,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                         controller: _controller,
                         focusNode: _focusNode,
                         autofocus: false,
+                        imageDelegate: MyAppZefyrImageDelegate(),
                         decoration: InputDecoration(
                           // hintText: 'Content',
                           border: InputBorder.none,

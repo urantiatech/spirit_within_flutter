@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
+import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
 
 import '../main.dart';
@@ -24,6 +25,7 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
       if (pickedFile != null) {
         _profilePictureImage = File(pickedFile.path);
         _saveImage();
+        setStateBottomBar();
       } else {
         print('No image selected.');
       }
@@ -32,10 +34,11 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
 
   Future _saveImage() async {
     Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
-    // Directory appDocumentsDirectory = await getExternalStorageDirectory();
     String path = appDocumentsDirectory.path;
     var fileName = basename(_profilePictureImage.path);
-    activeProfilePicturePath = '$path/$fileName';
+    setState(() {
+      activeProfilePicturePath = '$path/$fileName';
+    });
     sharedPreferences.setString("profilePicturePath", activeProfilePicturePath);
     await _profilePictureImage.copy(activeProfilePicturePath);
   }
