@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
@@ -36,7 +37,11 @@ class _AppSettingsScreenState extends State<AppSettingsScreen> {
                   MaterialPageRoute(
                     builder: (context) => FontSizeScreen(),
                   ),
-                ).then((value) => {setState(() {})});
+                ).then((value) {
+                  setState(() {});
+                  setStateBottomBar();
+                });
+                // .then((value) => {setState(() {})});
               },
             ),
           ],
