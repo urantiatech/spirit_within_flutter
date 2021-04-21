@@ -39,7 +39,7 @@ AppBar buildLeftAlignedAppBar(BuildContext context) {
       ),
       IconButton(
         icon: const Icon(Icons.add),
-        tooltip: 'Add Blog',
+        tooltip: 'Write a Blog',
         onPressed: () {
           Navigator.push(
             context,

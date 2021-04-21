@@ -141,22 +141,14 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                                 activeProfilePicturePath ?? "",
                           );
                           signIn();
-                          debugPrint('is returnRoute null?');
-                          debugPrint((returnRoute == null).toString());
-                          debugPrint(
-                              'returnRoute is current set to $returnRoute');
                           if (returnRoute != null) {
-                            debugPrint('took path 1');
                             Navigator.popUntil(
                               context,
                               ModalRoute.withName(returnRoute),
                             );
                             returnRoute = null;
-                            debugPrint('returnRoute is set to null');
-                            debugPrint('is returnRoute null?');
-                            debugPrint((returnRoute == null).toString());
                           } else {
-                            debugPrint('took path 2');
+                            // TODO modify this and make it efficient
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(

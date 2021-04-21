@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:spirit_within_flutter/utils/zefyr_plugin/zefyr_image_delegate_abstract.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:zefyr/zefyr.dart';

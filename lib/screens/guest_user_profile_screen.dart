@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/location/get_country_code.dart';
 import 'package:spirit_within_flutter/screens/sign-in/sign_in_number_screen.dart';
@@ -8,7 +9,6 @@ import 'package:spirit_within_flutter/widgets/icon_description_card.dart';
 
 import 'app_settings_screen.dart';
 import 'font_size_screen.dart';
-import 'invite_screen.dart';
 
 class GuestUserProfileScreen extends StatefulWidget {
   @override
@@ -108,11 +108,9 @@ class _GuestUserProfileScreenState extends State<GuestUserProfileScreen> {
                 iconData: Icons.person_add_alt_1_outlined,
                 descTitle: 'Invite Friends',
                 onPressedFunction: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => InviteScreen(),
-                    ),
+                  Share.share(
+                    'Hey,\nCheck out TheSpiritWithin app, a secure and reliable blogging app.\n\nGet it for free at https://play.google.com/store/apps/',
+                    subject: 'TheSpiritWithin App Invite',
                   );
                 },
               ),

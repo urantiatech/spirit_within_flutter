@@ -21,26 +21,28 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
 
   Future _getImage({@required ImageSource imageSource}) async {
     final pickedFile = await picker.getImage(source: imageSource);
-    setState(() {
-      if (pickedFile != null) {
+
+    if (pickedFile != null) {
+      setState(() {
         _profilePictureImage = File(pickedFile.path);
-        _saveImage();
-        setStateBottomBar();
-      } else {
-        print('No image selected.');
-      }
-    });
+      });
+      _saveImage();
+    } else {
+      print('No image selected.');
+    }
   }
 
   Future _saveImage() async {
     Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
     String path = appDocumentsDirectory.path;
     var fileName = basename(_profilePictureImage.path);
+    await _profilePictureImage.copy('$path/$fileName');
     setState(() {
       activeProfilePicturePath = '$path/$fileName';
     });
+    setStateBottomBar();
     sharedPreferences.setString("profilePicturePath", activeProfilePicturePath);
-    await _profilePictureImage.copy(activeProfilePicturePath);
+    // await _profilePictureImage.copy(activeProfilePicturePath);
   }
 
   void _showPicker(context) {
@@ -52,17 +54,18 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
           child: new Wrap(
             children: <Widget>[
               new ListTile(
-                  leading: new Icon(Icons.photo_library),
-                  title: new Text('Gallery'),
-                  onTap: () {
-                    _getImage(imageSource: ImageSource.gallery);
-                    Navigator.of(context).pop();
-                  }),
-              new ListTile(
                 leading: new Icon(Icons.photo_camera),
                 title: new Text('Camera'),
                 onTap: () {
                   _getImage(imageSource: ImageSource.camera);
+                  Navigator.of(context).pop();
+                },
+              ),
+              new ListTile(
+                leading: new Icon(Icons.photo_library),
+                title: new Text('Gallery'),
+                onTap: () {
+                  _getImage(imageSource: ImageSource.gallery);
                   Navigator.of(context).pop();
                 },
               ),
@@ -127,7 +130,6 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
               onPressed: () {
                 _showPicker(context);
               },
-              // onPressed: widget.onPressedFunction,
               splashColor: Color(0xFF4188FF),
               child: Icon(
                 Icons.camera_alt,

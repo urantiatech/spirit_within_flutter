@@ -90,8 +90,9 @@ class _BottomBarState extends State<BottomBar> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: FileImage(_profilePictureImage),
-                        // image: AssetImage('assets/images/dp.jpg'),
+                        image: _profilePictureImage == null
+                            ? AssetImage('assets/images/user.png')
+                            : FileImage(_profilePictureImage),
                       ),
                     ),
                   )
