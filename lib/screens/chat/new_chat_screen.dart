@@ -35,7 +35,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
             ),
             DividerLine(),
             NewChatListItem(
-              authorName: 'Robert Downey Jr.',
+              authorName: 'Robert Downy Jr.',
               imgPath: 'assets/images/author.png',
             ),
           ],

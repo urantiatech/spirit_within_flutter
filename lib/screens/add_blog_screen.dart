@@ -121,6 +121,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
       },
       child: Scaffold(
         appBar: buildCenteredAppBar(
+          title: 'New Blog',
           actions: [
             IconButton(
               icon: const Icon(
