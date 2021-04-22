@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spirit_within_flutter/constants/app_constants.dart';
+import 'package:spirit_within_flutter/screens/chat/new_chat_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/chat_list_item.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
@@ -23,7 +25,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
               imgPath: 'assets/images/author.png',
               authorName: 'Andrew Rash',
               lastMessage:
-                  'Maybe you should try to install AC (Air Conditioning), so that the temprature is more comfortable',
+                  'Maybe you should try to install AC (Air Conditioning), so that the temperature is more comfortable',
               time: '10:00 PM',
               numberOfUnread: 2,
             ),
@@ -32,7 +34,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
               imgPath: 'assets/images/author.png',
               authorName: 'Kamayel Alpha',
               lastMessage:
-                  'Maybe you should try to install AC (Air Conditioning), so that the temprature is more comfortable',
+                  'Maybe you should try to install AC (Air Conditioning), so that the temperature is more comfortable',
               time: '03:00 PM',
               numberOfUnread: 0,
             ),
@@ -41,12 +43,24 @@ class _ChatListScreenState extends State<ChatListScreen> {
               imgPath: 'assets/images/author.png',
               authorName: 'Andrew Rash',
               lastMessage:
-                  'Maybe you should try to install AC (Air Conditioning), so that the temprature is more comfortable',
+                  'Maybe you should try to install AC (Air Conditioning), so that the temperature is more comfortable',
               time: 'Yesterday',
               numberOfUnread: 0,
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: activeBlue,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewChatScreen(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
