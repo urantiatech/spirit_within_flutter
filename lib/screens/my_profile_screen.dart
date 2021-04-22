@@ -6,7 +6,6 @@ import 'package:spirit_within_flutter/core/auth/sign_out.dart';
 import 'package:spirit_within_flutter/screens/app_settings_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/guest_user_profile_screen.dart';
-import 'package:spirit_within_flutter/screens/invite_screen.dart';
 import 'package:spirit_within_flutter/screens/manage_blogs_screen.dart';
 import 'package:spirit_within_flutter/widgets/divider_line.dart';
 import 'package:spirit_within_flutter/widgets/expanded_primary_button.dart';
@@ -167,6 +166,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   DividerLine(),
                   IconDescriptionCard(
                     iconData: Icons.settings_outlined,
+                    // iconData: Icons.settings_outlined,
                     descTitle: 'App Settings',
                     onPressedFunction: () {
                       Navigator.push(

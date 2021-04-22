@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quill_delta/quill_delta.dart';
+import 'package:spirit_within_flutter/config/urantia_icons_icons.dart';
 import 'package:spirit_within_flutter/utils/zefyr_plugin/myapp_zefyr_image_delegate.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:zefyr/zefyr.dart';
@@ -122,7 +123,10 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
         appBar: buildCenteredAppBar(
           actions: [
             IconButton(
-              icon: const Icon(Icons.send_rounded),
+              icon: const Icon(
+                UrantiaIcons.send_regular,
+                size: 32,
+              ),
               tooltip: 'Upload',
               onPressed: () {
                 debugPrint(jsonEncode(_controller.document));

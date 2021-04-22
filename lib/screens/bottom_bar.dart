@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spirit_within_flutter/config/urantia_icons_icons.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/screens/author_list_screen.dart';
@@ -62,15 +63,14 @@ class _BottomBarState extends State<BottomBar> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_rounded,
-              size: 24,
+              UrantiaIcons.home,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.people_alt,
-              size: 24,
+              // Icons.people_alt,
+              UrantiaIcons.people_audience_filled,
             ),
             label: 'Authors',
           ),
@@ -97,8 +97,7 @@ class _BottomBarState extends State<BottomBar> {
                     ),
                   )
                 : Icon(
-                    Icons.person,
-                    size: 24,
+                    UrantiaIcons.profile,
                   ),
           ),
         ],

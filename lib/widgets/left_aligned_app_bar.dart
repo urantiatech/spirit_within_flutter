@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spirit_within_flutter/config/urantia_icons_icons.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:spirit_within_flutter/screens/add_blog_screen.dart';
 import 'package:spirit_within_flutter/screens/chat/chat_list_screen.dart';
@@ -14,7 +15,10 @@ AppBar buildLeftAlignedAppBar(BuildContext context) {
     ),
     actions: [
       IconButton(
-        icon: const Icon(Icons.mark_email_unread_outlined),
+        icon: const Icon(
+          UrantiaIcons.mail_all_regular,
+        ),
+        // icon: const Icon(Icons.mark_email_unread_outlined),
         tooltip: 'Conversations',
         onPressed: () {
           Navigator.push(
