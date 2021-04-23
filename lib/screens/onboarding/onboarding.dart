@@ -72,9 +72,15 @@ class _OnboardingState extends State<Onboarding> {
             PageView(
               controller: _pageController,
               children: [
-                IntroScreen(totalHeight: totalHeight),
-                IntroScreen(totalHeight: totalHeight),
-                IntroScreen(totalHeight: totalHeight),
+                IntroScreen(
+                  imgPath: 'assets/images/img1.jpg',
+                ),
+                IntroScreen(
+                  imgPath: 'assets/images/img3.jpg',
+                ),
+                IntroScreen(
+                  imgPath: 'assets/images/img4.jpg',
+                ),
               ],
               onPageChanged: (int index) {
                 setState(() {

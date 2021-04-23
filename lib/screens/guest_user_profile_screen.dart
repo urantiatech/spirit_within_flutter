@@ -28,10 +28,23 @@ class _GuestUserProfileScreenState extends State<GuestUserProfileScreen> {
       body: Column(
         children: [
           Expanded(
-            child: Placeholder(
-              color: moreSubtleTextColor,
+            child: Container(
+              foregroundDecoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  stops: [0.01, 0.5],
+                  colors: [Color(0xFFFAFAFA), Colors.transparent],
+                ),
+              ),
+              child: Image.asset(
+                'assets/images/img6.jpg',
+                fit: BoxFit.fill,
+              ),
             ),
-            // child: SizedBox(),
+            // child: Placeholder(
+            //   color: moreSubtleTextColor,
+            // ),
           ),
           SizedBox(height: 30),
           Column(
