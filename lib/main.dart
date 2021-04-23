@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SpiritWithin',
       theme: themeData,
-      home: isIntroShown == false ? Onboarding() : BottomBar(),
+      home: isIntroShown == null ? Onboarding() : BottomBar(),
     );
   }
 }
