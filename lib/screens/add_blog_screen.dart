@@ -21,7 +21,7 @@ class AddBlogScreen extends StatefulWidget {
 }
 
 class _AddBlogScreenState extends State<AddBlogScreen> {
-  ZefyrController _controller;
+  ZefyrController _zefyrController;
   TextEditingController _titleController;
   FocusNode _focusNode;
   bool showZefyrHint = true;
@@ -34,7 +34,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
 
     _loadDocument().then((document) {
       setState(() {
-        _controller = ZefyrController(document);
+        _zefyrController = ZefyrController(document);
       });
     });
 
@@ -67,10 +67,10 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
 
   void _saveIncompleteDocument(BuildContext context) {
     _saveIncompleteTitle();
-    final contents = jsonEncode(_controller.document);
+    final contents = jsonEncode(_zefyrController.document);
     final file = File(Directory.systemTemp.path + "/incomplete_blog.json");
     file.writeAsString(contents).then((_) {
-      if (_emptyZefyrField != _controller.document.toString()) {
+      if (_emptyZefyrField != _zefyrController.document.toString()) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             duration: Duration(seconds: 2),
@@ -104,13 +104,15 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (_controller != null) {
+    if (_zefyrController != null) {
       setState(() {
-        showZefyrHint = _emptyZefyrField == _controller.document.toString();
+        showZefyrHint =
+            _emptyZefyrField == _zefyrController.document.toString();
       });
-      _controller.document.changes.listen((event) {
+      _zefyrController.document.changes.listen((event) {
         setState(() {
-          showZefyrHint = _emptyZefyrField == _controller.document.toString();
+          showZefyrHint =
+              _emptyZefyrField == _zefyrController.document.toString();
         });
       });
     }
@@ -126,12 +128,15 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
           actions: [
             IconButton(
               icon: const Icon(
-                UrantiaIcons.send_regular,
-                size: 32,
+                Icons.post_add_rounded,
               ),
-              tooltip: 'Upload',
+              // icon: const Icon(
+              //   UrantiaIcons.send_regular,
+              //   size: 32,
+              // ),
+              tooltip: 'Post',
               onPressed: () {
-                debugPrint(jsonEncode(_controller.document));
+                debugPrint(jsonEncode(_zefyrController.document));
                 _deleteFromLocal().then((value) {
                   // Navigator.push(
                   //   context,
@@ -141,6 +146,16 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                   //     ),
                   //   ),
                   // );
+                  if (_emptyZefyrField ==
+                      _zefyrController.document.toString()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        duration: Duration(seconds: 2),
+                        content: Text('Cannot Post an Empty Blog!'),
+                      ),
+                    );
+                    return;
+                  }
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
@@ -160,7 +175,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
             ),
           ],
         ),
-        body: _controller == null
+        body: _zefyrController == null
             ? CircularProgressIndicator()
             : ZefyrScaffold(
                 child: Padding(
@@ -207,7 +222,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 30),
                               child: ZefyrField(
-                                controller: _controller,
+                                controller: _zefyrController,
                                 focusNode: _focusNode,
                                 autofocus: false,
                                 imageDelegate: MyAppZefyrImageDelegate(),

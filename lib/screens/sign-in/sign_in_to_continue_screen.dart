@@ -17,7 +17,6 @@ class _SignInToContinueScreenState extends State<SignInToContinueScreen> {
   @override
   void initState() {
     super.initState();
-    getCountryCode();
   }
 
   @override
@@ -35,6 +34,7 @@ class SignInToContinueModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getCountryCode();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
