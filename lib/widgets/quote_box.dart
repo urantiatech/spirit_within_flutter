@@ -112,8 +112,11 @@ class _QuoteBoxState extends State<QuoteBox> {
                         ),
                         onPressed: () {
                           Share.share(
-                            widget.quoteText + "\n~ " + widget.quoteAuthor,
-                            subject: 'Quote shared from TheSpiritWithin App',
+                            widget.quoteText +
+                                "\n~ " +
+                                widget.quoteAuthor +
+                                "\n Shared from The Spirit Within App",
+                            subject: 'Quote shared from The Spirit Within App',
                           );
                         },
                       ),
