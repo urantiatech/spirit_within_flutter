@@ -128,7 +128,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
           actions: [
             IconButton(
               icon: const Icon(
-                Icons.post_add_rounded,
+                Icons.check,
               ),
               // icon: const Icon(
               //   UrantiaIcons.send_regular,
