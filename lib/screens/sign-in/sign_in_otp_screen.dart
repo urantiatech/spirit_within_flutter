@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spirit_within_flutter/constants/app_constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:spirit_within_flutter/core/auth/sign_in.dart';
+import 'package:spirit_within_flutter/screens/my_profile_screen.dart';
+import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/screens/sign-in/userdata_input_screen.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:spirit_within_flutter/widgets/expanded_secondary_button.dart';
 
+import '../bottom_bar.dart';
 import '../font_size_screen.dart';
 
 class SignInOTPScreen extends StatefulWidget {
@@ -111,12 +115,38 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                   autoFocus: true,
                   autoDisposeControllers: true,
                   onCompleted: (v) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => UserDataInputScreen(),
-                      ),
-                    );
+                    if (activeUserName == null) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserDataInputScreen(),
+                        ),
+                      );
+                    } else {
+                      signIn();
+                      if (returnRoute != null) {
+                        Navigator.popUntil(
+                          context,
+                          ModalRoute.withName(returnRoute),
+                        );
+                        returnRoute = null;
+                      } else {
+                        // TODO modify this and make it efficient
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  BottomBar(navigationIndex: 2),
+                            ),
+                            (route) => false);
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          duration: Duration(seconds: 2),
+                          content: Text('Signed in successfully!'),
+                        ),
+                      );
+                    }
                   },
                   onChanged: (value) {
                     print(value);

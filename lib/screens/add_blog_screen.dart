@@ -4,8 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quill_delta/quill_delta.dart';
-import 'package:spirit_within_flutter/config/urantia_icons_icons.dart';
-import 'package:spirit_within_flutter/screens/demo_screen.dart';
 import 'package:spirit_within_flutter/utils/zefyr_plugin/myapp_zefyr_image_delegate.dart';
 import 'package:spirit_within_flutter/widgets/centered_appbar.dart';
 import 'package:zefyr/zefyr.dart';
@@ -225,6 +223,7 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                                 controller: _zefyrController,
                                 focusNode: _focusNode,
                                 autofocus: false,
+                                // toolbarDelegate: MyAppZefyrToolbarDelegate(),
                                 imageDelegate: MyAppZefyrImageDelegate(),
                                 decoration: InputDecoration(
                                   // hintText: 'Content',
