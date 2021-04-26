@@ -4,6 +4,7 @@ import 'package:spirit_within_flutter/core/auth/sign_in_check.dart';
 import 'package:spirit_within_flutter/screens/author_profile_screen.dart';
 import 'package:spirit_within_flutter/screens/bottom_bar.dart';
 import 'package:spirit_within_flutter/screens/font_size_screen.dart';
+import 'package:spirit_within_flutter/screens/sign-in/sign_in_to_continue_screen.dart';
 import 'package:spirit_within_flutter/widgets/secondary_button.dart';
 
 class AuthorCard extends StatefulWidget {
@@ -23,6 +24,22 @@ class AuthorCard extends StatefulWidget {
 }
 
 class _AuthorCardState extends State<AuthorCard> {
+  bottomSheetCircularCorners() {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(40.0),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return SignInToContinueModal(
+          returnRoutePath: '/author_list_screen',
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -90,30 +107,29 @@ class _AuthorCardState extends State<AuthorCard> {
                 ),
               ],
             ),
-            isSignedIn
-                ? widget.following
-                    ? Padding(
-                        padding: EdgeInsets.only(right: 12),
-                        child: Text(
-                          'Following',
-                          style: TextStyle(
-                            fontSize: fontSize16,
-                            fontWeight: FontWeight.w400,
-                            color: subtleTextColor,
-                            fontFamily: 'SourceSansPro',
-                          ),
-                        ),
-                      )
-                    : SecondaryButton(
-                        buttonTitle: 'Follow',
-                        onPressedFunction: () {
-                          setState(() {
-                            widget.following = true;
-                          });
-                          debugPrint('Follow Pressed');
-                        },
-                      )
-                : SizedBox(),
+            widget.following
+                ? Padding(
+                    padding: EdgeInsets.only(right: 12),
+                    child: Text(
+                      'Following',
+                      style: TextStyle(
+                        fontSize: fontSize16,
+                        fontWeight: FontWeight.w400,
+                        color: subtleTextColor,
+                        fontFamily: 'SourceSansPro',
+                      ),
+                    ),
+                  )
+                : SecondaryButton(
+                    buttonTitle: 'Follow',
+                    onPressedFunction: () {
+                      isSignedIn
+                          ? setState(() {
+                              widget.following = true;
+                            })
+                          : bottomSheetCircularCorners();
+                    },
+                  )
           ],
         ),
       ),

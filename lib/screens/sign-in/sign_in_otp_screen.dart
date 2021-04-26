@@ -125,10 +125,20 @@ class _SignInOTPScreenState extends State<SignInOTPScreen> {
                     } else {
                       signIn();
                       if (returnRoute != null) {
-                        Navigator.popUntil(
-                          context,
-                          ModalRoute.withName(returnRoute),
-                        );
+                        if (returnRoute == '/author_list_screen') {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    BottomBar(navigationIndex: 1),
+                              ),
+                              (route) => false);
+                        } else {
+                          Navigator.popUntil(
+                            context,
+                            ModalRoute.withName(returnRoute),
+                          );
+                        }
                         returnRoute = null;
                       } else {
                         // TODO modify this and make it efficient

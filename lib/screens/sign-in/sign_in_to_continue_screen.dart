@@ -62,7 +62,6 @@ class SignInToContinueModal extends StatelessWidget {
           TextButton(
             onPressed: () {
               returnRoute = returnRoutePath;
-              debugPrint('returnRoute set to /author_profile_screen');
               Navigator.push(
                 context,
                 MaterialPageRoute(
