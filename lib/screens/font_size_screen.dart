@@ -172,7 +172,11 @@ class _FontSizeScreenState extends State<FontSizeScreen> {
                 SizedBox(height: 24),
                 Center(
                   child: Text(
-                    selectedFontSizeOption.toString().split('.')[1],
+                    selectedFontSizeOption
+                        .toString()
+                        .split('.')[1]
+                        .replaceAll("_", " "),
+                    // selectedFontSizeOption.toString().split('.')[1],
                     style: TextStyle(
                       fontSize: fixedFontSize18,
                       fontWeight: FontWeight.w400,
