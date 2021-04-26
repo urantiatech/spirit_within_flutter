@@ -128,7 +128,6 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                     _validationEmptyError = false;
                                   });
                                   number = countryCode.dialCode + " " + keyword;
-                                  debugPrint(number);
                                 },
                               ),
                             ),
@@ -170,7 +169,6 @@ class _SignInNumberScreenState extends State<SignInNumberScreen> {
                                 ? _validationEmptyError = true
                                 : _validationEmptyError = false;
                           });
-                          debugPrint("Number Entered: $number");
                           if (_numberController.text.isNotEmpty) {
                             Navigator.push(
                               context,

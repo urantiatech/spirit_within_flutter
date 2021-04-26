@@ -19,7 +19,6 @@ class MyAppZefyrImageDelegate implements ZefyrImageDelegate<ImageSource> {
 
   @override
   Widget buildImage(BuildContext context, String key) {
-    // debugPrint(key);
     final file = File.fromUri(Uri.parse(key));
 
     /// Create standard [FileImage] provider. If [key] was an HTTP link

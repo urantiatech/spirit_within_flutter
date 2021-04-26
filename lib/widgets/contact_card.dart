@@ -105,9 +105,7 @@ class ContactCard extends StatelessWidget {
                     )
                   : SecondaryButton(
                       buttonTitle: 'Invite',
-                      onPressedFunction: () {
-                        debugPrint('Follow Pressed');
-                      },
+                      onPressedFunction: () {},
                     ),
         ],
       ),

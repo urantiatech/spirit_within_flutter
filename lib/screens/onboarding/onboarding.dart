@@ -17,7 +17,6 @@ class _OnboardingState extends State<Onboarding> {
   double titleFontSize = 26;
 
   nextFunction() {
-    debugPrint(currentIndex.toString());
     if (currentIndex == 2) {
       Navigator.pushReplacement(
         context,

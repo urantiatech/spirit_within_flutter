@@ -85,7 +85,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     cursorColor: Theme.of(context).accentColor,
                     onChanged: (String keyword) {
-                      debugPrint(keyword);
                       message = keyword;
                     },
                   ),
